@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,400&family=Open+Sans:wght@300&display=swap');
+
+:root {
+    --purple-light: #7e35e4;
+    --purple-dark: #54267d;
+    --withe: #ffffff;
+    --gray: #D6DBDF ; 
+
+    --font-size-s: 8.5px;
+    --font-size-m: 20.5px;
+    --font-size-l: 41.67;
+    --font-size-xl: 55.2px;
+    --font-size-xxl: 78.9px;
+
+    --font-family-montserrat: "Montserrat", "sans-serif";
+}
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+} 
+.header {
+    display: flex;
+    width: 100%; 
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    height: 103px;
+    background: var(--withe); 
+}
+
+
+
+.logo {
+    display: flex;
+}
+
+
+
+.buscador {
+    display: flex;
+    align-items: center;
+    /* padding: 40px;  */
+}
+
+.filtro {
+    display: flex;
+    align-items: center;
+}
+
+.filtro button {
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 72px;
+    border-radius: 32px;
+    background-color: var(--purple-light);
+    border: none;
+    padding: 5px;
+    width: 59px;
+    color: var(--withe);
+}
+.filtro button:hover{
+    background: var(--purple-dark);  
+    transition: 0.3s; 
+}
+.filtro_input { 
+    width: 1433px;
+    padding: 11px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgb(130, 130, 130);
+    border: none;
+    font-family: var(--font-family-montserrat);
+    outline: none; 
+}
+
+.filtro_input::placeholder{ 
+    font-family: var(--font-family-montserrat); 
+}
+
+.carrito{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+.carrito svg{
+   display: flex; 
+   justify-content: center; 
+   height: 38px;
+   width: 32px;
+} 
+.carrito button{
+   display: flex; 
+   justify-content: center; 
+   align-items: center; 
+   border: none;  
+}
+.icon-cart:hover{
+    cursor: pointer; 
+}
+.carrito{
+    position: relative;
+} 
+.count-products{
+    position: absolute; 
+    top: 55%; 
+    right: 0; 
+
+    background-color: black;
+    color: var(--withe); 
+    width: 25px;
+    height: 25px; 
+
+
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+}
+
+
+.container-cart-products{
+    position: absolute; 
+    top: 90px; 
+    right: 0; 
+
+    background-color: var(--withe);  
+    width:400px; 
+    z-index: 1;
+
+    box-shadow: 0 10px 20px rgb(0, 0, 0, 0.20); 
+    border-radius: 10px; 
+}
+
+.cart-product{
+    display: flex;  
+    padding: 30px;
+    justify-content: space-between; 
+    border-bottom: 1px solid rgb(0, 0, 0, 0.20); 
+}
+
+.info-cart-product{
+    justify-content: space-between; 
+    display: flex;  
+    flex: 0.8; 
+}
+
+.nombre-product{
+    font-size: var(--font-size-m);
+}
+
+.precio-product{
+    font-weight: 700;  
+    font-size: var(--font-size-m);
+    margin-left: 10px; 
+}
+
+.cantidad{
+    font-weight: 400; 
+    font-size: var(--font-size-m); 
+}
+
+.total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 ; 
+    gap: 20px;
+}
+
+.total h3{
+    font-weight: 700; 
+}
+
+.total-pagar{
+    font-size: var(--font-size-m); 
+    font-weight: bold;  
+}
+
+.icon-close{
+    width: 25px;
+    height: 25px;
+}
+
+.icon-close:hover{
+    stroke: red; 
+    cursor: pointer; 
+}
+
+.hidden-cart{
+    display: none; 
+}
+
+.linea {
+    background-color: var(--purple-light);
+    height: 3px;
+    width: 100%; 
+    position: absolute;
+    top: 100px;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.cards_dad {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: -1;
+    position: relative;
+    top: 128px;
+}
+
+.card { 
+    border-radius: 20px; 
+    font-family: var(--font-family-montserrat);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+
+}
+
+.card img{ 
+    width: 200px; 
+    object-fit: cover; 
+    transition: all .5s; 
+
+}
+
+.card:hover img{ 
+    transform: scale(1.2); 
+    cursor: pointer;
+}
+
+.boton_catalogo{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 10px;
+} 
+.boton_catalogo button{
+    background-color: var(--purple-dark);
+    border: none;
+    width: 40px;
+    height: 38px;
+    border-radius: 33px;
+    color: var(--withe);
+}
+
+
+.boton_catalogo button:hover{ 
+    background: var(--purple-light);  
+    color: var(--withe); 
+    transition: 0.4s; 
+} 
+.boton_catalogo button:active{
+    background: var(--purple-dark); 
+}
+.valor{ 
+    width: 50px; 
+    border: none;
+    text-align: center;
+}
+.boton_carrito button{
+    background-color: var(--purple-dark);
+    width: 60px; 
+    display: flex ; 
+    border-radius: 10px; 
+    align-items: center;
+    justify-content: center; 
+    border: none; 
+    color: var(--withe) 
+}
+.boton_carrito button:hover{
+    background-color: var(--purple-light);
+    transition: 0.5s; 
+}
+.boton_carrito button:active{
+    transition: 0.4s; 
+    background: var(--purple-dark); 
+}
+.boton_carrito a{
+    text-decoration: none; 
+}
+
+
+@media screen and (max-width: 1870px) {
+    .linea{
+        width: 1750px;    
+    } 
+}
+
+@media screen and (max-width:1500px){
+    .filtro_input{
+        width: 1300px; 
+    } 
+}
+
+@media screen and(max-width:1023PX) {
+    .filtro_input{
+        width: 100px;  
+    } 
+    
+}
+
+@media screen and(max-width:820px){
+    .filtro_input{ 
+        width: 600px;   
+    }
+}
+
+ @media screen and(max-width: 770px){
+    .filtro_input{
+        width: 570px;  
+    } 
+}  
+
+@media screen and (max-width: 430px){
+    .filtro_input{
+        width: 970px;   
+    } 
+    .linea{
+        width: 1200px; 
+    }
+}
+
+@media screen and(max-width: 360px){
+    .filtro_input{ 
+        width: 200px;  
+    }
+}
+
