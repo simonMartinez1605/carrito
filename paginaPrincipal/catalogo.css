@@ -257,7 +257,7 @@
     width: 40px;
     height: 38px;
     border-radius: 33px;
-    color: var(--withe);
+    color: var(--withe); 
 }
 
 
@@ -270,10 +270,11 @@
     background: var(--purple-dark); 
 }
 .valor{ 
-    width: 50px; 
-    border: none;
     text-align: center;
     outline: none;
+    border-radius: 10px; 
+    color: var(--purple-dark); 
+    padding: 30px;  
 }
 
 .card button {  
@@ -307,6 +308,9 @@
     }
     .filtro{
         padding: 45px; 
+    }
+    .cart-product{
+        padding: 5px; 
     }
 }
 

@@ -4,7 +4,7 @@
 //     // const sumar = document.querySelector(".sumar"); 
 //     const restar = document.querySelector(".restar");  
 
-//     sumar.addEventListener("click", () => { 
+//     sumar.addEventListener("click", () = > { 
 //         valor.value = parseInt(valor.value)+1; 
 //         cantidad++; 
 //     }); 
@@ -23,7 +23,7 @@
 //     contador1(); 
 // }) 
 
-// /contador    
+// contador      
 
 
 
@@ -47,7 +47,7 @@ const rowProduct = document.querySelector('.row-product')
 // Listas de todos los contenedores 
 
 
-const productList = document.querySelector('.card')    
+const productList = document.querySelector('.cards_dad')    
 
 //variable de arreglos de productos 
 
@@ -58,6 +58,8 @@ const valorTotal = document.querySelector('.total-pagar')
 
 const countProducts = document.querySelector('#contador-productos')
 
+const valorCard = document.querySelector('.valor')
+ 
 
 productList.addEventListener('click', e => { 
     if (e.target.classList.contains('sumar')){   
@@ -91,38 +93,41 @@ productList.addEventListener('click', e => {
         showHTML()
     }
 
-    if (e.target.classList.contains('restar')){   
-        const product = e.target.parentElement 
+        
 
-        const infoProducts = {
-            quantity: 1, 
-            title: product.querySelector('h5').textContent , 
-            price: product.querySelector('h6').textContent,  
-        }; 
-
-        const exits = allProducts.some(product => product.title === infoProducts.title)
-
-        if(exits){
-            const products = allProducts.map(product =>{
-                if(product.title === infoProducts.title){ 
-                    product.quantity--;   
-                    return product 
+         if (e.target.classList.contains('restar')){   
+        
+            const product = e.target.parentElement 
+        
+            const infoProducts = {
+                quantity: 1, 
+                title: product.querySelector('h5').textContent , 
+                price: product.querySelector('h6').textContent,  
+            }; 
+        
+            const validar = allProducts.some(product => product.quantity === product.quantity) 
+                
+                if(validar){ 
+                    const products = allProducts.map(product =>{
+                        if(product.quantity != 0){ 
+                            product.quantity--;   
+                            return product 
+                        }
+                        else{
+                            return product 
+                            }
+                    })
+                        allProducts = [...products] 
+                        
                 }
                 else{
-                    return product 
+                    allProducts =[...allProducts, infoProducts] 
                 }
-            })
-               allProducts = [...products] 
-            
-        }
-        else{
-            allProducts =[...allProducts, infoProducts] 
-        }
-
-        showHTML()
-    }
-    
-}); 
+                    
+                
+            showHTML()
+            }
+})
 
 rowProduct.addEventListener('click', (e) => {
     if (e.target.classList.contains('icon-close')){
@@ -156,6 +161,7 @@ const showHTML = () => {
 
     lit = total = 0; 
     lit = totalOfProducts = 0; 
+    lit  = valor = 0; 
 
     allProducts.forEach(product =>{
         const containerProduct = document.createElement('div')
@@ -185,8 +191,13 @@ const showHTML = () => {
         total = total + parseInt( product.quantity * product.price.slice(1))
 
         totalOfProducts = totalOfProducts + product.quantity; 
+
+        valor = valor + product.quantity; 
     }); 
 
     valorTotal.innerText = `$${total}`; 
     countProducts.innerText = totalOfProducts; 
+
+    valorCard.innerHTML = valor; 
+
 }; 
