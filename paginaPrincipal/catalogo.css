@@ -138,7 +138,8 @@
     display: flex;  
     padding: 30px;
     justify-content: space-between; 
-    border-bottom: 1px solid rgb(0, 0, 0, 0.20); 
+    border-bottom: 1px solid rgb(0, 0, 0, 0.20);
+    gap: 30px;  
 }
 
 .info-cart-product{
@@ -269,7 +270,7 @@
 .boton_catalogo button:active{
     background: var(--purple-dark); 
 }
-.valor{ 
+.contador{ 
     text-align: center;
     outline: none;
     border-radius: 10px; 
@@ -307,7 +308,7 @@
         width: 285px;
     }
     .filtro{
-        padding: 45px; 
+        padding: 45px;  
     }
     .cart-product{
         padding: 5px; 

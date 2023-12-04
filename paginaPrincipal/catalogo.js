@@ -58,12 +58,12 @@ const valorTotal = document.querySelector('.total-pagar')
 
 const countProducts = document.querySelector('#contador-productos')
 
-const valorCard = document.querySelector('.valor')
+const valorCard = document.querySelector('.contador') 
  
 
 productList.addEventListener('click', e => { 
     if (e.target.classList.contains('sumar')){   
-        const product = e.target.parentElement 
+        const product = e.target.parentElement; 
 
         const infoProducts = {
             quantity: 1, 
@@ -97,12 +97,12 @@ productList.addEventListener('click', e => {
 
          if (e.target.classList.contains('restar')){   
         
-            const product = e.target.parentElement 
+            const product = e.target.parentElement; 
         
             const infoProducts = {
                 quantity: 1, 
                 title: product.querySelector('h5').textContent , 
-                price: product.querySelector('h6').textContent,  
+                price: product.querySelector('h6').textContent,   
             }; 
         
             const validar = allProducts.some(product => product.quantity === product.quantity) 
@@ -131,16 +131,20 @@ productList.addEventListener('click', e => {
 
 rowProduct.addEventListener('click', (e) => {
     if (e.target.classList.contains('icon-close')){
-        const product = e.target.parentElement
-        const title = document.querySelector('h5').textContent 
+        const product = e.target.parentElement; 
+        const title = document.querySelector('h5').textContent;  
 
 
-        allProducts = allProducts.filter(product=> product.title != title)
+        allProducts = allProducts.filter(
+            product=> product.title != title
+            );
+
+
+            console.log(allProducts) 
+            showHTML() 
     }; 
 
-    console.log(allProducts) 
-    showHTML() 
-})
+}); 
 
 
 //funcion para mosrtrar 
@@ -160,8 +164,8 @@ const showHTML = () => {
     rowProduct.innerHTML = ''; 
 
     lit = total = 0; 
-    lit = totalOfProducts = 0; 
-    lit  = valor = 0; 
+    lit = totalOffProducts = 0; 
+    lit  = contador = 0;  
 
     allProducts.forEach(product =>{
         const containerProduct = document.createElement('div')
@@ -190,14 +194,25 @@ const showHTML = () => {
         
         total = total + parseInt( product.quantity * product.price.slice(1))
 
-        totalOfProducts = totalOfProducts + product.quantity; 
+        totalOffProducts = totalOffProducts + product.quantity; 
 
-        valor = valor + product.quantity; 
+        contador = contador + product.quantity; 
     }); 
 
     valorTotal.innerText = `$${total}`; 
-    countProducts.innerText = totalOfProducts; 
+    countProducts.innerText = totalOffProducts; 
 
-    valorCard.innerHTML = valor; 
+    valorCard.innerHTML = contador;  
 
 }; 
+
+document.addEventListener('keyup', e=>{
+    if (e.target.matches('#buscar')){
+        document.querySelectorAll('.producto').forEach(item => {
+            item.textContent.toLowerCase().includes(e.target.value)
+            ? item.classList.remove('.filtro')
+            : item.classList.add('.filtro'); 
+        })
+    }
+})
+
