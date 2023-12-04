@@ -108,7 +108,7 @@
     top: 55%; 
     right: 0; 
 
-    background-color: black;
+    background-color: var(--purple-dark); 
     color: var(--withe); 
     width: 25px;
     height: 25px; 
@@ -141,7 +141,11 @@
     border-bottom: 1px solid rgb(0, 0, 0, 0.20);
     gap: 30px;  
 }
-
+#cart-product{
+    border-radius: 20px; 
+    background-color: var(--purple-light); 
+    color: var(--withe); 
+}
 .info-cart-product{
     justify-content: space-between; 
     display: flex;  
@@ -302,10 +306,10 @@
         display: none; 
     } 
     .filtro_input{
-        max-width: 190px;  
-    } 
+        max-width: 190px;   
+    }
     .container-cart-products{
-        width: 285px;
+        width: 301px;
     }
     .filtro{
         padding: 45px;  
