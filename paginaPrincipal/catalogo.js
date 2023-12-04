@@ -1,29 +1,29 @@
-const contador = () => {  
-    let cantidad = 1; 
-    const valor = document.querySelector(".valor");  
-    const sumar = document.querySelector(".sumar"); 
-    const restar = document.querySelector(".restar");  
+// const contador1 = () => {  
+//     let cantidad = 1; 
+//     const valor = document.querySelector(".valor");  
+//     // const sumar = document.querySelector(".sumar"); 
+//     const restar = document.querySelector(".restar");  
 
-    sumar.addEventListener("click", () => {
-        valor.value = parseInt(valor.value)+1; 
-        cantidad++; 
-    }); 
-    restar.addEventListener("click", ()=> {
-        if(valor.value <=0){
-            valor.value = 0;
-        }
-        else{
-            valor.value = parseInt(valor.value)-1; 
-            cantidad--;
-        }
-    }); 
-} 
+//     sumar.addEventListener("click", () => { 
+//         valor.value = parseInt(valor.value)+1; 
+//         cantidad++; 
+//     }); 
+//     restar.addEventListener("click", ()=> {
+//         if(valor.value <=0){
+//             valor.value = 0;
+//         }
+//         else{
+//             valor.value = parseInt(valor.value)-1; 
+//             cantidad--;
+//         }
+//     }); 
+// }  
 
-document.addEventListener("DOMContentLoaded" ,function(){
-    contador(); 
-}) 
+// document.addEventListener("DOMContentLoaded" ,function(){
+//     contador1(); 
+// }) 
 
-///contador 
+// /contador    
 
 
 
@@ -47,7 +47,7 @@ const rowProduct = document.querySelector('.row-product')
 // Listas de todos los contenedores 
 
 
-const productList = document.querySelector('.cards_dad') 
+const productList = document.querySelector('.card')    
 
 //variable de arreglos de productos 
 
@@ -59,14 +59,14 @@ const valorTotal = document.querySelector('.total-pagar')
 const countProducts = document.querySelector('#contador-productos')
 
 
-productList.addEventListener('click', e => {
-    if (e.target.classList.contains('boton_carrito')){   
+productList.addEventListener('click', e => { 
+    if (e.target.classList.contains('sumar')){   
         const product = e.target.parentElement 
 
         const infoProducts = {
             quantity: 1, 
-            title: product.querySelector('h5').textContent ,
-            price: product.querySelector('h6').textContent, 
+            title: product.querySelector('h5').textContent , 
+            price: product.querySelector('h6').textContent,  
         }; 
 
         const exits = allProducts.some(product => product.title === infoProducts.title)
@@ -90,6 +90,38 @@ productList.addEventListener('click', e => {
 
         showHTML()
     }
+
+    if (e.target.classList.contains('restar')){   
+        const product = e.target.parentElement 
+
+        const infoProducts = {
+            quantity: 1, 
+            title: product.querySelector('h5').textContent , 
+            price: product.querySelector('h6').textContent,  
+        }; 
+
+        const exits = allProducts.some(product => product.title === infoProducts.title)
+
+        if(exits){
+            const products = allProducts.map(product =>{
+                if(product.title === infoProducts.title){ 
+                    product.quantity--;   
+                    return product 
+                }
+                else{
+                    return product 
+                }
+            })
+               allProducts = [...products] 
+            
+        }
+        else{
+            allProducts =[...allProducts, infoProducts] 
+        }
+
+        showHTML()
+    }
+    
 }); 
 
 rowProduct.addEventListener('click', (e) => {

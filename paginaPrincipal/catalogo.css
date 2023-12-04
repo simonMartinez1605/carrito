@@ -273,22 +273,23 @@
     width: 50px; 
     border: none;
     text-align: center;
+    outline: none;
 }
-.boton_carrito { 
+
+.card button {  
     background-color: var(--purple-dark);
     width: 60px; 
-    display: flex ; 
     border-radius: 10px; 
     align-items: center;
     justify-content: center; 
     border: none; 
     color: var(--withe) 
 }
-.boton_carrito:hover{
+.card:hover button{ 
     background-color: var(--purple-light);
     transition: 0.5s; 
 }
-.boton_carrito:active{
+.card:active button{ 
     transition: 0.4s; 
     background: var(--purple-dark); 
 }
