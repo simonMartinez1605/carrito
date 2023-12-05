@@ -218,76 +218,15 @@
     gap: 24px;
 }
 
-.select-menu{
-    width: 250px; 
-    margin: 150px; 
-    position: absolute; 
-}
-.select-menu .select-btn{
-    display: flex; 
-    height: 55px;
-    background: #fff;
-    padding: 20px; 
-    font-size: 18px;
-    font-weight: 400px;
-    border-radius:8px  ;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) ;
-}
-
-.select-btn img{
-    font-size: 25px; 
-    transition: 0.3s;
-}
-
-.select-menu.active .select-btn img{
-   transform: rotate(-180deg);
-}
-
-.select-menu .options{
-    position: relative;
-    padding: 20px;
-    margin-top: 10px; 
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    display: none; 
-}
-
-.select-menu.active .options{
-    display: block;
-}
-
-.options .option{
-    display: flex;
-    height: 55px;
-    cursor: pointer;
-    padding: 0px 16px;
-    border-radius: 8px;
-    align-items: center;
-    background: #fff;
-}
-
-.options .option:hover{
-    background: #F2F2F2; 
-}
-
-.option .option-text{
-    font-size: 18px; 
-    color: #333; 
-}
-
-
-
 .cards_dad {
     display: flex;
-    gap: 20px;
+    gap: 20px; 
     flex-wrap: wrap;
     justify-content: center;
     z-index: -1;
     position: relative;
+    left: 230px; 
+    width: 1500px;  
     top: 128px;
 }
 
@@ -363,6 +302,94 @@
     background: var(--purple-dark); 
 }
 
+.dad-menu{
+    font-family: var(--font-family-montserrat);
+    font-weight: var(--font-size-m);
+    flex-wrap: wrap;  
+    width: 250px; 
+    height: 315px;
+    border-radius: 10px; 
+    background: var(--withe); 
+    position: fixed; 
+    display: flex;
+    top: 133px; 
+    gap: 30px;  
+    left: 10px; 
+}
+.container-menu{
+    display: flex; 
+    gap: 25px; 
+    width: 250px; 
+} 
+.select-menu .select-btn{
+    width: 123px; 
+    box-shadow: 0 0 5px ;
+    border-radius: 10px; 
+    display: flex; 
+    position: relative; 
+    left: 13px;  
+    justify-content: space-between; 
+    padding: 7px;
+    cursor: pointer; 
+}
+.select-btn img{
+    font-size: 25px; 
+    transition: 0.3s;
+}
+.select-menu.active .select-btn img{
+    transform: rotate(-180deg);
+}
+
+.select-menu .options{
+    position: relative;
+    padding: 13px;
+    margin-top: 10px; 
+    border-radius: 8px;
+    box-shadow: 0 0 5px; 
+    top: 50px; 
+    width: 125px;
+    left: 10px;  
+    display: none;   
+} 
+
+.select-menu.active .options{
+    display: block;
+}
+
+.options .option{
+    display: flex;
+    height: 45px;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 8px; 
+    padding: 0 16px; 
+}
+.option .options:hover{
+    background: #F2F2F2;
+} 
+
+.boton-filtro-menu{
+    display: flex;
+    height: 37px; 
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-filtro-menu button{
+    border-radius: 10px; 
+    background: var(--purple-light);
+    color: var(--withe);    
+}
+
+.boton-filtro-menu:hover button{
+    background: var(--purple-dark);  
+    transition: 0.5s;
+}
+
+.boton-filtro-menu:active button{
+    background: var(--purple-light);
+    transition: 0.1s;  
+}
 
 @media screen and (max-width: 460px){ 
     .logo{
