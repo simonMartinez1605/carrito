@@ -102,7 +102,7 @@ productList.addEventListener('click', e => {
             const infoProducts = {
                 quantity: 1, 
                 title: product.querySelector('h5').textContent , 
-                price: product.querySelector('h6').textContent,   
+                price: product.querySelector('h6').textContent,
             }; 
         
             const validar = allProducts.some(product => product.quantity === product.quantity) 
@@ -131,13 +131,11 @@ productList.addEventListener('click', e => {
 
 rowProduct.addEventListener('click', (e) => {
     if (e.target.classList.contains('icon-close')){
-        const product = e.target.parentElement; 
-        const title = document.querySelector('h5').textContent;  
+        const products = e.target.parentElement; 
+        const quantity = document.querySelector('span');   
 
 
-        allProducts = allProducts.filter(
-            product=> product.title != title
-            );
+        allProducts = allProducts.filter(product=> product.quantity === 0); 
 
 
             console.log(allProducts) 
@@ -153,11 +151,15 @@ const showHTML = () => {
 
 
 
-    if(!allProducts.length){
-        containerCartProducts.innerHTML = `
-            <p class = "cart-empty"> El carrito esta vacio  </p>
-        `
-    }
+    // if(!allProducts.length){
+    //      containerCartProducts.innerHTML = `
+    //          <p class = "cart-empty"> El carrito esta vacio  </p>
+    //     `
+    // } 
+    // else{
+    //     showHTML() 
+    // }
+
 
     //limpiar html
 
@@ -165,7 +167,7 @@ const showHTML = () => {
 
     lit = total = 0; 
     lit = totalOffProducts = 0; 
-    lit  = contador = 0;  
+    lit  = contador = 1;  
 
     allProducts.forEach(product =>{
         const containerProduct = document.createElement('div')
@@ -196,7 +198,7 @@ const showHTML = () => {
 
         totalOffProducts = totalOffProducts + product.quantity; 
 
-        contador = contador + product.quantity; 
+        contador = contador + product.quantity;  
     }); 
 
     valorTotal.innerText = `$${total}`; 
@@ -216,3 +218,40 @@ document.addEventListener('keyup', e=>{
     }
 })
 
+
+// lst = [{
+//     nombre: "card",
+//     precio : 50000,
+//     cantidad : 1,
+// }]
+
+// localStorage.setItem('list', JSON.stringify(lst));  
+
+lst = JSON.parse(localStorage.getItem('list')); 
+ 
+lst.forEach(element => {
+    let = card = document.getElementById('card'); 
+    let  = div = document.getElementsByClassName('cart-product') 
+    div.innerHTML = element.nombre + element.precio + element.cantidad;  
+})
+
+console.log(lst) 
+
+
+//mostrar menu 
+const optionMenu = document.querySelector('.select-menu'), 
+    selectBtn = optionMenu.querySelector('.select-btn'), 
+    options = optionMenu.querySelectorAll('.option'), 
+    sBtn_text = optionMenu.querySelector('.sBtn-text');  
+
+selectBtn.addEventListener('click', () => optionMenu.classList.toggle('active')); 
+
+options.forEach(option => {
+    option.addEventListener('click', ()=>{
+        let selectOption = option.querySelector('.option-text').innerText; 
+        sBtn_text.innerText = selectOption; 
+
+        console.log(selectOption)
+        optionMenu.classList.remove('active');  
+    })
+})
