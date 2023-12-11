@@ -28,6 +28,12 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="categoria"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="categoria" viewBox="0 0 16 16">
+                        <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                </div>
                 <div class="carrito">
                     <div class="container-cart-icon">
                         <button id="cart-product">
@@ -61,8 +67,7 @@
                             </div> 
                         <div class="total">
                             <h3>Total: </h3>
-                            <span class="total-pagar">
-                            </span>
+                            <span class="total-pagar"></span>
                         </div>
                     </div>
                 </div>
@@ -70,7 +75,7 @@
             </div>
             <div class="cards_dad " id="producto"> 
                              
-                <div class="card" style="width: 18rem;" id="card"> 
+                <!-- <div class="card" style="width: 18rem;" id="card"> 
                     <img src="https://i.postimg.cc/8CYW3czq/audifonos-prueba.jpg" class="card-img-top" alt="...">
                     <div class="card-body"> 
                         <h5 class="card-title" id="title">Card</h5> 
@@ -80,27 +85,10 @@
                         <h6>$30000</h6>    
 
                         <button class="restar">-</button>  
-                        <span class="contador"> 1 </span>  
-                        <button class="sumar"> + </button> 
+                        <input value="1" class="contador">  
+                        <button class="sumar"> + </button>  
                     </div>                                          
-                </div>
-
-                <div class="card" style="width: 18rem;" id="card"> 
-                    <img src="https://i.postimg.cc/8CYW3czq/audifonos-prueba.jpg" class="card-img-top" alt="...">
-                    <div class="card-body"> 
-                        <h5 class="card-title">card title</h5> 
-                        <p  class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                        </p>  
-                        <h6>$50000</h6>    
-
-                        <button class="restar">-</button>  
-                        <span class="contador" > 1 </span>  
-                        <button class="sumar"> + </button> 
-                    </div> 
-                                                             
-                </div>   
-                                                                                                                                       
+                </div> -->                                                                                                    
             </div>
                 
             </div> 
@@ -114,19 +102,22 @@
     
                         <ul class="options">
                             <li class="option">
-                                <span class="option-text">Bateria</span>
+                                <span class="option-text">Audifonos</span>
                             </li>
                             <li class="option">
-                                <span class="option-text">Verder</span>
+                                <span class="option-text">Bocina</span>
                             </li>
                             <li class="option">
-                                <span class="option-text">Rojo</span>
+                                <span class="option-text">Cables</span>
                             </li>
                             <li class="option">
-                                <span class="option-text">Amarillo</span>
+                                <span class="option-text">Cargador </span>
                             </li>
                             <li class="option">
-                                <span class="option-text">Negro</span>
+                                <span class="option-text">PowerBank</span>
+                            </li>
+                            <li class="option">
+                                <span class="option-text">Base Magnetico</span> 
                             </li>
                         </ul>
     
@@ -141,7 +132,8 @@
 
         </div>   
     </div> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
     <script src="./catalogo.js"></script> 
-</body>
- 
+    <!-- <script src="repositorio.js"></script>   -->
+  
 </html>

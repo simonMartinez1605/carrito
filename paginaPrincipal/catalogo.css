@@ -29,18 +29,13 @@
     background: var(--withe); 
 }
 
-
-
 .logo {
     display: flex;
 }
 
-
-
 .buscador {
     display: flex;
-    align-items: center;
-    /* padding: 40px;  */
+    align-items: center; 
 }
 
 .filtro {
@@ -80,6 +75,9 @@
     font-family: var(--font-family-montserrat); 
 }
 
+.categoria{
+    display: none; 
+}
 .carrito{
     display: flex;
     justify-content: center; 
@@ -218,7 +216,7 @@
     gap: 24px;
 }
 
-.cards_dad {
+.cards_dad { 
     display: flex;
     gap: 20px; 
     flex-wrap: wrap;
@@ -247,6 +245,11 @@
 
 }
 
+.card h6{
+    position: absolute;
+    bottom: 48px;
+}
+
 .card:hover img{ 
     transform: scale(1.2); 
     cursor: pointer;
@@ -267,6 +270,10 @@
     color: var(--withe); 
 }
 
+.container-botones{
+    position: absolute;
+    bottom: 10px;
+}
 
 .boton_catalogo button:hover{ 
     background: var(--purple-light);  
@@ -277,21 +284,23 @@
     background: var(--purple-dark); 
 }
 .contador{ 
+    display: inline-block; 
     text-align: center;
     outline: none;
     border-radius: 10px; 
-    color: var(--purple-dark); 
-    padding: 30px;  
+    color: var(--purple-dark);
+    width: 80px;
+    border: none; 
 }
 
-.card button {  
+.container-botones button {  
     background-color: var(--purple-dark);
     width: 60px; 
     border-radius: 10px; 
     align-items: center;
     justify-content: center; 
     border: none; 
-    color: var(--withe) 
+    color: var(--withe); 
 }
 .card:hover button{ 
     background-color: var(--purple-light);
@@ -322,7 +331,7 @@
     width: 250px; 
 } 
 .select-menu .select-btn{
-    width: 123px; 
+    width: 200px; 
     box-shadow: 0 0 5px ;
     border-radius: 10px; 
     display: flex; 
@@ -347,7 +356,7 @@
     border-radius: 8px;
     box-shadow: 0 0 5px; 
     top: 50px; 
-    width: 125px;
+    width: 200px;
     left: 10px;  
     display: none;   
 } 
@@ -402,10 +411,26 @@
         width: 301px;
     }
     .filtro{
-        padding: 45px;  
+        padding: 63px;  
     }
     .cart-product{
         padding: 5px; 
+    }
+    .dad-menu{
+        display: none; 
+    }
+    .cards_dad{
+        left: 47px;
+        width: 300px; 
+    }
+    .categoria{
+        display: flex;
+        width: 42px;
+        height: 40px; 
+        cursor: pointer;
+        position: absolute; 
+        bottom: 17px;
+        color: var(--purple-light); 
     }
 }
 
