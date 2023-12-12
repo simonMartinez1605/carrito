@@ -56,7 +56,7 @@
     
     const valorTotal = document.querySelector('.total-pagar')
     
-    const countProducts = document.querySelector('#contador-productos')
+    const countProducts = document.querySelector('.contador-productos')
     
     const valorCard = document.querySelector('input.value') 
      
@@ -167,7 +167,7 @@
     
         lit = total = 0; 
         lit = totalOffProducts = 0; 
-        lit  = contador = document.getElementsByClassName('contador');  
+        lit  = contador = document.getElementsByClassName('.contador');   
     
         allProducts.forEach(product =>{
             const containerProduct = document.createElement('div')
