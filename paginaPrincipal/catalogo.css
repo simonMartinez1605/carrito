@@ -24,15 +24,20 @@
     width: 100%; 
     gap: 0px; 
     position: fixed;
-    top: 0;
+    top: -5px; 
     height: 103px;
     background: var(--withe); 
 }
 
-.logo img{ 
+.logo { 
     display: flex; 
-    width: 150px; 
-    height: 100px;
+    width: 165px; 
+    height: 65px;
+    background: var(--purple-light);
+    position: relative;
+    left: 12px; 
+    top: 20px; 
+    border-radius: 8px; 
 }
 
 .buscador {
@@ -44,6 +49,9 @@
     display: flex;
     align-items: center; 
     padding: 10px;
+    width: 700px;
+    position: relative;
+    left: 90px; 
 }
 
 .filtro button {
@@ -84,6 +92,8 @@
     display: flex;
     justify-content: center; 
     align-items: center;
+    position: relative;
+    left: 730px; 
 }
 .carrito svg{
    display: flex; 
@@ -100,9 +110,6 @@
 .icon-cart:hover{
     cursor: pointer; 
 }
-.carrito{
-    position: relative;
-} 
 .count-products{
     position: absolute; 
     top: 55%; 
@@ -226,7 +233,7 @@
     z-index: -1;
     position: relative;
     left: 230px; 
-    width: 1500px;  
+    width: 1281px;  
     top: 128px;
 }
 
@@ -336,8 +343,8 @@
     border-radius: 10px; 
     background: var(--withe); 
     position: fixed; 
-    display: flex;
-    top: 133px; 
+    display: contents; 
+    top: 33px; 
     gap: 30px;  
     left: 10px; 
 }
@@ -345,6 +352,9 @@
     display: flex; 
     gap: 18px; 
     width: 250px; 
+    position: relative;
+    top: 33px;
+    left: 50px; 
 } 
 .select-menu .select-btn{
     width: 170px; 
@@ -371,7 +381,7 @@
     margin-top: 10px; 
     border-radius: 8px;
     box-shadow: 0 0 5px; 
-    top: 10px; 
+    top: 25px; 
     width: 170px;
     left: 14px;  
     display: none;   
@@ -387,7 +397,10 @@
     cursor: pointer;
     align-items: center;
     border-radius: 8px; 
-    padding: 0 9px; 
+    padding: 0 9px;  
+}
+.options{
+    background-color: var(--withe); 
 }
 .option .options:hover{
     background: #F2F2F2;
@@ -425,29 +438,45 @@
     }
 } 
 
+@media screen and (max-width: 1300px) {
+    .filtro_input{
+        width: 900px; 
+    }
+}
+
 @media screen and (max-width: 1280px){  
 
+    .logo{
+        display: flex; 
+        width: 165px; 
+        height: 65px;
+        background: var(--purple-light);
+        position: relative;
+        left: 105px; 
+        top: 20px; 
+    }
+
     .filtro_input{ 
-        width: 870px; 
+        width: 670px; 
     }
     .cards_dad{ 
         display: flex;
-        gap: 20px;
+        gap: 15px;
         flex-wrap: wrap;
         justify-content: center;
         z-index: -1;
         position: relative;
-        left: 280px; 
-        width: 1000px; 
+        left: 40px; 
+        width: 1200px; 
         top: 128px;  
     } 
     .filtro{
         position: relative;
-        left: 180px; 
+        left: 78px; 
     }
     .carrito{
         position: relative;
-        left: 240px; 
+        left: 60px; 
     }
 }
 
@@ -457,23 +486,18 @@
     }
 }
 
-@media screen and (max-width: 834px){ 
+@media screen and (max-width: 884px){  
     .logo{
-        display: none; 
-    }   
-    .filtro_input {
-        width: 500px; 
-    } 
+        left: 150px; 
+    }
     .filtro{
+        width: 200px; 
         position: relative;
-        left: 118px; 
+        left: 50px; 
     }
     .carrito {
         position: relative;
         left: 110px; 
-    }
-    .dad-menu{
-        display: none;  
     }
     .cards_dad {
         display: flex;
@@ -482,44 +506,73 @@
         justify-content: center;
         z-index: -1;
         position: relative;
-        left: 22px;
-        width: 800px; 
+        left: auto; 
+        width: auto;  
         top: 128px 
     }
-    .categoria{
-        display: flex;
-        width: 42px;
-        height: 40px; 
-        cursor: pointer;
-        position: absolute; 
-        bottom: 17px;
-        color: var(--purple-light); 
+    .dad-menu{
+        display: contents; 
     }
+     
 }
 
-@media screen and (max-width: 460px){ 
-    .logo{
-        display: none; 
-    } 
+@media screen and (max-width: 460px){  
     .filtro_input{
         max-width: 190px;   
     }
     .container-cart-products{
         width: 301px;
     }
+    .buscador{
+        width: 430px; 
+    }
     .filtro{
         position: relative;
-        left: 50px;     
+        left: 68px;     
+        display: none; 
     }
     .carrito {
         position: relative;
-        left: 50px;
+        left: -11px;  
+    }
+    .cards_dad {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        z-index: -1;
+        position: relative; 
+        left: 1px;
+        width: auto; 
+        top: 128px;
     }
     .dad-menu{
-        display: none;  
+        display: contents; 
     }
-    .categoria svg :active{ 
+    .container-menu{
+        position: relative;
+        top: 30px; 
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .logo{
         display: none; 
+    } 
+    .filtro_input{
+        max-width: 180px;   
+    }
+    .container-cart-products{
+        width: 301px;
+    }
+    .filtro{
+        position: relative;
+        left: 50px;      
+    }
+    .carrito {
+        position: relative;
+        left: 40px;
     }
     .cards_dad {
         display: flex;
@@ -533,13 +586,11 @@
         top: 128px;
     }
     .categoria svg{
-        display: flex;
         width: 42px;
         height: 40px; 
         cursor: pointer; 
         position: absolute; 
-        bottom: 17px;
-        color: var(--purple-light); 
+        bottom: 17px; 
     }
-
+    
 }

@@ -27,7 +27,7 @@ const printProducts = (products, container) => {
         container.innerHTML += `
         <div class="card" style="width: 18rem; height: 24rem; "> 
         <div class="card-body"> 
-            <img src="${product.Imagen_publica.value}" class="card-img-top" alt="...">
+            <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">
             <h5 class="card-title" id="title">${product.Referencia}</h5>   
             <p  class="card-text">
             ${product.Caracteristicas} 
@@ -107,16 +107,15 @@ productList.addEventListener('click', e =>{
 
         const infoProducts = {
             quantity: 1,
-            title: product.querySelector('h5').textContent, 
-            price: product.querySelector('h6').textContent, 
-            id: respuesta.data.ID
+            title: product.Referencia, 
+            Price: product.Precio_Mayorista, 
         }; 
 
-        const exits = allProducts.some(product => product.id === id)
+        const exits = allProducts.some(product => product.title === infoProducts.title) 
 
         if(exits){
             const products = allProducts.map( product => {
-                if (product.id === infoProducts.id){
+                if (product.title === infoProducts.title){
                     product.quantity ++; 
                     return product 
                 }
@@ -130,8 +129,43 @@ productList.addEventListener('click', e =>{
             allProducts = [...allProducts, infoProducts]
         }
 
+        console.log(allProducts)
         showHTML() 
     }
+
+
+
+
+        if (e.target.classList.contains('restar')){
+            const product = e.target.parentElement; 
+
+            const infoProducts ={
+                quantity : 1, 
+                title: product.Referencia, 
+                Price: product.Precio_Mayorista, 
+            }; 
+
+            const validar = allProducts.some(product => product.quantity === product.quantity)
+
+                if (validar){
+                    const products = allProducts.map(product=>{
+                        if(product.quantity !=0){
+                            product.quantity --; 
+                            return product
+                        }
+                        else{
+                            return product
+                        }
+                    })
+
+                }
+                else{
+                    allProducts = [...allProducts, infoProducts]
+                }
+
+
+                showHTML()   
+        }
 })
 
 
@@ -157,7 +191,7 @@ const showHTML = () =>{
 
     lit = total = 0; 
     lit = totalOffProducts = 0; 
-    lit = contador = document.querySelector('.contador'); 
+    lit = contador = document.getElementsByClassName('.contador'); 
 
     allProducts.forEach(product => {
         const containerProduct = document.createElement('div')
@@ -167,20 +201,20 @@ const showHTML = () =>{
         
         <div class="info-cart-product">
             <span class="cantidad">
-                ${product.quantity}
+            ${product.quantity} 
             </span>
             <p class="nombre-product">
-                ${product.title}
+                ${product.Referencia}
             </p>
             <span class="precio-product">
-                ${product.price} 
+                ${product.Price} 
             </span>
         </div> 
         `
 
         rowProduct.append(containerProduct)
 
-        total = total + parseInt (product.quantity * product.price.slice(1))
+        total = total + parseInt (product.quantity * product.price) 
 
         totalOffProducts = totalOffProducts + product.quantity; 
 
