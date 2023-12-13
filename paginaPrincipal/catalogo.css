@@ -6,7 +6,8 @@
     --withe: #ffffff;
     --gray: #D6DBDF ; 
 
-    --font-size-s: 8.5px;
+    --font-size-xs: 8.5px;
+    --font-size-s: 14.5px; 
     --font-size-m: 20.5px;
     --font-size-l: 41.67;
     --font-size-xl: 55.2px;
@@ -27,6 +28,12 @@
     top: -5px; 
     height: 103px;
     background: var(--withe); 
+}
+.dad{
+    height: 1px;
+}
+.contenido{
+    height: 1px; 
 }
 
 .logo { 
@@ -51,7 +58,7 @@
     padding: 10px;
     width: 700px;
     position: relative;
-    left: 90px; 
+    left: 290px; 
 }
 
 .filtro button {
@@ -93,7 +100,7 @@
     justify-content: center; 
     align-items: center;
     position: relative;
-    left: 730px; 
+    left: 1150px; 
 }
 .carrito svg{
    display: flex; 
@@ -232,8 +239,8 @@
     justify-content: center;
     z-index: -1;
     position: relative;
-    left: 230px; 
-    width: 1281px;  
+    left: 50px; 
+    width: 2040px;  
     top: 128px;
 }
 
@@ -249,6 +256,7 @@
 
 .card img{  
     width: 80px; 
+    height: 80px; 
     position: relative;
     left: 80px; 
     object-fit: cover; 
@@ -264,6 +272,7 @@
 .card p{
     position: relative;
     top: 20px; 
+    font-size: var(--font-size-s); 
 }
 
 .card h6{
@@ -354,7 +363,7 @@
     width: 250px; 
     position: relative;
     top: 33px;
-    left: 50px; 
+    left: 290px; 
 } 
 .select-menu .select-btn{
     width: 170px; 
@@ -452,7 +461,7 @@
         height: 65px;
         background: var(--purple-light);
         position: relative;
-        left: 105px; 
+        left: 15px; 
         top: 20px; 
     }
 
@@ -472,32 +481,40 @@
     } 
     .filtro{
         position: relative;
-        left: 78px; 
+        left: 33px; 
     }
     .carrito{
         position: relative;
-        left: 60px; 
+        left: 350px; 
+    }
+    .container-menu{
+        left: -40px; 
     }
 }
-
 @media screen and (max-width: 1120px){
     .filtro_input{
         width: 750px; 
     }
 }
 
-@media screen and (max-width: 884px){  
+
+
+@media screen and (max-width: 885px){  
     .logo{
-        left: 150px; 
+        left: 20px;   
     }
     .filtro{
         width: 200px; 
         position: relative;
         left: 50px; 
     }
+    .container-menu{
+        position: relative;
+        left: 34px;
+    }
     .carrito {
         position: relative;
-        left: 110px; 
+        left: 390px; 
     }
     .cards_dad {
         display: flex;
@@ -517,8 +534,11 @@
 }
 
 @media screen and (max-width: 460px){  
+    .logo{
+        display: none; 
+    }
     .filtro_input{
-        max-width: 190px;   
+        width: 190px;   
     }
     .container-cart-products{
         width: 301px;
@@ -533,7 +553,7 @@
     }
     .carrito {
         position: relative;
-        left: -11px;  
+        left: 205px;  
     }
     .cards_dad {
         display: flex;
@@ -552,6 +572,7 @@
     .container-menu{
         position: relative;
         top: 30px; 
+        left: -120px;
     }
 
 }

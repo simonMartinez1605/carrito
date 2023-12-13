@@ -1,9 +1,13 @@
 //conexion de la api y creacion del forEach para mostrar los productos 
 
-// const { all } = require("axios"); 
 
+//Url de la api 
 URL_PRODUCTOS= "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Productos_1_hora"
+
+//Variable del contenido HTML a donde va la info 
 const containerProduct = document.querySelector(".cards_dad")
+
+//funcion de llamada a los productos de la api 
 const obtenerProductos = async() => {
     try{
         const respuesta =await axios.get (URL_PRODUCTOS)
@@ -40,14 +44,64 @@ const printProducts = (products, container) => {
             </div> 
         </div>                                          
     </div>
+        ` 
+    }) 
+} 
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const productos = await obtenerProductos(URL_PRODUCTOS);
+    printProducts (productos, containerProduct)
+});  
+
+
+//prueba
+
+const containerCarrito = document.querySelector('.container-cart-products') 
+
+const printProductsCarrito = (products, container) => {
+    container.innerHTML = ''; 
+
+    products.forEach(product => {
+        container.innerHTML += `
+        <div class="info-cart-product">
+        <span class="cantidad">
+        ${product.quantity} 
+        </span>
+        <p class="nombre-product">
+            ${product.Referencia}
+        </p>
+        <span class="precio-product">
+            ${product.Precio_Mayorista}  
+        </span>
+    </div> 
+        
         `
     })
-}
-document.addEventListener("DOMContentLoaded", async () => {
- const productos = await obtenerProductos(URL_PRODUCTOS);
- printProducts (productos, containerProduct)
-}); 
+}; 
 
+
+const sumar = addEventListener('click', (e) =>{
+    if (e.target.classList.contains('sumar')){
+
+        document.addEventListener('click', async () => {
+            const productos = await obtenerProductos(URL_PRODUCTOS); 
+            printProductsCarrito(productos, containerCarrito)
+            console.log(productos)
+        }); 
+
+
+    }
+})
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', async () => {
+//     const productos = await obtenerProductos(URL_PRODUCTOS); 
+//     printProductsCarrito(productos, containerCarrito)
+//     console.log(productos) 
+// }); 
 
 //Mostrar y ocultar el menu de categoria 
 
@@ -77,153 +131,3 @@ const btnCart = document.querySelector('.container-cart-icon')
     btnCart.addEventListener('click', ()=>{
         containerCartProducts.classList.toggle('hidden-cart')  
 }); 
-
-
-//Lista de contendores 
-
-const cartinfo = document.querySelector('.cart-product')
-
-const rowProduct = document.querySelector('.row-product')
-
-
-//Variable de arreglos de productos 
-const productList = document.querySelector('.cards_dad') 
-
-
-let allProducts = []
-
-const valorTotal = document.querySelector('.total-pagar')
-
-const countProducts = document.querySelector('.contador-productos')
-
-const valorCard = document.querySelector('input.value')
-
-
-//Sumar y restar productos al carrito 
-
-productList.addEventListener('click', e =>{
-    if (e.target.classList.contains('sumar')){
-        const product = e.target.parentElement; 
-
-        const infoProducts = {
-            quantity: 1,
-            title: product.Referencia, 
-            Price: product.Precio_Mayorista, 
-        }; 
-
-        const exits = allProducts.some(product => product.title === infoProducts.title) 
-
-        if(exits){
-            const products = allProducts.map( product => {
-                if (product.title === infoProducts.title){
-                    product.quantity ++; 
-                    return product 
-                }
-                else{
-                    return product 
-                }
-            })  
-                allProducts = [...products] 
-        }
-        else{
-            allProducts = [...allProducts, infoProducts]
-        }
-
-        console.log(allProducts)
-        showHTML() 
-    }
-
-
-
-
-        if (e.target.classList.contains('restar')){
-            const product = e.target.parentElement; 
-
-            const infoProducts ={
-                quantity : 1, 
-                title: product.Referencia, 
-                Price: product.Precio_Mayorista, 
-            }; 
-
-            const validar = allProducts.some(product => product.quantity === product.quantity)
-
-                if (validar){
-                    const products = allProducts.map(product=>{
-                        if(product.quantity !=0){
-                            product.quantity --; 
-                            return product
-                        }
-                        else{
-                            return product
-                        }
-                    })
-
-                }
-                else{
-                    allProducts = [...allProducts, infoProducts]
-                }
-
-
-                showHTML()   
-        }
-})
-
-
-//Icono de cerrar 
-
-rowProduct.addEventListener('click', e =>{
-    if (e.target.classList.contains('icon-close')){
-        const products = e.target.parentElement; 
-        const quantity = document.querySelector('span'); 
-
-        allProducts = allProducts.filter(product => product.quantity === 0); 
-
-        console.log(allProducts)
-        showHTML()
-    }
-})
-
-
-//Funcion para mostrar los productos 
-
-const showHTML = () =>{
-    rowProduct.innerHTML = ''; 
-
-    lit = total = 0; 
-    lit = totalOffProducts = 0; 
-    lit = contador = document.getElementsByClassName('.contador'); 
-
-    allProducts.forEach(product => {
-        const containerProduct = document.createElement('div')
-        containerProduct.classList.add('cart-product')
-
-        containerProduct.innerHTML = `
-        
-        <div class="info-cart-product">
-            <span class="cantidad">
-            ${product.quantity} 
-            </span>
-            <p class="nombre-product">
-                ${product.Referencia}
-            </p>
-            <span class="precio-product">
-                ${product.Price} 
-            </span>
-        </div> 
-        `
-
-        rowProduct.append(containerProduct)
-
-        total = total + parseInt (product.quantity * product.price) 
-
-        totalOffProducts = totalOffProducts + product.quantity; 
-
-        contador = contador + product.quantity; 
-
-    }); 
-
-    valorTotal.innerHTML = ''; 
-    countProducts.innerHTML =totalOffProducts; 
-
-    valorCard.innerHTML = contador; 
-}; 
