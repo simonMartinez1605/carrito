@@ -259,5 +259,5 @@ inputBuscar.addEventListener('keyup', (e) =>{
         else{
             valor.classList.add('cards')  
         }
-    } 
+    }  
 })
