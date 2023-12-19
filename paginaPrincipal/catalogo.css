@@ -39,8 +39,7 @@
 .logo { 
     display: flex; 
     width: 165px; 
-    height: 65px;
-    background: var(--purple-light);
+    height: 65px; 
     position: relative;
     left: 12px; 
     top: 20px; 
@@ -442,7 +441,21 @@
 .cards{
     display: none; 
 }
+.card{
+    display: none
+}
+.dads{
+    display: none;
+    width: 0;
+    height: 0;
+}
 
+.product{
+    display: none;
+}
+.hide{
+    display: none;
+}
 
 @media screen and (max-width: 1400px) {
     .filtro_input{
@@ -462,7 +475,6 @@
         display: flex; 
         width: 165px; 
         height: 65px;
-        background: var(--purple-light);
         position: relative;
         left: 15px; 
         top: 20px; 

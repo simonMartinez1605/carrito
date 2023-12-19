@@ -4,101 +4,172 @@
 //Url de la api 
 URL_PRODUCTOS= "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Productos_1_hora"
 
-//Variable del contenido HTML a donde va la info 
-const containerProduct = document.querySelector(".cards_dad")
+//Variables de contenido 
+let listProductsHTML = document.querySelector('.cards_dad')
+let listCartHTML = document.querySelector('.container-cart-products')
 
-//Funcion de llamada a los productos de la api 
-
-// const obtenerProductos = async() => {
-//     try{
-//         const respuesta =await axios.get (URL_PRODUCTOS)
-//         console.log(respuesta.data)
-//         return respuesta.data;
-//     }
-//     catch (error) {
-//         console.log(error) 
-//         return[];
-//     }
-// }
-
-// obtenerProductos();     
+const cantidad = document.querySelector('.contador-productos')
 
 
-//Mostrar los productos desde la api al html
-// const printProducts = (products, container) => {
-//     container.innerHTML = ''; 
-
-//     products.forEach(product =>{ 
-//         container.innerHTML += `
-//         <div class="card" style="width: 18rem; height: 24rem; "> 
-//         <div class="card-body"> 
-//             <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">
-//             <h5 class="card-title" id="title">${product.Referencia}</h5>   
-//             <p  class="card-text">
-//             ${product.Caracteristicas} 
-//             </p>  
-//             <h6>$${product.Precio_Mayorista}</h6>     
-//             <div class="container-botones">
-//                 <button class="restar">-</button>  
-//                 <input value="1" class="contador">  
-//                 <button class="sumar"> + </button>                                
-//             </div> 
-//         </div>                                          
-//     </div>
-//         ` 
-//     }) 
-//    } 
-
-// document.addEventListener("DOMContentLoaded", async () => {
-//     const productos = await obtenerProductos(URL_PRODUCTOS);
-//     printProducts (productos, containerProduct)
-// });  
+//Contenedores de listas y las cards del carrito 
+let listProducts = []
+let carts = []
 
 
-//Ingreso de los productos al carrito 
+//Constante para agregar la info de la api al html 
+const addDataToHTMl = () =>{
+    listProductsHTML.innerHTML =''; 
 
+    if(listProducts.length > 0 ){
+        listProducts.forEach(product => {
+            let newProduct = document.createElement('div')
+            newProduct.classList.add('card'); 
 
-const containerCarrito = document.querySelector('.container-cart-products') 
+            //Colocar la info en el dataset de cada card 
+            newProduct.dataset.id = product.ID;
+            newProduct.dataset.price = product.Precio_Mayorista; 
+            newProduct.dataset.referencia = product.Referencia; 
+            newProduct.innerHTML = `
+            <div id= "product"> 
+            <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" > 
+                <div class="card-body"> 
+                    <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">
+                    <h5 class="card-title" id="title">${product.Referencia}</h5>   
+                    <p  class="card-text">
+                    ${product.Caracteristicas} 
+                    </p>  
+                    <h6>$${product.Precio_Mayorista}</h6>     
+                    <div class="container-botones">
+                        <button class="restar">-</button>  
+                        <input value="1" class="contador">  
+                        <button class="sumar"> + </button>                                
+                    </div> 
+                </div>                                          
+            </div> 
+        </div>  
+            `
 
-const printProductsCarrito = (products, container) => {
-    container.innerHTML = ''; 
+            listProductsHTML.appendChild(newProduct) 
 
-    products.forEach(product => {
-        container.innerHTML += `
-        <div class="info-cart-product">
-        <span class="cantidad">
-        ${product.quantity} 
-        </span>
-        <p class="nombre-product">
-            ${product.Referencia}
-        </p>
-        <span class="precio-product">
-            ${product.Precio_Mayorista}  
-        </span>
-    </div> 
-        
-        `  
-    })
+        })
+    }
 }; 
 
+//Funcion para tomar el evento de suma y resta para los productos 
 
-const sumar = addEventListener('click', (e) =>{
-    if (e.target.classList.contains('sumar')){
+listProductsHTML.addEventListener('click', (event) => { 
+    let positionClick = event.target;   
+    if (positionClick.classList.contains("sumar")) {
+        // Encuentra el elemento padre con la clase "card"
+        const cardElement = positionClick.closest('.card');
+        if (cardElement) {
+            // Obtén el product_id del atributo data-id del elemento encontrado
+            const product_id = cardElement.dataset.id;
+            const price = cardElement.dataset.price; 
+            const referencia = cardElement.dataset.referencia; 
+            addToCart(product_id,price, referencia);  
+            // console.log(product_id);     
+        }
+    } 
+    
+});
 
-        document.addEventListener('click', async () => {
-            const productos = await obtenerProductos(URL_PRODUCTOS); 
-            printProductsCarrito(productos, containerCarrito)
-            console.log(productos)
-        }); 
 
-
+//Constante de info para añadir al carrito 
+const addToCart = (product_id,price,referencia) =>{ 
+    let position = carts.findIndex((value) => value.product_id == product_id); 
+    if(carts.length <= 0){
+        carts = [{
+            product_id : product_id, 
+            quantity : 1, 
+            price : price, 
+            referencia : referencia,
+        }]
+    }else if (position < 0){
+        carts.push({
+            product_id : product_id, 
+            quantity : 1, 
+            price: price, 
+            referencia: referencia, 
+        })
+    }else{
+        carts[position].quantity = carts[position].quantity + 1; 
     }
-})
-// document.addEventListener('DOMContentLoaded', async () => {
-//     const productos = await obtenerProductos(URL_PRODUCTOS); 
-//     printProductsCarrito(productos, containerCarrito)
-//     console.log(productos) 
-// }); 
+    console.log(carts)
+    addCartToHTML(); 
+    //Funcion para el local storage
+    addCartToMemory(); 
+}
+
+
+//Funcion para el local storage 
+const addCartToMemory = () =>{
+    localStorage.setItem('cart', JSON.stringify(carts));
+} 
+
+
+//Funcion para añadir al carrito 
+const addCartToHTML = () =>{
+    listCartHTML.innerHTML = ''; 
+    let totalQuantity = 0; 
+
+    if(carts.length > 0){
+        carts.forEach(cart =>{ 
+
+            totalQuantity = totalQuantity + cart.quantity; 
+
+            let newCart = document.createElement('div') 
+            newCart.classList.add('.container-cart-products')
+            // console.log(cart.referencia) 
+            newCart.innerHTML = ` 
+            
+            <div class="cart-product">
+            <div class="row-product">
+                <div class="info-cart-product">
+                    <span class="cantidad">
+                        ${cart.quantity} 
+                    </span>
+                    <p class="nombre-product">
+                       ${cart.referencia} 
+                    </p>
+                    <span class="precio-product">
+                        ${cart.price * cart.quantity}  
+                    </span>
+                </div>
+                </div>
+            </div> 
+            
+        </div> 
+
+            `;
+
+            listCartHTML.appendChild(newCart) 
+        })
+    }
+    cantidad.innerText = totalQuantity; 
+}
+
+//Funcion para llamar a la api 
+const initApp =() =>{
+    fetch(URL_PRODUCTOS) 
+    .then(response => response.json())
+    .then(data =>{
+        listProducts = data; 
+        addDataToHTMl();    
+
+
+        //obtener info de la memoria 
+
+        if(localStorage.getItem('cart')){
+            carts = JSON.parse(localStorage.getItem('cart')); 
+            addCartToHTML(); 
+        }
+    })
+    .catch(error => console.log(error)); 
+}; 
+
+initApp(); 
+
 
 //Mostrar y ocultar el menu de categoria 
 
@@ -120,9 +191,6 @@ const optionMenu = document.querySelector('.select-menu'),
         })
 }); 
 
-
-//Mostrar y cerrar el menu del carrito 
-
 const btnCart = document.querySelector('.container-cart-icon')  
     const containerCartProducts = document.querySelector('.container-cart-products')
     
@@ -131,133 +199,31 @@ const btnCart = document.querySelector('.container-cart-icon')
 }); 
 
 
-//Prueba de session storage 
+//La busqueda 
 
-// const dato = localStorage.getItem(sumar); 
-
-// if(dato){
-//     console.log('tengo el dato ')
-// }
-// else{
-//     console.log('no tengo el dato') 
-// }
-
-
-// document.addEventListener('DOMContentLoaded', () =>{
-//     localStorage.setItem('dato', 'dato2'); 
-// })
-
-
-//Prueba de filtros de busqueda 
-
-
-
-//Se hace referencia a los elementos del DOM 
 const inputBuscar = document.getElementById('buscar')
 
-const cards = document.getElementsByTagName('h5') 
+const cards = document.getElementsByTagName('h5')
 
-//Se traen los datos de la api 
+const dad = document.getElementsByClassName('card-body') 
 
-// const obtenerProductos = async() => {
-//     try{
-//         const respuesta =await axios.get (URL_PRODUCTOS)
-//         console.log(respuesta.data)
-//         res = respuesta.data; 
-//         return res; 
-//     }
-//     catch (error) {
-//         console.log(error) 
-//         return[];
-//     }
-
-// }
-
-// obtenerProductos();   
-
-// const obtenerProductos = async () =>{
-//     try{
-//         const api = await axios.get(URL_PRODUCTOS) 
-
-//         const respuesta = api.data
-//         return respuesta;  
-//     }
-//     catch (error) {
-//         console.log(error)
-//         return []; 
-//     }
-// }
-
-// const respuesta = (data) =>{
-//     let cards_dad = ''; 
-//     for(let i = 0; i <data.length; i++){
-//         cards_dad += `
-//         <div class="info-cart-product">
-//         <span class="cantidad">
-//         ${product.quantity} 
-//         </span>
-//         <p class="nombre-product">
-//             ${product.Referencia}
-//         </p>
-//         <span class="precio-product">
-//             ${product.Precio_Mayorista}  
-//         </span>
-//     </div> 
-//         `
-//     }
-// }
-
-//Mostrar los productos 
-
-
-//Fetch 
-
-fetch(URL_PRODUCTOS)
-    .then(respuesta => respuesta.json())
-    .then(json => mostrarDatos(json))
-    .catch( e => console.log(e)) 
-
-const mostrarDatos = (data) =>{
-    // console.log(data)
-    let cards_dad = ''
-    for(let i=0; i<data.length; i++){
-        cards_dad += `
-        <div class="card" style="width: 18rem; height: 24rem; "> 
-        <div class="card-body"> 
-            <img src="${data[i].Imagen_publica.url}" class="card-img-top" alt="...">
-            <h5 class="card-title" id="title">${data[i].Referencia}</h5>   
-            <p  class="card-text">
-            ${data[i].Caracteristicas} 
-            </p>  
-            <h6>$${data[i].Precio_Mayorista}</h6>     
-            <div class="container-botones">
-                <button class="restar">-</button>  
-                <input value="1" class="contador">  
-                <button class="sumar"> + </button>                                
-            </div> 
-        </div>                                          
-    </div>
-        `
-    }
-
-    document.querySelector('.cards_dad').innerHTML = cards_dad
-}
-
-
-//La busqueda 
 inputBuscar.addEventListener('keyup', (e) =>{
     let text = e.target.value
     // console.log(text) 
 
     let search = new RegExp (text, "i") 
-    for(let i= 0; i<cards.length ; i++){
+    for(let i= 0; i<cards.length ; i++){  
         let valor = cards[i] 
+        let container = dad[i]  
         // console.log(valor) 
         if (search.test(valor.innerText)){
             valor.classList.remove('cards')  
+            container.classList.remove('dads')
+            
         }
         else{
-            valor.classList.add('cards')  
+            valor.classList.add('cards')     
+            container.classList.add('dads')     
         }
-    }  
+    } 
 })
