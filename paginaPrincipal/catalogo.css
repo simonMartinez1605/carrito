@@ -196,7 +196,7 @@
     display: flex;
     align-items: center;
     flex: 0.8;
-    gap: 47px;
+    gap: 30px;
     position: relative;
     left: -17px;
 }
@@ -598,7 +598,12 @@
         width: 190px;   
     }
     .container-cart-products{
-        width: 301px;
+        width: 345px;
+        right: -38px; 
+    }
+
+    .info-cart-product{
+        gap: 20px
     }
     .buscador{
         width: 430px; 
