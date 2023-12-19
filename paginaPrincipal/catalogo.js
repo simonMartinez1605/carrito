@@ -1,6 +1,3 @@
-//Conexion de la api y creacion del forEach para mostrar los productos 
-
-
 //Url de la api 
 URL_PRODUCTOS= "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Productos_1_hora"
 
@@ -9,9 +6,10 @@ let listProductsHTML = document.querySelector('.cards_dad')
 let listCartHTML = document.querySelector('.container-cart-products')
 
 const cantidad = document.querySelector('.contador-productos')
+const total = document.getElementsByClassName('.total-pagar')
 
 
-//Contenedores de listas y las cards del carrito 
+//Contenedores de listas y las cards del carrito (a su vez son variables universales para modificar)
 let listProducts = []
 let carts = []
 
@@ -25,10 +23,16 @@ const addDataToHTMl = () =>{
             let newProduct = document.createElement('div')
             newProduct.classList.add('card'); 
 
-            //Colocar la info en el dataset de cada card 
+            //Colocar la info en el dataset de cada card
             newProduct.dataset.id = product.ID;
             newProduct.dataset.price = product.Precio_Mayorista; 
             newProduct.dataset.referencia = product.Referencia; 
+
+            //Convercion de numero a valor de moneda 
+
+            const number = product.Precio_Mayorista; 
+            valor = new Intl.NumberFormat('es-CO').format(number)
+
             newProduct.innerHTML = `
             <div id= "product"> 
             <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" > 
@@ -38,17 +42,15 @@ const addDataToHTMl = () =>{
                     <p  class="card-text">
                     ${product.Caracteristicas} 
                     </p>  
-                    <h6>$${product.Precio_Mayorista}</h6>     
+                    <h6>$${valor}</h6>     
                     <div class="container-botones">
-                        <button class="restar">-</button>  
-                        <input value="1" class="contador">  
-                        <button class="sumar"> + </button>                                
+                        <button class="sumar"> Agregar </button>                                
                     </div> 
                 </div>                                          
             </div> 
         </div>  
             `
-
+            //creacion del html con appendchild 
             listProductsHTML.appendChild(newProduct) 
 
         })
@@ -112,41 +114,101 @@ const addCartToMemory = () =>{
 const addCartToHTML = () =>{
     listCartHTML.innerHTML = ''; 
     let totalQuantity = 0; 
+    let totalPrice = 0; 
 
     if(carts.length > 0){
         carts.forEach(cart =>{ 
 
             totalQuantity = totalQuantity + cart.quantity; 
+            price = cart.price * cart.quantity;
+
+            //Convercion de numero a valor de moneda 
+            valor = new Intl.NumberFormat('es-CO').format(price) 
+
+            totalPrice = price ; 
 
             let newCart = document.createElement('div') 
             newCart.classList.add('.container-cart-products')
-            // console.log(cart.referencia) 
+            newCart.dataset.id = cart.product_id; 
+            // console.log(cart.product_id) 
             newCart.innerHTML = ` 
             
-            <div class="cart-product">
-            <div class="row-product">
-                <div class="info-cart-product">
-                    <span class="cantidad">
-                        ${cart.quantity} 
-                    </span>
-                    <p class="nombre-product">
-                       ${cart.referencia} 
-                    </p>
-                    <span class="precio-product">
-                        ${cart.price * cart.quantity}  
-                    </span>
-                </div>
-                </div>
+            <div class="cart-product" data-id="${cart.product_id}" > 
+                <div class="row-product">
+                    <div class="info-cart-product">
+                        <p class="nombre-product">
+                        ${cart.referencia} 
+                        </p>
+                        <span class="precio-product">
+                            ${valor}  
+                        </span>
+
+                        <div class="quantity">
+                            <button class="minus"> - </button>
+                            <span> ${cart.quantity} </span> 
+                            <button class="plus"> + </button>
+                        </div>
+
+                    </div>
+
+                    </div>
+                </div> 
             </div> 
-            
-        </div> 
 
             `;
 
             listCartHTML.appendChild(newCart) 
+            // console.log(cart.product_id) 
         })
     }
     cantidad.innerText = totalQuantity; 
+    total.innerText = totalPrice; 
+}
+
+//Captura del id con los botones minus and plus 
+listCartHTML.addEventListener('click', (event) =>{
+    let positionClick = event.target; 
+    const cardElement = positionClick.closest('.cart-product');
+
+    if(cardElement){
+
+        if (positionClick.classList.contains('minus')|| positionClick.classList.contains('plus')){
+            const product_id = cardElement.dataset.id; 
+            let type = 'minus'
+            if(positionClick.classList.contains('plus')){
+                type = 'plus'; 
+            }
+            //funcion para cambiar cantidad
+            changeQuantity(product_id, type)
+        }
+    }
+})
+
+
+//Funcion para cambiar cantidad 
+const changeQuantity = (product_id, type) =>{
+    let positionItemInCart = carts.findIndex((value)=> value.product_id == product_id); 
+    if (positionItemInCart >= 0){
+        //Evaluacion de type  y ejecucion de declaraciones 
+        switch (type){
+            case 'plus': 
+                carts[positionItemInCart].quantity = carts[positionItemInCart].quantity + 1; 
+                break; 
+            
+            default: 
+                let valueChange = carts[positionItemInCart].quantity -1; 
+                if(valueChange >0){
+                    carts[positionItemInCart].quantity = valueChange; 
+                }
+                else{
+                    carts.splice(positionItemInCart, 1) 
+                }
+                break; 
+        }
+    }
+    //Añadir a la memoria y al carrito para refrescar  
+    addCartToMemory(); 
+    addCartToHTML(); 
 }
 
 //Funcion para llamar a la api 
