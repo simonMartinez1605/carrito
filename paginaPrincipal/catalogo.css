@@ -39,7 +39,7 @@
 .logo { 
     display: flex; 
     width: 165px; 
-    height: 65px; 
+    height: 65px;
     position: relative;
     left: 12px; 
     top: 20px; 
@@ -99,7 +99,7 @@
     justify-content: center; 
     align-items: center;
     position: relative;
-    left: 1150px; 
+    left: 815px;  
 }
 .carrito svg{
    display: flex; 
@@ -137,14 +137,16 @@
 .container-cart-products{
     position: absolute; 
     top: 90px; 
-    right: 0; 
+    right: -170px; 
 
     background-color: var(--withe);  
-    width:400px; 
+    width:500px; 
     z-index: 1;
 
     box-shadow: 0 10px 20px rgb(0, 0, 0, 0.20); 
     border-radius: 10px; 
+    
+    overflow: auto;
 }
 
 .cart-product{
@@ -159,11 +161,44 @@
     background-color: var(--purple-light); 
     color: var(--withe); 
 }
+
+.quantity{
+    display: flex;
+    gap: 10px; 
+    position: relative;
+    right: -30px; 
+}
+.quantity button{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 25px;
+    height: 25px;
+    background: var(--purple-light);
+    color: var(--withe);
+    border: none;
+    border-radius: 40px; 
+}
+
+.quantity button:hover{
+    background: var(--purple-dark);
+    transition: .5s;
+
+}
+
+.quantity button:active{
+    background: var(--purple-light);
+    transition: .2s;
+}
+
 .info-cart-product{
-    justify-content: space-between; 
-    display: flex;  
-    flex: 0.8; 
-    gap: 40px; 
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex: 0.8;
+    gap: 47px;
+    position: relative;
+    left: -17px;
 }
 
 .nombre-product{
@@ -239,12 +274,12 @@
     z-index: -1;
     position: relative;
     left: 50px; 
-    width: 2040px;  
+    width: 1800px;  
     top: 128px;
 }
 
 .card { 
-    border-radius: 20px; 
+    border-radius: 50px; 
     font-family: var(--font-family-montserrat);
     display: flex;
     justify-content: center;
@@ -266,6 +301,7 @@
 .card-title{
     position: relative;
     top: 10px;
+    font-weight: bold; 
 }
 
 .card p{
@@ -293,16 +329,17 @@
 .boton_catalogo button{
     background-color: var(--purple-dark);
     border: none;
-    width: 40px;
+    width: 80px;
     height: 38px;
     border-radius: 33px;
     color: var(--withe); 
 }
 
-.container-botones{
+.container-botones {
     position: absolute;
     bottom: 10px;
-    left: 40px; 
+    left: 100px;  
+    border-radius: 30px;
 }
 
 .boton_catalogo button:hover{ 
@@ -324,8 +361,8 @@
 }
 
 .container-botones button {  
-    background-color: var(--purple-dark);
-    width: 60px; 
+    background-color: var(--purple-light);
+    width: 80px; 
     border-radius: 10px; 
     align-items: center;
     justify-content: center; 
@@ -334,12 +371,12 @@
     cursor: pointer; 
 }
 .card:hover button{ 
-    background-color: var(--purple-light);
+    background-color: var(--purple-dark);
     transition: 0.5s; 
 }
 .card:active button{ 
     transition: 0.4s; 
-    background: var(--purple-dark); 
+    background: var(--purple-light); 
 }
 
 .dad-menu{
@@ -441,21 +478,26 @@
 .cards{
     display: none; 
 }
+
 .card{
-    display: none
+    display: none;
 }
 .dads{
     display: none;
     width: 0;
     height: 0;
+
 }
 
 .product{
-    display: none;
+    display: none; 
 }
+
 .hide{
-    display: none;
+    display: none; 
 }
+
+
 
 @media screen and (max-width: 1400px) {
     .filtro_input{
@@ -475,7 +517,7 @@
         display: flex; 
         width: 165px; 
         height: 65px;
-        position: relative;
+        position: relative; 
         left: 15px; 
         top: 20px; 
     }
@@ -525,11 +567,11 @@
     }
     .container-menu{
         position: relative;
-        left: 34px;
+        left: 25px;
     }
     .carrito {
         position: relative;
-        left: 390px; 
+        left: 355px; 
     }
     .cards_dad {
         display: flex;
@@ -628,5 +670,4 @@
         position: absolute; 
         bottom: 17px; 
     }
-    
 }
