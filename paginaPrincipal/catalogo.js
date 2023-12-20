@@ -3,7 +3,7 @@ URL_PRODUCTOS= "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Produ
 
 //Variables de contenido 
 let listProductsHTML = document.querySelector('.cards_dad')
-let listCartHTML = document.querySelector('.container-cart-products')
+let listCartHTML = document.querySelector('.container-cart-products') 
 
 const cantidad = document.querySelector('.contador-productos')
 const total = document.querySelector('.precio-total') 
@@ -34,22 +34,21 @@ const addDataToHTMl = () =>{
             const number = product.Precio_Mayorista; 
             valor = new Intl.NumberFormat('es-CO').format(number)
 
+            //Mostrar los productos de la api en el html 
             newProduct.innerHTML = `
             <div id= "product"> 
-            <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" > 
-                <div class="card-body"> 
-                    <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">
-                    <h5 class="card-title" id="title">${product.Referencia}</h5>   
-                    <p  class="card-text">
-                    ${product.Caracteristicas} 
-                    </p>  
-                    <h6>$${valor}</h6>     
-                    <div class="container-botones">
-                        <button class="sumar"> Agregar </button>                                
-                    </div> 
-                </div>                                          
-            </div> 
-        </div>  
+                <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" > 
+                    <div class="card-body"> 
+                        <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">
+                        <h5 class="card-title" id="title">${product.Referencia}</h5>   
+                        <p  class="card-text">${product.Caracteristicas} </p>  
+                        <h6>$${valor}</h6>     
+                        <div class="container-botones">
+                            <button class="sumar"> Agregar </button>                                
+                        </div> 
+                    </div>                                          
+                </div> 
+            </div>  
             `
             //creacion del html con appendchild 
             listProductsHTML.appendChild(newProduct) 
@@ -100,7 +99,7 @@ const addToCart = (product_id,price,referencia) =>{
     }
     // console.log(carts)
     addCartToHTML(); 
-    //Funcion para el local storage
+    // Llamad de funcion para el local storage
     addCartToMemory(); 
 }
 
@@ -124,18 +123,20 @@ const addCartToHTML = () =>{
             totalQuantity = totalQuantity + cart.quantity; 
             price = cart.price * cart.quantity;
 
-            //Convercion de numero a valor de moneda 
+            //Convercion de numero a valor de moneda en el precio de las cards
             valor = new Intl.NumberFormat('es-CO').format(price) 
 
+            //Suma de todos los productos 
             totalPrice += price ;  
 
+            //Convercion de numero a valor de moneda de la suma de todos los productos  
             totalValor = new Intl.NumberFormat('es-CO').format(totalPrice) 
 
             let newCart = document.createElement('div') 
-            newCart.classList.add('.container-cart-products')
+            newCart.classList.add('container-cart-products')
             newCart.dataset.id = cart.product_id; 
             //console.log(cart.product_id) 
-            // console.log(totalPrice) 
+            //console.log(totalPrice) 
 
             newCart.innerHTML = ` 
             
@@ -154,10 +155,6 @@ const addCartToHTML = () =>{
                             <span> ${cart.quantity} </span> 
                             <button class="plus"> + </button>
                         </div>
-
-                        
-                        </div>
-                        
                     </div>
                 </div> 
             </div>    
@@ -165,11 +162,11 @@ const addCartToHTML = () =>{
 
             listCartHTML.appendChild(newCart) 
             // console.log(cart.product_id) 
-            total.innerText = `${totalValor}`  
         }); 
     }
+    total.innerText = `${totalValor}`  
     cantidad.innerText = totalQuantity; 
-    
+    console.log(totalValor)  
 }
 
 //Captura del id con los botones minus and plus 
@@ -261,7 +258,7 @@ const optionMenu = document.querySelector('.select-menu'),
 }); 
 
 const btnCart = document.querySelector('.container-cart-icon')  
-    const containerCartProducts = document.querySelector('.container-cart-products')
+    const containerCartProducts = document.querySelector('.container-cart') 
     
     btnCart.addEventListener('click', ()=>{
         containerCartProducts.classList.toggle('hidden-cart')  
@@ -296,3 +293,10 @@ inputBuscar.addEventListener('keyup', (e) =>{
         }
     } 
 })
+
+const btnCloseCart = document.querySelector('.close')
+const containerCart = document.querySelector('.container-cart')
+
+btnCloseCart.addEventListener('click', ()=>{
+    containerCart.classList.toggle('hidden-cart') 
+}) 
