@@ -707,6 +707,26 @@
         position: relative;
         left: 355px; 
     }
+    .count-products{
+        right: 1px; 
+    }
+    .close{
+        left: 70px;
+    }
+    .dad-container-products{
+        width: 500px;
+        position: relative;
+        height: 689px;
+    }
+    .total{
+        left: 70px;
+    }
+    .precio-total{
+        left: 100px; 
+    }
+    .container-cart{
+        right: 513px; 
+    }
     .cards_dad {
         display: flex;
         gap: 20px;
@@ -737,7 +757,7 @@
     }
 
     .info-cart-product{
-        gap: 20px
+        gap: 14px
     }
     .buscador{
         width: 430px; 
@@ -750,6 +770,24 @@
     .carrito {
         position: relative;
         left: 205px;  
+    }
+    .count-products{
+        right: 43px; 
+    }
+    .close{
+        left: 70px;
+    }
+    .dad-container-products{
+        width: 350px;
+        position: relative;
+        left: 90px; 
+        height: 450px;
+    }
+    .total{
+        left: 70px;
+    }
+    .precio-total{
+        left: 100px; 
     }
     .cards_dad {
         display: flex;
