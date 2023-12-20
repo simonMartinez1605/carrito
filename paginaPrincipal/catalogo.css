@@ -99,7 +99,7 @@
     justify-content: center; 
     align-items: center;
     position: relative;
-    left: 815px;  
+    left: 800px;  
 }
 .carrito svg{
    display: flex; 
@@ -177,7 +177,7 @@
     background: var(--purple-light);
     color: var(--withe);
     border: none;
-    border-radius: 40px; 
+    border-radius: 40px;
 }
 
 .quantity button:hover{
@@ -196,7 +196,7 @@
     display: flex;
     align-items: center;
     flex: 0.8;
-    gap: 30px;
+    gap: 40px; 
     position: relative;
     left: -17px;
 }
@@ -547,10 +547,48 @@
     .container-menu{
         left: -40px; 
     }
+    .container-cart-products{
+        width: 500px;  
+        right: 5px; 
+    }
 }
 @media screen and (max-width: 1120px){
     .filtro_input{
         width: 750px; 
+    }
+    .logo{
+        left: 20px;   
+    }
+    .filtro{
+        width: 200px; 
+        position: relative;
+        left: 155px; 
+    }
+    .container-menu{
+        position: relative;
+        left: 160px;
+    }
+    .container-cart-products{
+        width: 500px; 
+        right: 4px; 
+    }
+    .carrito {
+        position: relative;
+        left: 600px; 
+    }
+    .cards_dad {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        z-index: -1;
+        position: relative;
+        left: auto; 
+        width: auto;  
+        top: 128px 
+    }
+    .dad-menu{
+        display: contents; 
     }
 }
 
@@ -568,6 +606,10 @@
     .container-menu{
         position: relative;
         left: 25px;
+    }
+    .container-cart-products{
+        width: 500px; 
+        right: 4px; 
     }
     .carrito {
         position: relative;
