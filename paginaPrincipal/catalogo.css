@@ -94,12 +94,34 @@
 .categoria{
     display: none; 
 }
+
+.dad-precio-total{
+    display: flex;
+    border: solid 1px;
+    position: relative;
+    left: 753px;
+    width: 92px;
+    height: 45px;
+    top: 33px;
+    border-radius: 27px;
+}
+
+.precio-total{
+    width: 89px;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    align-items: center;
+}
+
 .carrito{
     display: flex;
     justify-content: center; 
     align-items: center;
     position: relative;
     left: 800px;  
+    height: 58px;
+    top: 26px; 
 }
 .carrito svg{
    display: flex; 
@@ -133,11 +155,10 @@
     border-radius: 50%; 
 }
 
-
 .container-cart-products{
     position: absolute; 
     top: 90px; 
-    right: -170px; 
+    right: -70px; 
 
     background-color: var(--withe);  
     width:500px; 
@@ -146,7 +167,7 @@
     box-shadow: 0 10px 20px rgb(0, 0, 0, 0.20); 
     border-radius: 10px; 
     
-    overflow: auto;
+    overflow: auto; 
 }
 
 .cart-product{

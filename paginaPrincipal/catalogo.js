@@ -6,7 +6,8 @@ let listProductsHTML = document.querySelector('.cards_dad')
 let listCartHTML = document.querySelector('.container-cart-products')
 
 const cantidad = document.querySelector('.contador-productos')
-const total = document.getElementsByClassName('.total-pagar')
+const total = document.querySelector('.precio-total') 
+
 
 
 //Contenedores de listas y las cards del carrito (a su vez son variables universales para modificar)
@@ -97,7 +98,7 @@ const addToCart = (product_id,price,referencia) =>{
     }else{
         carts[position].quantity = carts[position].quantity + 1; 
     }
-    console.log(carts)
+    // console.log(carts)
     addCartToHTML(); 
     //Funcion para el local storage
     addCartToMemory(); 
@@ -108,6 +109,7 @@ const addToCart = (product_id,price,referencia) =>{
 const addCartToMemory = () =>{
     localStorage.setItem('cart', JSON.stringify(carts));
 } 
+
 
 
 //Funcion para añadir al carrito 
@@ -125,12 +127,16 @@ const addCartToHTML = () =>{
             //Convercion de numero a valor de moneda 
             valor = new Intl.NumberFormat('es-CO').format(price) 
 
-            totalPrice = price ; 
+            totalPrice += price ;  
+
+            totalValor = new Intl.NumberFormat('es-CO').format(totalPrice) 
 
             let newCart = document.createElement('div') 
             newCart.classList.add('.container-cart-products')
             newCart.dataset.id = cart.product_id; 
-            // console.log(cart.product_id) 
+            //console.log(cart.product_id) 
+            // console.log(totalPrice) 
+
             newCart.innerHTML = ` 
             
             <div class="cart-product" data-id="${cart.product_id}" > 
@@ -149,20 +155,21 @@ const addCartToHTML = () =>{
                             <button class="plus"> + </button>
                         </div>
 
-                    </div>
-
+                        
+                        </div>
+                        
                     </div>
                 </div> 
-            </div> 
-
+            </div>    
             `;
 
             listCartHTML.appendChild(newCart) 
             // console.log(cart.product_id) 
-        })
+            total.innerText = `${totalValor}`  
+        }); 
     }
     cantidad.innerText = totalQuantity; 
-    total.innerText = totalPrice; 
+    
 }
 
 //Captura del id con los botones minus and plus 
