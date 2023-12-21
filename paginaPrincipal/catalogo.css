@@ -186,6 +186,9 @@
     border-radius: 10px; 
     z-index: -1;
 }
+.info-cart h4{ 
+    font-weight: bold; 
+}
 .linea-carrito{
     background:var(--gray); 
     width: 100%; 
@@ -194,7 +197,7 @@
 }
 
 .dad-container-products{
-    height: 693px; 
+    height: 705px; 
     position: relative;
     overflow-y: auto;
 }
@@ -247,6 +250,7 @@
     justify-content: space-between; 
     border-bottom: 1px solid rgb(0, 0, 0, 0.20);
     gap: 30px;  
+    height: 141px; 
 }
 #cart-product{
     border-radius: 20px; 
@@ -254,18 +258,53 @@
     color: var(--withe); 
 }
 
+.info-cart-product{
+    display: block;
+    position: relative;
+    left: -17px;
+    width: 470px; 
+    height: 110px; 
+}
+
+.imagen-carrito{
+    width: 90px; 
+}
+.imagen-carrito img{
+    width: 90px;  
+}
+
+.nombre-product{
+    font-size: var(--font-size-s); 
+    font-weight: bold;
+    width: 255px;
+    position: relative;
+    top: -80px; 
+    left: 127px;
+}
+
+.precio-product{
+    font-weight: 700;  
+    font-size: var(--font-size-m);
+    margin-left: 10px; 
+    position: relative;
+    left: 350px;
+    bottom: 72px;
+}
+
 .quantity{
     display: flex;
     gap: 10px; 
     position: relative;
-    right: -30px; 
+    left: 122px;
+    bottom: 103px;
+    width: 90px;
 }
 .quantity button{
     display: flex;
     align-items: center;
     justify-content: center; 
-    width: 25px;
-    height: 25px;
+    width: 18px;
+    height: 18px;
     background: var(--purple-light);
     color: var(--withe);
     border: none;
@@ -283,30 +322,12 @@
     transition: .2s;
 }
 
-.info-cart-product{
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    flex: 0.8;
-    gap: 40px; 
-    position: relative;
-    left: -17px;
-}
-
-
-.nombre-product{
-    font-size: var(--font-size-m);
-}
-
-.precio-product{
-    font-weight: 700;  
-    font-size: var(--font-size-m);
-    margin-left: 10px; 
-}
-
 .cantidad{
     font-weight: 400; 
     font-size: var(--font-size-m); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .total{
@@ -336,7 +357,7 @@
 
 .hidden-cart{
     display: none; 
-}
+} 
 
 .cart-empty{
     padding: 20px; 
@@ -350,6 +371,27 @@
     width: 100%; 
     position: absolute;
     top: 100px;
+}
+
+.banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 1240px;
+    height: 361px;
+    padding: 20px;
+    position: relative;
+    top: 126px;
+    left: 330px;
+    z-index: -1;
+
+    border-radius: 10px;
+} 
+
+.banner img{
+    height: 369px; 
+    border-radius: 33px;
 }
 
 .contenido {

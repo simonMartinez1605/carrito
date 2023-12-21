@@ -28,6 +28,7 @@ const addDataToHTMl = () =>{
             newProduct.dataset.id = product.ID;
             newProduct.dataset.price = product.Precio_Mayorista; 
             newProduct.dataset.referencia = product.Referencia; 
+            newProduct.dataset.imagen = product.Imagen_publica; 
 
             //Convercion de numero a valor de moneda 
 
@@ -37,9 +38,9 @@ const addDataToHTMl = () =>{
             //Mostrar los productos de la api en el html 
             newProduct.innerHTML = `
             <div id= "product"> 
-                <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" > 
+                <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" data-imagen="${product.Imagen_publica.url}"> 
                     <div class="card-body"> 
-                        <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">
+                        <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">  
                         <h5 class="card-title" id="title">${product.Referencia}</h5>   
                         <p  class="card-text">${product.Caracteristicas} </p>  
                         <h6>$${valor}</h6>     
@@ -69,8 +70,9 @@ listProductsHTML.addEventListener('click', (event) => {
             const product_id = cardElement.dataset.id;
             const price = cardElement.dataset.price; 
             const referencia = cardElement.dataset.referencia; 
-            addToCart(product_id,price, referencia);  
-            // console.log(product_id);     
+            const imagen = cardElement.dataset.imagen; 
+            addToCart(product_id,price, referencia,imagen);  
+            //console.log(imagen);
         }
     } 
     
@@ -78,7 +80,7 @@ listProductsHTML.addEventListener('click', (event) => {
 
 
 //Constante de info para añadir al carrito 
-const addToCart = (product_id,price,referencia) =>{ 
+const addToCart = (product_id,price,referencia,imagen) =>{  
     let position = carts.findIndex((value) => value.product_id == product_id); 
     if(carts.length <= 0){
         carts = [{
@@ -86,6 +88,7 @@ const addToCart = (product_id,price,referencia) =>{
             quantity : 1, 
             price : price, 
             referencia : referencia,
+            imagen : imagen, 
         }]
     }else if (position < 0){
         carts.push({
@@ -93,11 +96,12 @@ const addToCart = (product_id,price,referencia) =>{
             quantity : 1, 
             price: price, 
             referencia: referencia, 
+            imagen: imagen,
         })
     }else{
         carts[position].quantity = carts[position].quantity + 1; 
     }
-    // console.log(carts)
+    //console.log(imagen)
     addCartToHTML(); 
     // Llamad de funcion para el local storage
     addCartToMemory(); 
@@ -136,21 +140,29 @@ const addCartToHTML = () =>{
             newCart.classList.add('container-cart-products')
             newCart.dataset.id = cart.product_id; 
             //console.log(cart.product_id) 
-            //console.log(totalPrice) 
+            console.log(cart.imagen) 
 
             newCart.innerHTML = ` 
             
             <div class="cart-product" data-id="${cart.product_id}" > 
                 <div class="row-product">
                     <div class="info-cart-product">
+
+                        <div class="imagen-carrito">
+                            <img src="${cart.imagen}" alt=""> 
+                        </div> 
+
                         <p class="nombre-product">
                         ${cart.referencia} 
                         </p>
                         <span class="precio-product">
-                            ${valor}  
+                            $${valor}  
                         </span>
 
                         <div class="quantity">
+                            <div class="cantidad">
+                                <h6>Cantidad: </h6>
+                            </div>
                             <button class="minus"> - </button>
                             <span> ${cart.quantity} </span> 
                             <button class="plus"> + </button>
@@ -164,7 +176,7 @@ const addCartToHTML = () =>{
             // console.log(cart.product_id) 
         }); 
     }
-    total.innerText = `${totalValor}`  
+    total.innerText = `$${totalValor}`  
     cantidad.innerText = totalQuantity; 
     console.log(totalValor)  
 }
