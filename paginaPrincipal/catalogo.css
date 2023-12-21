@@ -194,6 +194,7 @@
     display: none; 
 }
 
+
 .container-borrar-carrito{
     width: 22px;
     height: 38px;
@@ -380,6 +381,9 @@
 
 .hidden-cart{
     display: none; 
+    position: absolute;
+    top: 367px;
+    left: 176px;
 } 
 
 .cart-empty{
