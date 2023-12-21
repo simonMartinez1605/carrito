@@ -46,6 +46,9 @@
     top: 20px; 
     border-radius: 8px; 
 }
+.logo-celular{
+    display: none; 
+}
 
 .buscador {
     display: flex;
@@ -186,6 +189,26 @@
     border-radius: 10px; 
     z-index: -1;
 }
+
+.hidden-product{
+    display: none; 
+}
+
+.container-borrar-carrito{
+    width: 22px;
+    height: 38px;
+    display: flex;
+    position: absolute;
+    top: -17px;
+    right: -15px;
+    cursor: pointer; 
+}
+
+.container-borrar-carrito svg{
+    width: 20px; 
+    opacity: .3;
+}
+
 .info-cart h4{ 
     font-weight: bold; 
 }
@@ -264,7 +287,7 @@
     left: -17px;
     width: 470px; 
     height: 110px; 
-}
+} 
 
 .imagen-carrito{
     width: 90px; 
@@ -276,15 +299,15 @@
 .nombre-product{
     font-size: var(--font-size-s); 
     font-weight: bold;
-    width: 255px;
+    width: 245px;
     position: relative;
-    top: -80px; 
-    left: 127px;
+    top: -98px; 
+    left: 100px;
 }
 
 .precio-product{
     font-weight: 700;  
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
     margin-left: 10px; 
     position: relative;
     left: 350px;
@@ -295,8 +318,8 @@
     display: flex;
     gap: 10px; 
     position: relative;
-    left: 122px;
-    bottom: 103px;
+    left: 100px;
+    bottom: 96px;
     width: 90px;
 }
 .quantity button{
@@ -533,11 +556,11 @@
     width: 250px; 
     position: absolute;
     top: 33px;
-    right: 520px;
+    right: 520px; 
 } 
 .select-menu .select-btn{
     width: 170px; 
-    box-shadow: 0 0 5px ;
+    box-shadow: 0 4px 8px rgb(130, 130, 130);
     border-radius: 10px; 
     display: flex; 
     position: relative; 
@@ -678,12 +701,28 @@
         position: relative;
         left: 350px; 
     }
-    .container-menu{
-        left: -40px; 
+    .count-products{
+        right: 20px; 
     }
-    .container-cart-products{
-        width: 500px;  
-        right: 5px; 
+    .container-menu{
+        right: 160px;
+    }
+    .dad-container-products {
+        height: 564px;
+        position: relative;
+        overflow-y: auto;
+    }
+    .container-cart{
+        width: 550px;  
+        right: 530px; 
+    }
+    .banner{
+        width: auto;
+        left: auto;
+    }
+    .banner img{
+        height: 217px; 
+        border-radius: 17px 17px 0 0 ;
     }
 }
 @media screen and (max-width: 1120px){
@@ -738,18 +777,20 @@
         left: 50px; 
     }
     .container-menu{
-        position: relative;
-        left: 25px;
+        position: absolute;
+        left: 445px;
     }
     .container-cart-products{
         width: 500px; 
         right: 4px; 
     }
     .carrito {
-        position: relative;
-        left: 355px; 
+        position: absolute;
+        left: 700px; 
     }
     .count-products{
+        position: absolute;
+        top: 29px;
         right: 1px; 
     }
     .close{
@@ -783,12 +824,31 @@
     .dad-menu{
         display: contents; 
     }
+
+    .banner{
+        width: auto;
+        left: auto;
+    }
+
+    .banner img{
+        height: 146px;
+        border-radius: 17px 17px 0 0;
+
+    }
      
 }
 
 @media screen and (max-width: 460px){  
     .logo{
         display: none; 
+    }
+    .logo-celular{
+        display: flex;
+        height: 45px; 
+        position: absolute;
+        top: 30px;
+        left: 10px; 
+
     }
     .filtro_input{
         width: 190px;   
@@ -807,23 +867,23 @@
     .filtro{
         position: relative;
         left: 68px;     
-        display: none; 
+        display: flex; 
     }
     .carrito {
-        position: relative;
-        left: 205px;  
+        position: absolute;
+        left: 300px;  
     }
     .count-products{
-        right: 43px; 
+        right: 0px; 
     }
     .close{
         left: 70px;
     }
     .dad-container-products{
-        width: 350px;
+        width: 358px;
         position: relative;
-        left: 90px; 
-        height: 450px;
+        left: 4px; 
+        height: 563px;
     }
     .total{
         left: 70px;
@@ -845,13 +905,47 @@
     .dad-menu{
         display: contents; 
     }
-    .container-menu{
+    .container-cart{
+        right: 315px;
         position: relative;
-        top: 30px; 
-        left: -120px;
+        width: auto;
+    }
+    .container-menu{
+        position: absolute;
+        top: 35px; 
+        left: 46px;
+        display: none; 
+    }
+    .banner{
+        width: auto;
+        left: auto;
+    }
+    
+    .banner img{
+        height: 67px;
+        border-radius: 17px 17px 0 0;
+    }
+
+    .info-cart svg{
+        position: relative;
+        top: -5px; 
+        left: 45px; 
+    }
+    .precio-product{  
+        font-size: var(--font-size-s);
+        margin-left: 10px;
+        position: relative;
+        left: 179px;
+        bottom: 78px;
+    
+    }
+    .quantity{
+        left: 100px; 
+        bottom: 122px;
     }
 
 }
+
 
 @media screen and (max-width: 320px) {
     .logo{
