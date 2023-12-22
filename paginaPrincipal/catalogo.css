@@ -294,7 +294,7 @@
     width: 90px; 
 }
 .imagen-carrito img{
-    width: 90px;  
+    width: 78px;  
 }
 
 .nombre-product{
@@ -377,6 +377,13 @@
 
 .icon-close:hover{
     cursor: pointer; 
+}
+.container-icon-trash{ 
+    display: none; 
+    position: relative;
+    right: 9px; 
+    border-radius: 40px; 
+    opacity: .5;
 }
 
 .hidden-cart{
@@ -644,10 +651,7 @@
     display: none;
 }
 .dads{
-    display: none;
-    width: 0;
-    height: 0;
-
+    display: none; 
 }
 
 .product{
@@ -717,8 +721,8 @@
         overflow-y: auto;
     }
     .container-cart{
-        width: 550px;  
-        right: 530px; 
+        right: 497px; 
+        box-shadow: 0 4px 8px rgb(130, 130, 130);
     }
     .banner{
         width: auto;
@@ -727,6 +731,9 @@
     .banner img{
         height: 217px; 
         border-radius: 17px 17px 0 0 ;
+    }
+    .container-borrar-carrito{
+        right: -25px; 
     }
 }
 @media screen and (max-width: 1120px){
@@ -798,7 +805,7 @@
         right: 1px; 
     }
     .close{
-        left: 70px;
+        left: 111px;
     }
     .dad-container-products{
         width: 500px;
@@ -812,7 +819,8 @@
         left: 100px; 
     }
     .container-cart{
-        right: 513px; 
+        right: 478px; 
+        width: 500px;
     }
     .cards_dad {
         display: flex;
@@ -851,7 +859,7 @@
         height: 45px; 
         position: absolute;
         top: 30px;
-        left: 10px; 
+        left: 20px; 
 
     }
     .filtro_input{
@@ -863,7 +871,7 @@
     }
 
     .info-cart-product{
-        gap: 14px
+        width: 285px;
     }
     .buscador{
         width: 430px; 
@@ -889,6 +897,13 @@
         left: 4px; 
         height: 563px;
     }
+    .container-total{
+        top: -13px;
+    }
+    .dad-pagar{
+        position: relative;
+        bottom: 15px;    
+    }
     .total{
         left: 70px;
     }
@@ -910,7 +925,7 @@
         display: contents; 
     }
     .container-cart{
-        right: 315px;
+        right: 342px;
         position: relative;
         width: auto;
     }
@@ -946,6 +961,10 @@
     .quantity{
         left: 100px; 
         bottom: 122px;
+    }
+    .container-borrar-carrito{
+        top: 69px; 
+        left: auto;
     }
 
 }
