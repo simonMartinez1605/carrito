@@ -67,14 +67,18 @@
 .filtro button {
     display: flex;
     align-items: center;
-    position: relative;
-    right: 38px;
+    position: absolute;
+    right: -496px; 
+    top: -6px; 
     border-radius: 32px;
     background-color: var(--purple-light);
     border: none;
     padding: 5px;
-    width: 28px;
+    width: 40px;
+    height: 40px; 
     color: var(--withe);
+    justify-content: center;
+
 }
 .filtro button:hover{
     background: var(--purple-dark);  
@@ -88,13 +92,29 @@
     border: none;
     font-family: var(--font-family-montserrat);
     outline: none; 
-    display: flex; 
+    display: none; 
+}
+.filtro_active{
+    position: absolute;
+    left: 897px;
+    top: -9px;
+    height: 46px;
+    width: 303px;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgb(130, 130, 130);
+    outline: none;
+    border: none; 
 }
 
 .filtro_input::placeholder{ 
     font-family: var(--font-family-montserrat); 
 }
-
+.filter{
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+}
 .categoria{
     display: none; 
 }
@@ -457,10 +477,10 @@
 }
 
 .card img{  
-    width: 80px; 
-    height: 80px; 
+    width: 130px; 
+    height: 138px; 
     position: relative;
-    left: 80px; 
+    left: 65px; 
     object-fit: cover; 
     transition: all .5s; 
 
@@ -517,6 +537,7 @@
 } 
 .boton_catalogo button:active{
     background: var(--purple-dark); 
+    transition: .2s;
 }
 .contador{ 
     display: inline-block; 
@@ -556,7 +577,8 @@
     border-radius: 10px; 
     background: var(--withe); 
     position: fixed; 
-    display: contents; 
+    /* display: contents;  */
+    display: none;
     top: 33px; 
     gap: 30px;  
     left: 10px; 
@@ -564,10 +586,10 @@
 .container-menu{
     display: flex; 
     gap: 18px; 
-    width: 250px; 
+    width: 150px; 
     position: absolute;
     top: 33px;
-    right: 520px; 
+    right: 282px; 
 } 
 .select-menu .select-btn{
     width: 170px; 
@@ -690,6 +712,17 @@
     .filtro_input{ 
         width: 670px; 
     }
+    .filtro_active{
+        left: 460px; 
+        top: -9px;
+        height: 42px; 
+    }
+    .filtro button{
+        right: -59px;
+        width: 38px;
+        height: 38px;
+        top: -7px;
+    }
     .cards_dad{ 
         display: flex;
         gap: 15px;
@@ -787,9 +820,59 @@
         position: relative;
         left: 50px; 
     }
+    .filtro_input{
+        display: none;
+    } 
+    .filtro_active{
+        position: absolute;
+        box-shadow: 0 4px 8px rgb(130,130, 130);
+        border-radius: 40px;
+        height: 52px;
+        border: none;
+        outline: none;
+        left: 250px;
+        top: -13px;
+        width: 181px;
+    }
+    .filtro button{
+        position: absolute;
+        left: 385px; 
+        top: -8px;
+        width: 42px; 
+        height: 42px;
+        display: flex;
+        justify-content: center; 
+    }
+    .select-menu .select-btn{
+        width: 42px;
+        height: 42px;
+        left: 333px;
+        top: 1px;
+        background: var(--purple-light);
+        border-radius: 40px;
+        color: var(--withe);
+        box-shadow: none;
+    }
+    .select-menu .options{
+        left: 275px;
+    }
+    .sBtn-text{
+        display: none;
+    }
+    .svg-menu{
+        display: none; 
+    }
+    .filter{
+        width: 35px;
+        height: 31px; 
+        display: flex;
+        justify-content: center;
+
+    }
     .container-menu{
         position: absolute;
-        left: 445px;
+        left: 318px;
+        width: 180px; 
     }
     .container-cart-products{
         width: 500px; 
@@ -798,6 +881,9 @@
     .carrito {
         position: absolute;
         left: 700px; 
+    }
+    .container-borrar-carrito{
+        right: -11px;
     }
     .count-products{
         position: absolute;
@@ -862,8 +948,30 @@
         left: 20px; 
 
     }
-    .filtro_input{
-        width: 190px;   
+    .filtro_input {
+        width: 190px;
+        display: none;
+    }
+    .filtro_active{
+        position: absolute;
+        box-shadow: 0 4px 8px rgb(130,130, 130);
+        border-radius: 40px;
+        height: 51px;
+        border: none;
+        outline: none;
+        left: 49px;
+        top: -14px;
+        width: 172px;
+    }
+    .filtro button{
+        position: absolute;
+        left: 175px; 
+        top: -9px;
+        width: 42px; 
+        height: 42px;
+        display: flex;
+        justify-content: center; 
+        box-shadow: none;
     }
     .container-cart-products{
         width: 345px;

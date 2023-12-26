@@ -283,34 +283,33 @@ const optionMenu = document.querySelector('.select-menu'),
     
     selectBtn.addEventListener('click', () => optionMenu.classList.toggle('active')); 
 
-
-    selectBtn.addEventListener('click', () =>{
-        var filtro = listProducts; 
-        const found = filtro.filter(product =>{
-            return filtro; 
-        }); 
-
-        if(found){
-            console.log(found)
-            let Caracteristicas = found.filter((e)=>{
-                
-            });
-        }
-        else{
-            console.log('no')
-        }
-    })
     
     options.forEach(option => {
         option.addEventListener('click', ()=>{
-            let selectOption = option.querySelector('.option-text').innerText; 
+            const selectOption = option.querySelector('.option-text').innerText; 
             sBtn_text.innerText = selectOption; 
     
-            console.log(selectOption)
+            //console.log(selectOption)
             optionMenu.classList.remove('active');  
 
-    })
-}); 
+
+            sBtn_text.addEventListener('click', () =>{
+                var filtro = listProducts; 
+                const found = filtro.filter(product =>{
+                    nombre = product.Referencia; 
+                    //console.log(nombre) 
+            
+                    return filtro; 
+                }); 
+                console.log(selectOption) 
+                let text = sBtn_text.target
+                console.log(text) 
+            
+            }); 
+        }); 
+
+    }); 
+
 
 const btnCart = document.querySelector('.container-cart-icon')  
     const containerCartProducts = document.querySelector('.container-cart') 
@@ -330,7 +329,7 @@ const dad = document.getElementsByClassName('dad-card')
 
 inputBuscar.addEventListener('keyup', (e) =>{
     let text = e.target.value
-    // console.log(text) 
+    //console.log(text) 
 
     let search = new RegExp (text, "i") 
     for(let i= 0; i<cards.length ; i++){  
@@ -359,3 +358,10 @@ btnCloseCart.addEventListener('click', ()=>{
 }); 
 
 
+
+//Funcion para mostrar el filtro por referencia
+const btnBuscar = document.querySelector('.btn-buscar') 
+const containerBuscador = document.querySelector('.filtro_input')
+btnBuscar.addEventListener('click', ()=>{
+    containerBuscador.classList.toggle('filtro_input')  
+}); 

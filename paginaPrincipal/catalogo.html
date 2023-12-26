@@ -4,7 +4,7 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Producos 1Hora</title>
     <link rel="stylesheet" href="./catalogo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -26,9 +26,9 @@
 
                 <div class="buscador">
                     <div class="filtro"> 
-                        <input class="filtro_input" type="search" name="" id="buscar" placeholder="Filtrar referencia"> 
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <input class="filtro_input filtro_active" type="search" name="" id="buscar" placeholder="Filtrar referencia"> 
+                        <button class="btn-buscar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                               </svg>
                         </button>
@@ -98,8 +98,11 @@
                     <div class="container-menu">
                         <div class="select-menu">
                             <div class="select-btn">
-                                <span class="sBtn-text">Categoria </span>
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAbdJREFUSEuVlltKA0EQRU+Be1BIxKBuQkJwH25AcAFuwy9//HMpIQQ34SNKhLgHsWRmejL9qOoh/TWZ6a7HrXtvR3CWANp+EwQNz95uP0oTp4nRRws7w4vivbG1WmFTXL7ioHGe9tnoptgTFyFIODd0YFQ91JB+LM4a3SQdGMVb+JmgeMnKGXi4e52NdFxClI7Z5oADRce6eI0NOd3bzskmXBi+1X21c5+tRWeFbvasy3WQZrwHnoGfvpmsoGPgBuQhE9K+94hFKccF7lR4RHkDroHv5JQyEVgqXIDcgj5l8Afd+Oo/AVbAJfCJMEdDEmGCyhr0DHgFWQi664c8ULYXms+cJskLMGuTwDxAtAaa4BvgCth5juAILUF6CiyBc+BD4EjhFHhvoRO2eyc0SBEJrUqZJskKZBa4ukFlAboteZtSuRPaCN8DplO0hesXYYHKtsYc7euNBzIoyRBOd6CZxR/wVWd3ao/mHXCAqWaii6FO7LrQwUE3WqzkGLpkBoXcR6zOtndryDUzLy0yE3T30/W0orUq+LkZWwxM6e4IzZC2bynDP48CicwqvBjxOU83KTGHi+MfAcnBI58HOIYAAAAASUVORK5CYII="/>
+                                <span class="sBtn-text">Categoria</span>
+                                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAbdJREFUSEuVlltKA0EQRU+Be1BIxKBuQkJwH25AcAFuwy9//HMpIQQ34SNKhLgHsWRmejL9qOoh/TWZ6a7HrXtvR3CWANp+EwQNz95uP0oTp4nRRws7w4vivbG1WmFTXL7ioHGe9tnoptgTFyFIODd0YFQ91JB+LM4a3SQdGMVb+JmgeMnKGXi4e52NdFxClI7Z5oADRce6eI0NOd3bzskmXBi+1X21c5+tRWeFbvasy3WQZrwHnoGfvpmsoGPgBuQhE9K+94hFKccF7lR4RHkDroHv5JQyEVgqXIDcgj5l8Afd+Oo/AVbAJfCJMEdDEmGCyhr0DHgFWQi664c8ULYXms+cJskLMGuTwDxAtAaa4BvgCth5juAILUF6CiyBc+BD4EjhFHhvoRO2eyc0SBEJrUqZJskKZBa4ukFlAboteZtSuRPaCN8DplO0hesXYYHKtsYc7euNBzIoyRBOd6CZxR/wVWd3ao/mHXCAqWaii6FO7LrQwUE3WqzkGLpkBoXcR6zOtndryDUzLy0yE3T30/W0orUq+LkZWwxM6e4IzZC2bynDP48CicwqvBjxOU83KTGHi+MfAcnBI58HOIYAAAAASUVORK5CYII=" class="svg-menu"/>  -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="filter" viewBox="0 0 16 16">
+                                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                                  </svg> 
                             </div> 
         
                             <ul class="options">
