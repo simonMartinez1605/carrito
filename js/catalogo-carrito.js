@@ -14,7 +14,7 @@ const total = document.querySelector('.precio-total')
 
 //Contenedores de listas y las cards del carrito (a su vez son variables universales para modificar)
 let listProducts = []
-let carts = []
+let carts = []  
 
 
 //Constante para agregar la info de la api al html 

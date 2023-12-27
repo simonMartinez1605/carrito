@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producos 1Hora</title> 
-    <link rel="stylesheet" href="/carrito/CSS/catalogo.css"> 
+    <link rel="stylesheet" href="/carrito/CSS/catalogo.css">     <link rel="stylesheet" href="/carrito/CSS/checkout.css"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -89,6 +89,55 @@
                             <button class="pagar">PEDIR</button>  
                         </div>
 
+                        <div class="dad-checkout hidden-checkout">
+                            <div class="container-checkout">
+                                <div class="titulo-checkout">
+                                    <H4>CHECKOUT</H4> 
+                                </div>
+                    
+                                <div class="boton-cerrar">
+                                    <button>X</button>
+                                </div>
+                    
+                                <div class="container-contenido-checkout">
+                                    <div class="contenido-checkout">
+                                        <input type="number" id="cedula" class="form-input cedula" placeholder=" ">
+                                        <label for="cedula" class="form-label">Cedula: </label>
+                                        <span class="form-line"></span>
+                                    </div>
+                                    <div class="contenido-checkout">
+                                        <label for="tipo-doc" class="form-label tipo-doc">Tipo Documento: </label>
+                                        <input type="text" id="tipo-doc" class="form-input" placeholder=" ">
+                                        <span class="form-line"></span>
+                                    </div>
+                                    <div class="contenido-checkout"> 
+                                        <label for="nombre" class="form-label nombre">Nombres: </label>
+                                        <input type="text" id="nombre" class="form-input " placeholder=" ">
+                                        <span class="form-line"></span>
+                                    </div>
+                                    <div class="contenido-checkout">
+                                        <label for="apellido" class="form-label apellido">Apellidos: </label>
+                                        <input type="text" id="apellido" class="form-input " placeholder=" ">
+                                        <span class="form-line"></span>
+                                    </div>
+                                    <div class="contenido-checkout">
+                                        <label for="name" class="form-label celular">Celular: </label>
+                                        <input type="tel" id="celular" class="form-input " placeholder=" ">
+                                        <span class="form-line"></span>
+                                    </div>
+                                    <div class="contenido-checkout">
+                                        <label for="correo" class="form-label correo">Correo: </label>
+                                        <input type="email" id="correo" class="form-input " placeholder=" ">
+                                        <span class="form-line"></span>
+                                    </div>
+                                    
+                                </div>
+                    
+                    
+                                <input type="submit" class="form-submit" value="GUARDAR">
+                            </div>
+                        </div> 
+
                     </div>
 
 
@@ -145,12 +194,10 @@
             <div class="banner">
                 <img src="/carrito/IMG/Recurso 3@4x.png" alt="" class="banner-1hora">
             </div>
-            
+       
             <div class="cards_dad " id="producto"> 
 
-            </div>
-
-                                                                                                                    
+            </div>                                                                                                           
             
         </div>   
     </div> 
@@ -158,4 +205,5 @@
     <script src="/carrito/js/botones.js"></script> 
     <script src="/carrito/js/catalogo-carrito.js"></script>
     <script src="/carrito/js/filtros.js"></script> 
+    <script src="/carrito/JS/checkout.js"></script> 
 </html>

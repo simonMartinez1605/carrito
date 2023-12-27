@@ -40,10 +40,10 @@
 
 //Mostrar carrito 
 const btnCart = document.querySelector('.container-cart-icon')  
-    const containerCartProducts = document.querySelector('.container-cart') 
+const containerCartProducts = document.querySelector('.container-cart') 
     
-    btnCart.addEventListener('click', ()=>{ 
-        containerCartProducts.classList.toggle('hidden-cart')  
+btnCart.addEventListener('click', ()=>{ 
+    containerCartProducts.classList.toggle('hidden-cart')  
 }); 
 
 //Funcion cerrar el carrito 
