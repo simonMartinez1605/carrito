@@ -115,7 +115,7 @@ const addCartToMemory = () =>{
 } 
 
 
-
+let totalValor = "";
 //Funcion para añadir al carrito 
 const addCartToHTML = () =>{
     listCartHTML.innerHTML = ''; 
@@ -137,6 +137,8 @@ const addCartToHTML = () =>{
             //Convercion de numero a valor de moneda de la suma de todos los productos  
             totalValor = new Intl.NumberFormat('es-CO').format(totalPrice) 
 
+
+            //creacion de elementos para el carrito
             let newCart = document.createElement('div') 
             newCart.classList.add('container-cart-products')
             newCart.dataset.id = cart.product_id; 
@@ -185,14 +187,14 @@ const addCartToHTML = () =>{
             listCartHTML.appendChild(newCart) 
             // console.log(cart.product_id) 
         }); 
- 
+
     }
     total.innerText = `$${totalValor}`  
     cantidad.innerText = totalQuantity; 
-    console.log(totalValor)  
+    //console.log(totalValor)    
 }
 
-//Captura del id con los botones minus and plus 
+//Captura del id con los botones minus, plus y delete
 listCartHTML.addEventListener('click', (event) =>{
     let positionClick = event.target; 
     const cardElement = positionClick.closest('.cart-product');
@@ -227,22 +229,27 @@ const changeQuantity = (product_id, type) =>{
             //Funcion para eliminar del carrito 
             case 'delete': 
                 carts[positionItemInCart].quantity = carts[positionItemInCart].quantity ==0;   
-                let value = carts[positionItemInCart].quantity ==0; 
-                console.log(value)
-                if(value == true){
+                let value = carts[positionItemInCart].quantity == 0; 
+                //console.log(value) 
+                if(value > 0){ 
                     carts[positionItemInCart],quantity = value; 
-                }
-                else{
+                    //Splice para quitar los elementos 
                     carts.splice(positionItemInCart, 1)
+                    totalValor = 0;
+                    
                 }
-
-            default: 
+                
+            break; 
+                //Funcion para disminuir cantidad del carrito 
+            case 'minus': 
                 let valueChange = carts[positionItemInCart].quantity -1; 
                 if(valueChange >0){
                     carts[positionItemInCart].quantity = valueChange; 
                 }
-                else{
+                else if(valueChange == 0){
+                    carts[positionItemInCart].quantity = valueChange; 
                     carts.splice(positionItemInCart, 1) 
+                   totalValor = 0;
                 }
             break; 
         }
@@ -258,7 +265,7 @@ const initApp =() =>{
     .then(response => response.json())
     .then(data =>{
         listProducts = data; 
-        addDataToHTMl();    
+        addDataToHTMl();   
 
 
         //obtener info de la memoria 
@@ -293,24 +300,25 @@ const optionMenu = document.querySelector('.select-menu'),
             optionMenu.classList.remove('active');  
 
 
-            sBtn_text.addEventListener('click', () =>{
-                var filtro = listProducts; 
-                const found = filtro.filter(product =>{
-                    nombre = product.Referencia; 
-                    //console.log(nombre) 
+            // sBtn_text.addEventListener('click', () =>{
+            //     var filtro = listProducts; 
+            //     const found = filtro.filter(product =>{
+            //         nombre = product.Referencia; 
+            //         //console.log(nombre) 
             
-                    return filtro; 
-                }); 
-                console.log(selectOption) 
-                let text = sBtn_text.target
-                console.log(text) 
+            //         return filtro; 
+            //     }); 
+            //     console.log(selectOption) 
+            //     let text = sBtn_text.target
+            //     console.log(text) 
             
-            }); 
+            // }); 
         }); 
 
     }); 
 
 
+ 
 const btnCart = document.querySelector('.container-cart-icon')  
     const containerCartProducts = document.querySelector('.container-cart') 
     
@@ -319,7 +327,7 @@ const btnCart = document.querySelector('.container-cart-icon')
 }); 
 
 
-//La busqueda 
+//La busqueda por medio de input 
 
 const inputBuscar = document.getElementById('buscar')
 
@@ -359,7 +367,7 @@ btnCloseCart.addEventListener('click', ()=>{
 
 
 
-//Funcion para mostrar el filtro por referencia
+//Funcion para mostrar el la casilla de buscar 
 const btnBuscar = document.querySelector('.btn-buscar') 
 const containerBuscador = document.querySelector('.filtro_input')
 btnBuscar.addEventListener('click', ()=>{

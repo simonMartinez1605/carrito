@@ -96,10 +96,10 @@
 }
 .filtro_active{
     position: absolute;
-    left: 897px;
+    left: 200px;
     top: -9px;
     height: 46px;
-    width: 303px;
+    width: 600px;
     border-radius: 40px;
     box-shadow: 0 4px 8px rgb(130, 130, 130);
     outline: none;
@@ -181,7 +181,7 @@
 
 .container-cart{
     position: relative;
-    top: 439px;
+    top: 439px; 
     right: 325px;
     background-color: var(--withe);
     width: 519px;
@@ -300,6 +300,7 @@
     border-radius: 20px; 
     background-color: var(--purple-light); 
     color: var(--withe); 
+    width: 40px;
 }
 
 .info-cart-product{
@@ -584,7 +585,7 @@
     left: 10px; 
 }
 .container-menu{
-    display: flex; 
+    display: none; 
     gap: 18px; 
     width: 150px; 
     position: absolute;
@@ -746,6 +747,7 @@
         right: 20px; 
     }
     .container-menu{
+        display: none;
         right: 160px;
     }
     .dad-container-products {
@@ -753,6 +755,7 @@
         position: relative;
         overflow-y: auto;
     }
+    
     .container-cart{
         right: 497px; 
         box-shadow: 0 4px 8px rgb(130, 130, 130);
@@ -783,6 +786,7 @@
     }
     .container-menu{
         position: relative;
+        display: none;
         left: 160px;
     }
     .container-cart-products{
@@ -814,6 +818,11 @@
 @media screen and (max-width: 885px){  
     .logo{
         left: 20px;   
+    }
+    .buscador{
+        position: absolute;
+        top: 42px;
+        left: 214px;
     }
     .filtro{
         width: 200px; 
@@ -871,6 +880,7 @@
     }
     .container-menu{
         position: absolute;
+        display: none;
         left: 318px;
         width: 180px; 
     }
@@ -982,7 +992,9 @@
         width: 285px;
     }
     .buscador{
-        width: 430px; 
+        position: absolute;
+        left: 6px;
+        top: 44px;
     }
     .filtro{
         position: relative;
