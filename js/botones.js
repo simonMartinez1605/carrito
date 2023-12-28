@@ -1,43 +1,3 @@
-//Funciones para los botones 
-
-
-//Mostrar y ocultar el menu de categoria 
-
-// const optionMenu = document.querySelector('.select-menu'), 
-//         selectBtn = optionMenu.querySelector('.select-btn'), 
-//         options = optionMenu.querySelectorAll('.option'), 
-//         sBtn_text = optionMenu.querySelector('.sBtn-text');  
-    
-//     selectBtn.addEventListener('click', () => optionMenu.classList.toggle('active')); 
-
-    
-//     options.forEach(option => {
-//         option.addEventListener('click', ()=>{
-//             const selectOption = option.querySelector('.option-text').innerText; 
-//             sBtn_text.innerText = selectOption; 
-    
-//             //console.log(selectOption)
-//             optionMenu.classList.remove('active');  
-
-
-//             // sBtn_text.addEventListener('click', () =>{
-//             //     var filtro = listProducts; 
-//             //     const found = filtro.filter(product =>{
-//             //         nombre = product.Referencia; 
-//             //         //console.log(nombre) 
-            
-//             //         return filtro; 
-//             //     }); 
-//             //     console.log(selectOption) 
-//             //     let text = sBtn_text.target
-//             //     console.log(text) 
-            
-//             // }); 
-//         }); 
-
-//     }); 
-
-
 //Mostrar carrito 
 const btnCart = document.querySelector('.container-cart-icon')  
 const containerCartProducts = document.querySelector('.container-cart') 
@@ -61,4 +21,21 @@ const btnBuscar = document.querySelector('.btn-buscar')
 const containerBuscador = document.querySelector('.filtro_input')
 btnBuscar.addEventListener('click', ()=>{
     containerBuscador.classList.toggle('filtro_input')  
+}); 
+
+
+//Botones de el checkout 
+const btnAbrir = document.querySelector('.pagar')
+const containerCheckout = document.querySelector('.dad-checkout')
+const btnCerrar = document.querySelector('.boton-cerrar')
+
+//Abrir checkout 
+btnAbrir.addEventListener('click', ()=>{
+    containerCheckout.classList.toggle('hidden-checkout')
+    //console.log('hola') 
+}); 
+
+//Cerrar checkout 
+btnCerrar.addEventListener('click', ()=>{
+    containerCheckout.classList.toggle('hidden-checkout') 
 }); 

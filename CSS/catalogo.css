@@ -498,13 +498,13 @@
 
 .card p{
     position: relative;
-    top: 20px; 
+    top: 7px; 
     font-size: var(--font-size-s); 
 }
 
 .card h6{
     position: absolute;
-    bottom: 48px;
+    bottom: 34px; 
 }
 
 .card:hover img{ 
@@ -761,8 +761,10 @@
     }
     
     .container-cart{
-        right: 497px; 
+        right: 494px;
         box-shadow: 0 4px 8px rgb(130, 130, 130);
+        top: 350px;
+        height: 790px;
     }
     .banner{
         width: auto;
