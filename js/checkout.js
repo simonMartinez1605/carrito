@@ -72,3 +72,21 @@ inputCedula.addEventListener('keyup', (e)=>{
     };     
     initCheckout(); 
 }); 
+
+
+const btnGuadarCheckout = document.querySelector('.form-submit')
+
+
+//Boton para guardar info 
+btnGuadarCheckout.addEventListener('click', ()=>{
+    //Llamaod a la API
+    const postInfoCheckout = ()=>{
+        fetch(URL_API_Reporte_Clientes, {
+            method: 'POST', 
+            body: JSON.stringify(check())
+        })
+    }
+})
+.then((res) => res.json())
+.catch((error) => console.log(error))
+.then((response) => console.log(response)); 
