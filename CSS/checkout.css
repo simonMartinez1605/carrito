@@ -78,7 +78,9 @@ body{
 .container-contenido-checkout{
     margin-top: var(--font-size-s);
     display: grid; 
-    gap: 2.5em ;
+    gap: 40px; 
+    position: relative;
+    bottom: 135px;
 }
 .contenido-checkout{
     position: relative;
@@ -93,9 +95,12 @@ body{
     padding: .6em .3em;
     border: none;
     outline: none; 
-    border-bottom: 1px solid var(--black); 
+    /* border-bottom: 1px solid var(--black);  */
     font-family: var(--font-family-montserrat); 
+    display: flex;
 }
+
+
 
 /* .form-input:focus + .form-label, 
 .form-input:not(:placeholder-shown) + .form-label{
@@ -106,7 +111,6 @@ body{
 
 .form-label{
     color: var(--black); 
-    cursor: pointer; 
     position: absolute;
     top: -24px;
     left: 2px;
@@ -122,8 +126,7 @@ body{
     border-radius: 40px;
     border: none; 
     position: relative;
-    top: 95px;
-    cursor: pointer;
+    top: -55px; 
 }
 
 .form-submit:hover{
@@ -138,8 +141,8 @@ body{
     width: 100%;
     height: 1px;
     background-color: var(--purple-dark);
-    transform: scale(0);
-    transform: left bottom;
+    /* transform: scale(0);
+    transform: left bottom; */
     transition: transform .4s; 
 }
 
@@ -159,30 +162,53 @@ body{
         top: 113px;
     }
     .titulo-checkout{
-        bottom: 60px;
+        bottom: 100px;
     }
-    .boton-cerrar{
-        bottom: 97px; 
+    .boton-cerrar{ 
+        top: -138px;
+    }
+    .container-contenido-checkout{
+        position: relative;
+        bottom: 120px;
+        gap: 40px;
+    }
+    .form-submit{
+        top: -80px;
     }
 }
 
 @media screen and (max-width: 885px){
     .dad-checkout{
         bottom: 885px;
+        height: 978px;
+    }
+    .form-submit{
+        top: 45px;
+    }
+    .container-contenido-checkout{
+        position: relative;
+        bottom: 40px;
     }
 }
 
 @media screen and (max-width: 460px) {
     .dad-checkout{
         bottom: 760px; 
+        height: 880px;
     }
     .container-checkout{
         top: 90px;
     }
+    .container-contenido-checkout{
+        gap: 20px; 
+    }
     .titulo-checkout{
-        bottom: 45px;
+        bottom: 90px; 
     }
     .boton-cerrar{
-        bottom: 80px;
+        top: -123px; 
+    }
+    .form-submit{
+        top: 20px; 
     }
 }

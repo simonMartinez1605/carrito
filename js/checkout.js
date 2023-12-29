@@ -7,13 +7,18 @@ const Apellido = document.querySelector('.apellido')
 const Tipo_documento = document.querySelector('.tipo-doc')
 const Celular = document.querySelector('.celular')
 const Correo = document.querySelector('.correo') 
+const Departamento = document.querySelector('.departamento')
+const Municipio = document.querySelector('.municipio')
+const Direccion = document.querySelector('.direccion')
 
 //Funcion para mostrar en el checkout 
 const check = ()=>{
     if(chechkout.length == 1){
         chechkout.forEach(i =>{
-            //console.log(i) 
+            //console.log(i)
             
+
+            //Constantes para guardar y mostrar la info de la API
             const nombre = i.Nombre
             const nombre2 = i.Segundo_Nombre
             const apellido = i.Primer_Apellido
@@ -21,12 +26,77 @@ const check = ()=>{
             const correo = i.Correo
             const celular = i.Celular
             const tipo_documento = i.Tipo1
-        
+            const departamento = i.Departamento1.Departamento
+            const municipio = i.Municipio.Municipio
+            const direccion = i.Direccion
+            
+            //constante para solo guardar info 
+            const IdDepartamento = i.Departamento1.ID
+            const estado = i.Estado
+            const regimen = i.Regimen 
+
+            //console.log(idDepartamento,estado,regimen)
+
             Nombre.innerText = `${nombre} ${nombre2}` 
             Apellido.innerText = `${apellido} ${apellido2}` 
             Tipo_documento.innerText = `${tipo_documento}`
             Celular.innerText = `${celular}`
             Correo.innerText = `${correo}` 
+            Departamento.innerText = `${departamento}`
+            Municipio.innerText = `${municipio}`
+            Direccion.innerText = `${direccion}` 
+
+
+
+            const opciones ={
+                method: 'POST', 
+                headers:{
+                    'content-Type': 'application/json', 
+                }, 
+                // body: JSON.stringify({
+                //     Nombre : nombre, 
+                //     Segundo_Nombre: nombre2,
+                //     Apellido : apellido, 
+                //     Segundo_Apellido : apellido2,
+                //     Correo : correo, 
+                //     Celular: celular, 
+                //     Tipo_documento: tipo_documento,  
+                //     IdDepartamento: IdDepartamento, 
+                //     Estado: estado, 
+                //     Regimen: regimen,
+                // })
+            
+            }; 
+
+            //Variable para el llamado del evento
+            const btnGuadarCheckout = document.querySelector('.form-submit')
+
+
+            //Boton para guardar info 
+            btnGuadarCheckout.addEventListener('click', ()=>{
+                fetch(URL_API_Reporte_Clientes, opciones)
+                .then(response =>{
+                    if(!response.ok){
+                        throw new Error('Error en la solicitud')
+                    }
+                    return response.json(); 
+                })
+                .then(data =>{
+                    console.log('Respuesta', data); 
+                })
+                .catch(error => {
+                    console.log(error); 
+                })
+                Swal.fire({
+                    icon: "error",
+                    title: "Lo sentimos...",
+                    text: "No estas en nuestra base de datos :(",
+                    footer: '<a href="/carrito/HTML/registro.html">REGISTRATE :)</a>' 
+                });
+            }); 
+            
+            console.log(opciones) 
+
         });  
     }
     //Condicion cuando no traiga info de la API 
@@ -36,8 +106,12 @@ const check = ()=>{
         Tipo_documento.innerText = ``
         Celular.innerText = ` `
         Correo.innerText = ` `
+        Departamento.innerText = ` `
+        Municipio.innerText = ` `
+        Direccion.innerText = ` `
     }
 }; 
+
 
 //Constante para almacenar la info del input 
 const inputCedula = document.querySelector('.cedula')
@@ -61,32 +135,14 @@ inputCedula.addEventListener('keyup', (e)=>{
         .then(response => response.json())
         .then(data =>{
             chechkout = data; 
-            //console.log(typeof chechkout)
+            console.log(data)
             
             //Funcion para mostrar en el checkout
             check(); 
- 
+
         }) 
         .catch(error =>console.log(error)) 
         
     };     
     initCheckout(); 
 }); 
-
-
-const btnGuadarCheckout = document.querySelector('.form-submit')
-
-
-//Boton para guardar info 
-btnGuadarCheckout.addEventListener('click', ()=>{
-    //Llamaod a la API
-    const postInfoCheckout = ()=>{
-        fetch(URL_API_Reporte_Clientes, {
-            method: 'POST', 
-            body: JSON.stringify(check())
-        })
-    }
-})
-.then((res) => res.json())
-.catch((error) => console.log(error))
-.then((response) => console.log(response)); 

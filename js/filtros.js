@@ -24,8 +24,8 @@ inputBuscar.addEventListener('keyup', (e) =>{
             
         }
         else{
-            valor.classList.add('cards')     
-            container.classList.add('dads')     
+            valor.classList.add('cards')   
+            container.classList.add('dads')
         }
     } 
 }); 

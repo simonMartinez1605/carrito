@@ -924,6 +924,8 @@
     .container-cart{
         right: 478px; 
         width: 500px;
+        top: 445px;
+        height: 981px;
     }
     .cards_dad {
         display: flex;
