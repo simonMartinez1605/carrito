@@ -5,11 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="sweetalert2.min.css">
+    <!-- <link rel="stylesheet" href="/carrito/CSS/registro.css">  -->
 </head>
 <body>
-    <h1>hola</h1> 
 
-    <button>sigue</button> 
+    <div class="dad-checkout">
+        <div class="container-checkout">
+            <div class="titulo-checkout">
+                <H4>CHECKOUT</H4> 
+            </div>
+
+            <form action="proceso.js" class="formulario"> 
+
+
+                <div class="container-contenido-checkout">
+                    <div class="contenido-checkout"> 
+                        <label for="nombre" class="form-label">Nombre: </label>
+                        <input type="text" id="nombre" class="form-input nombre" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="apellido" class="form-label">Apellido: </label>
+                        <input type="tel" id="apellido" class="form-input apellido" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="name" class="form-label">Celular: </label>
+                        <input type="tel" id="celular" class="form-input celular" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="correo" class="form-label">Correo: </label>
+                        <input type="email" id="correo" class="form-input correo" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="tipo-doc" class="form-label">Tipo Documento: </label>
+                        <input type="text" id="tipo-doc" class="form-input tipo-doc" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="cedula" class="form-label">Cedula: </label>
+                        <input type="number" id="cedula" class="form-input cedula" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="departamento" class="form-label">Departamento: </label>
+                        <input type="text" id="departamento" class="form-input departamento" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="municipio" class="form-label">Municipio: </label>
+                        <input type="text" id="municipio" class="form-input municipio" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                    <div class="contenido-checkout">
+                        <label for="direccion" class="form-label">Direccion: </label>
+                        <input type="text" id="direccion" class="form-input direccion" placeholder=" ">
+                        <span class="form-line"></span>
+                        <p></p>
+                    </div>
+                </div>
+
+                <button class="form-submit">ENVIAR</button>
+
+            </form>
+
+
+        </div>
+    </div> 
+    
 
     <script src="/carrito/JS/registro.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
