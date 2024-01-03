@@ -3,9 +3,11 @@
 :root {
     --purple-light: #7e35e4;
     --purple-dark: #54267d;
+    --purple-lighter: #9164e6; 
     --withe: #ffffff;
     --gray: #D6DBDF ; 
     --black: #000000; 
+    --red:#E03D70; 
 
     --font-size-xs: 8.5px;
     --font-size-s: 14.5px; 
@@ -18,118 +20,85 @@
 }
 
 body{
+    color: var(--withe); 
+    font-family: var(--font-family-montserrat);
+}
+.dad-checkout{
+    border-radius: 30px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px var(--black);
+    width: 550px; 
+    position: relative; 
+    left: 40%; 
     background: var(--purple-dark);
 }
 
-.dad-checkout{
-    background: var(--withe); 
-    font-family: var(--font-family-montserrat); 
-    margin: auto; 
-    width: 90%;
-    max-width: 400px; 
-    padding: 10px;
-    box-shadow: 0 4px 8px rgb(130, 130, 130);
-    border-radius: 15px;
-    text-align: center; 
+.container-checkout{
+    background: transparent;
 }
 
 .titulo-checkout{
-    font-size: var(--font-size-s) ;
-    margin-bottom: .5rem;
+    display: flex;
+    justify-content: center;
 }
 
-.boton-cerrar{ 
-    display: flex;
-    justify-content: end;
-    position: relative;
-    bottom: 45px;
+form{
+    display: block;
+    align-items: center;
+    padding: 16px;
 }
-.boton-cerrar button{
-    border-radius: 40px;
-    border: none;
-    width: 32px;
-    height: 32px; 
-    background: var(--purple-light);
-    color: var(--withe); 
-    cursor: pointer;
+
+form input{
+    display: flex;
+    position: relative;
+    width: 300px;
+    height: 25px;
+    border-radius: 30px;
+    border: none; 
+    outline: none;
+
+    box-shadow: 0 0 5px var(--withe);
+}
+
+.container-btn{
     display: flex;
     align-items: center;
     justify-content: center; 
+    padding: 10px;
 }
 
-.boton-cerrar button:hover{
-    background: var(--purple-dark);
-    transition: .4s; 
-}
-.container-contenido-checkout{
-    margin-top: var(--font-size-s);
-    display: grid; 
-    gap: 2.5em ;
-}
-.contenido-checkout{
-    position: relative;
-    color: var(--black) 
-}
-
-.form-input{
-    width: 100%;
-    background: none; 
-    color: var(--black); 
-    font-size: var(--font-size-s);
-    padding: .6em .3em;
-    border: none;
-    outline: none; 
-    border-bottom: 1px solid var(--black); 
-    font-family: var(--font-family-montserrat); 
-}
-
-.form-input:focus + .form-label, 
-.form-input:not(:placeholder-shown) + .form-label{
-    transform: translate(-12px) scale(.7);
-    transform-origin: left top ;
-    color: var(--purple-dark); 
-}
-
-.form-label{
-    color: var(--black); 
-    cursor: pointer; 
-    position: absolute;
-    top: -9px;
-    left: 15px;
-    transform: translateY(10px);
-    transition: transform .4s .3s;
-}
-
-.form-submit{
-    background: var(--purple-light);
-    color: var(--withe);
-    font-family: var(--font-family-montserrat);
-    padding: .8em;
-    border-radius: 40px;
+.container-btn button{ 
+    background: var(--withe);
+    color: var(--black);
     border: none; 
-    position: relative;
-    top: 5px; 
+    width: 130px;
+    height: 40px;
+    border-radius: 30px; 
     cursor: pointer;
 }
 
-.form-submit:hover{
-    background: var(--purple-dark);
+.container-btn button:hover{
+    background: var(--purple-light);
+    color: var(--withe);
     transition: .4s; 
+    box-shadow: 0 0 10px var(--withe);
 }
 
-.form-line{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--purple-dark);
-    transform: scale(0);
-    transform: left bottom;
-    transition: transform .4s; 
+.container-btn button:active{
+    background: var(--purple-dark);
+    transition: .1s;
 }
 
-.form-input:focus ~ .form-line, 
-.form-input:not(:placeholder-shown) ~.form-line{
-    transform: scale(1);
+/*Clases dinamicas desde js*/
+
+.invalid{
+    border: solid 1px var(--red); 
+    box-shadow: 0 0 10px var(--red); 
+}
+
+.error{
+    color: var(--red); 
+    display: block; 
 }

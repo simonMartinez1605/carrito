@@ -13,9 +13,9 @@ const Direccion = document.querySelector('.direccion')
 
 //Funcion para mostrar en el checkout 
 const check = ()=>{
-    if(chechkout.length == 1){
+    if(chechkout.length === 1){
         chechkout.forEach(i =>{
-            //console.log(i)
+            console.log(i)
             
 
             //Constantes para guardar y mostrar la info de la API
@@ -46,47 +46,12 @@ const check = ()=>{
             Municipio.innerText = `${municipio}`
             Direccion.innerText = `${direccion}` 
 
-
-
-            const opciones ={
-                method: 'POST', 
-                headers:{
-                    'content-Type': 'application/json', 
-                }, 
-                // body: JSON.stringify({
-                //     Nombre : nombre, 
-                //     Segundo_Nombre: nombre2,
-                //     Apellido : apellido, 
-                //     Segundo_Apellido : apellido2,
-                //     Correo : correo, 
-                //     Celular: celular, 
-                //     Tipo_documento: tipo_documento,  
-                //     IdDepartamento: IdDepartamento, 
-                //     Estado: estado, 
-                //     Regimen: regimen,
-                // })
-            
-            }; 
-
             //Variable para el llamado del evento
             const btnGuadarCheckout = document.querySelector('.form-submit')
 
 
             //Boton para guardar info 
             btnGuadarCheckout.addEventListener('click', ()=>{
-                fetch(URL_API_Reporte_Clientes, opciones)
-                .then(response =>{
-                    if(!response.ok){
-                        throw new Error('Error en la solicitud')
-                    }
-                    return response.json(); 
-                })
-                .then(data =>{
-                    console.log('Respuesta', data); 
-                })
-                .catch(error => {
-                    console.log(error); 
-                })
                 Swal.fire({
                     icon: "error",
                     title: "Lo sentimos...",
@@ -95,13 +60,13 @@ const check = ()=>{
                 });
             }); 
             
-            console.log(opciones) 
+            //console.log(opciones)
 
         });  
     }
     //Condicion cuando no traiga info de la API 
     else{
-        Nombre.innerText = ` ` 
+        Nombre.innerText = ` `
         Apellido.innerText = ` `
         Tipo_documento.innerText = ``
         Celular.innerText = ` `
@@ -135,7 +100,7 @@ inputCedula.addEventListener('keyup', (e)=>{
         .then(response => response.json())
         .then(data =>{
             chechkout = data; 
-            console.log(data)
+            //console.log(data)
             
             //Funcion para mostrar en el checkout
             check(); 
