@@ -91,6 +91,12 @@ form input{
     transition: .1s;
 }
 
+.tipo-persona input{
+    display: flex; 
+    width: 20px; 
+    box-shadow: none;   
+}
+
 /*Clases dinamicas desde js*/
 
 .invalid{

@@ -1,31 +1,57 @@
-//Filtros de busqueda
+//filtros de busqued
+
+//Url de la api para traer los datos 
+URL_PRODUCTOS= "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Productos_1_hora"
+
+//Variable para almacenar la info de la api 
+let cards = [] 
+
+//constantes para guardar la info 
+const input = document.querySelector('#buscar')
+const dad = document.querySelector('.cards_dad')
 
 
-//La busqueda por medio de input 
+//Cargado de la pagina 
+window.addEventListener('DOMContentLoaded', async()=>{
+    const data =await loadCards()
+    cards = data
+    renderCard(cards) 
+})
+//Llamar a la api y traer los datos 
+const loadCards = async()=>{
+    const response = await fetch(URL_PRODUCTOS) 
+    return await response.json() 
+}
 
-const inputBuscar = document.getElementById('buscar')
 
-const cards = document.getElementsByTagName('h5')
+//Funcion para los filtros de busqueda 
+input.addEventListener('keyup', ()=>{
+    const newCard = cards.filter(card => card.Referencia.toLowerCase().includes(input.value.toLowerCase()))
+    renderCard(newCard) 
+})
+ 
 
-const dad = document.getElementsByClassName('dad-card') 
+//Creacion de las cards dinamicas 
 
-inputBuscar.addEventListener('keyup', (e) =>{
-    let text = e.target.value
-    //console.log(text) 
+const createCards = cards => cards.map (card =>
+    
+    ` <div id= "product" class="dad-card"> 
+    <div class="card" style="width: 18rem; height: 24rem;" data-id="${card.ID}" data-price="${card.Precio_Mayorista}" data-referencia="${card.Referencia}" data-imagen="${card.Imagen_publica.url}"> 
+        <div class="card-body"> 
+            <img src="${card.Imagen_publica.url}" class="card-img-top" alt="...">  
+            <h5 class="card-title" id="title">${card.Referencia}</h5>   
+            <p  class="card-text">${card.Caracteristicas} </p>  
+            <h6>$${new Intl.NumberFormat('es-CO').format(card.Precio_Mayorista)}</h6> 
+            <div class="container-botones">
+                <button class="sumar"> Agregar </button>                                
+            </div> 
+        </div>                                          
+    </div> 
+    </div>  `).join(' ') 
 
-    let search = new RegExp (text, "i") 
-    for(let i= 0; i<cards.length ; i++){  
-        let valor = cards[i] 
-        let container = dad[i]  
-        //console.log(container) 
-        if (search.test(valor.innerText)){
-            valor.classList.remove('cards')  
-            container.classList.remove('dads')
-            
-        }
-        else{
-            valor.classList.add('cards')   
-            container.classList.add('dads')
-        }
-    } 
-}); 
+    
+//Renderizacion de las cards
+const renderCard = (cards) =>{
+    const itemCard = createCards(cards)
+    dad.innerHTML = itemCard
+}

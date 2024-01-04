@@ -18,48 +18,48 @@ let carts = []
 
 
 //Constante para agregar la info de la api al html 
-const addDataToHTMl = () =>{
-    listProductsHTML.innerHTML =''; 
+// const addDataToHTMl = () =>{
+//     listProductsHTML.innerHTML =''; 
 
-    if(listProducts.length > 0 ){
-        listProducts.forEach(product => {
-            let newProduct = document.createElement('div')
-            newProduct.classList.add('card'); 
+//     if(listProducts.length > 0 ){
+//         listProducts.forEach(product => {
+//             let newProduct = document.createElement('div')
+//             newProduct.classList.add('card'); 
 
-            //Colocar la info en el dataset de cada card
-            newProduct.dataset.id = product.ID;
-            newProduct.dataset.price = product.Precio_Mayorista; 
-            newProduct.dataset.referencia = product.Referencia; 
-            newProduct.dataset.imagen = product.Imagen_publica; 
+//             //Colocar la info en el dataset de cada card
+//             newProduct.dataset.id = product.ID;
+//             newProduct.dataset.price = product.Precio_Mayorista; 
+//             newProduct.dataset.referencia = product.Referencia; 
+//             newProduct.dataset.imagen = product.Imagen_publica; 
 
-            //Convercion de numero a valor de moneda 
+//             //Convercion de numero a valor de moneda 
 
-            const number = product.Precio_Mayorista; 
-            valor = new Intl.NumberFormat('es-CO').format(number)
+//             const number = product.Precio_Mayorista; 
+//             valor = new Intl.NumberFormat('es-CO').format(number)
 
-            //Mostrar los productos de la api en el html 
-            newProduct.innerHTML = `
+//             //Mostrar los productos de la api en el html 
+//             newProduct.innerHTML = `
             
-            <div id= "product" class="dad-card"> 
-                <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" data-imagen="${product.Imagen_publica.url}"> 
-                    <div class="card-body"> 
-                        <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">  
-                        <h5 class="card-title" id="title">${product.Referencia}</h5>   
-                        <p  class="card-text">${product.Caracteristicas} </p>  
-                        <h6>$${valor}</h6>     
-                        <div class="container-botones">
-                            <button class="sumar"> Agregar </button>                                
-                        </div> 
-                    </div>                                          
-                </div> 
-            </div>  
-            `
-            //creacion del html con appendchild 
-            listProductsHTML.appendChild(newProduct) 
+//             <div id= "product" class="dad-card"> 
+//                 <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" data-imagen="${product.Imagen_publica.url}"> 
+//                     <div class="card-body"> 
+//                         <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">  
+//                         <h5 class="card-title" id="title">${product.Referencia}</h5>   
+//                         <p  class="card-text">${product.Caracteristicas} </p>  
+//                         <h6>$${valor}</h6>     
+//                         <div class="container-botones">
+//                             <button class="sumar"> Agregar </button>                                
+//                         </div> 
+//                     </div>                                          
+//                 </div> 
+//             </div>  
+//             `
+//             //creacion del html con appendchild 
+//             listProductsHTML.appendChild(newProduct) 
 
-        })
-    }
-}; 
+//         })
+//     }
+// };  
 
 //Funcion para tomar el evento de suma y resta para los productos 
 
@@ -113,7 +113,9 @@ const addToCart = (product_id,price,referencia,imagen) =>{
 
 //Funcion para el local storage 
 const addCartToMemory = () =>{
-    localStorage.setItem('cart', JSON.stringify(carts));
+    localStorage.setItem('cart', JSON.stringify(carts)); 
+    // localStorage.setItem('items', JSON.stringify(cards));
+    // localStorage.setItem('items', JSON.stringify(listProducts)); 
 } 
 
 
@@ -188,12 +190,14 @@ const addCartToHTML = () =>{
 
             listCartHTML.appendChild(newCart) 
             // console.log(cart.product_id) 
+            addCartToMemory(); 
         }); 
 
     }
     total.innerText = `$${totalValor}`  
     cantidad.innerText = totalQuantity; 
     //console.log(totalValor)    
+
 }
 
 //Captura del id con los botones minus, plus y delete

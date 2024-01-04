@@ -115,7 +115,7 @@ const Celular = validacionNumero.valor
 const Correo = correo.value 
 const Departamento = departamento.value 
 const Municipio = municipio.value 
-const Direccion = direccion.value 
+const Direccion = direccion.value
 
 
 //Objeto para mandar la solicitud  post 
