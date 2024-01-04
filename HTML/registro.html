@@ -17,8 +17,8 @@
 
             <form action="">
                 <label>
-                    <em>Nombres</em>
-                    <input type="text" name="Nombre">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="Nombre" id="nombre">
                     <span></span>
                 </label>
             </form>
@@ -26,7 +26,7 @@
             <form action="">
                 <label>
                     <em>Apellidos </em>
-                    <input type="text" name="Apellido">
+                    <input type="text" name="Apellido" id="apellido">
                     <span></span>
                 </label>
             </form>
@@ -34,7 +34,7 @@
             <form action="">
                 <label>
                     <em>Tipo de cedula </em>
-                    <input type="text" name="Tipo-Documento">
+                    <input type="text" name="Tipo-Documento" id="tipo-doc">
                     <span></span>
                 </label>
             </form>
@@ -42,7 +42,7 @@
             <form action="">
                 <label>
                     <em>Cedula </em>
-                    <input type="number" name="Cedula">
+                    <input type="number" name="Cedula" id="cedula">
                     <span></span>
                 </label>
             </form>
@@ -50,7 +50,7 @@
             <form action="">
                 <label>
                     <em>Celular </em>
-                    <input type="tel" class="celular" name="Celular">
+                    <input type="tel" class="celular" name="Celular" id="celular">
                     <span></span>
                 </label>
             </form>
@@ -58,7 +58,7 @@
             <form action="">
                 <label>
                     <em>Correo </em>
-                    <input type="email" name="Correo">
+                    <input type="email" name="Correo" id="correo">
                     <span></span>
                 </label>
             </form>
@@ -67,7 +67,7 @@
             <form action="">
                 <label>
                     <em>Departamento </em>
-                    <input type="text" name="Departamento">
+                    <input type="text" name="Departamento" id="departamento">
                     <span></span>
                 </label>
             </form>
@@ -75,15 +75,15 @@
             <form action="">
                 <label>
                     <em>Municipio </em>
-                    <input type="text" name="Municipio">
+                    <input type="text" name="Municipio" id="municipio">
                     <span></span>
                 </label>
             </form>
 
             <form action="">
                 <label>
-                    <em>Direccion </em>
-                    <input type="text" name="Direccion">
+                    <em>Direccion </em> 
+                    <input type="text" name="Direccion" id="direccion"> 
                     <span></span>
                 </label>
             </form>
@@ -92,10 +92,10 @@
                 <label>
                     <span></span> 
                     <em>Persona Natural </em> 
-                    <input type="radio" name="tipo-persona" value="persona natural - regimen simplificado"> 
+                    <input type="radio" name="tipo-persona" value="persona natural - regimen simplificado" class="natural"> 
                     
                     <em>Persona Juridica</em>
-                    <input type="radio" name="tipo-persona" value="persona juridica - regimen comun"> 
+                    <input type="radio" name="tipo-persona" value="persona juridica - regimen comun" class="juridica">  
                 </label>
             </form>
 
@@ -108,6 +108,7 @@
     
 
     <script src="/carrito/JS/registro.js"></script> 
+    <script src="/carrito/JS/boton-registro.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

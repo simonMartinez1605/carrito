@@ -8,7 +8,14 @@ const celular = document.querySelector(".celular")
 const correo = document.querySelector("[name = Correo]")
 const departamento = document.querySelector("[name = Departamento]")
 const municipio = document.querySelector("[name = Municipio]")
-const direccion = document.querySelector("[name = Direccion]") 
+const direccion = document.querySelector("#direccion") 
+const natural = document.querySelector('.natural') 
+const juridica = document.querySelector('.juridica') 
+
+const tipoPersona = document.querySelector('.tipo-persona') 
+
+
+let mun =[]
 
 //Funcion para validar campo vacio
 const errors = (message, field, isError = true) =>{
@@ -104,47 +111,42 @@ celular.addEventListener('input', validacionNumero)
 
 cedula.addEventListener('input', validacionCedula) 
 
+//Llamado de la api municipios 
 
-//Variables para guardar los valores
+const recorrido = ()=>{
+    mun.forEach(e =>{
 
-const Nombre = nombre.validacion 
-const Apellido = apelllido.value 
-const Tipo_Documento = tipoCedula.value 
-const Cedula = cedula.value 
-const Celular = validacionNumero.valor  
-const Correo = correo.value 
-const Departamento = departamento.value 
-const Municipio = municipio.value 
-const Direccion = direccion.value
+        const dep = document.querySelector('#departamento').value 
 
+        //console.log(dep)
 
-//Objeto para mandar la solicitud  post 
+        if(dep == e.Departamento){
+            const id = e.ID 
+            console.log(id) 
+        }
 
-const objetoJSON = {
-    Celular: Celular, 
-    Correo : Correo ,
-    Nombre : Nombre, 
-    Primer_Apellido: Apellido , 
-    Tipo1: Tipo_Documento, 
-    Documento: Cedula,
-    Municipio:Municipio, 
-    Direccion : Direccion, 
-} 
+    }) 
+}
+
+municipio.addEventListener('keyup', (e)=>{
+    const municipio = e.target.value 
 
 
-//boton de registro 
- 
-const btnRegistro = document.querySelector('.btn-registro')
+    URL_REPORT_MUNICIPIOS =     URL_API_Reporte_Clientes = `https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Municipio1?where=Municipio.contains("${municipio}")` 
 
-btnRegistro.addEventListener('click', ()=>{ 
-    console.log(nombre.value) 
-    console.log(apelllido.value)
-    console.log(tipoCedula.value) 
-    console.log(cedula.value)
-    console.log(celular.value)
-    console.log(correo.value)
-    console.log(direccion.value)
+    const busquedaMunicipios = ()=>{
+        fetch(URL_REPORT_MUNICIPIOS)
+        .then(response => response.json())
+        .then(data => {
+            mun = data; 
+            console.log(data) 
 
-    console.log(objetoJSON)
+            recorrido()
+        })
+        .catch(error =>{
+            console.error(error) 
+        })
+    }
+    busquedaMunicipios(); 
 
-})
+}) 
