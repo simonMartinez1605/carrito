@@ -1,10 +1,15 @@
 //Mostrar carrito 
 const btnCart = document.querySelector('.container-cart-icon')  
 const containerCartProducts = document.querySelector('.container-cart') 
-    
+
+const containerVoid = document.querySelector('.container-void') 
+
 btnCart.addEventListener('click', ()=>{ 
-    containerCartProducts.classList.toggle('hidden-cart')  
+    containerCartProducts.classList.toggle('hidden-cart') 
+    precio.length == 0 || precio== 0? containerVoid.classList.add('hidden-void')
+    :containerVoid.classList.remove('hidden-void') 
 }); 
+
 
 //Funcion cerrar el carrito 
 const btnCloseCart = document.querySelector('.close')
@@ -31,11 +36,19 @@ const btnCerrar = document.querySelector('.boton-cerrar')
 
 //Abrir checkout 
 btnAbrir.addEventListener('click', ()=>{
-    containerCheckout.classList.toggle('hidden-checkout')
-    //console.log('hola') 
+    if(precio.length ==0 || precio == 0){
+        Swal.fire({
+            icon: "error",
+            title: "Lo sentimos...",
+            text: "En este momento no tienes nada en el carrito", 
+        });
+    } 
+    else{
+        containerCheckout.classList.toggle('hidden-checkout') 
+    }
 }); 
 
 //Cerrar checkout 
 btnCerrar.addEventListener('click', ()=>{
-    containerCheckout.classList.toggle('hidden-checkout') 
+    containerCheckout.classList.toggle('hidden-checkout')  
 }); 

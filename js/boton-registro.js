@@ -5,6 +5,8 @@ const boton = document.querySelector('.btn-registro')
 
 const url = 'https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Clientes_Report'
 
+let datos = []
+
 boton.addEventListener('click', ()=>{
 
     //Declaracion de variables para obtener el valor de cada input
@@ -24,21 +26,23 @@ boton.addEventListener('click', ()=>{
 
     //JSON para regimen de persona natural
     const objetoJSON = {
+        // Added_User: addedUser,
         Nombre: valorNombre, 
         Primer_Apellido: valorApellido, 
         Tipo1: valorTipoCedula, 
         Documento: valorCedula, 
         Celular: valorCelular, 
         Correo: valorCorreo,  
-        Departamento: valorDepartamento,
-        Municipio: valorMunicipio,
+        Departamento1: idDepartamento, 
+        Municipio: idMunicipio, 
         Direccion: valorDireccion, 
         Regimen: natu, 
-        Estado: "Activo", 
+        Estado: "Activo",
     } 
 
     //JSON para regimen de persona juridica
     const objetoJSON2 = {
+        // Added_User: addedUser, 
         Nombre: valorNombre, 
         Primer_Apellido: valorApellido, 
         Tipo1: valorTipoCedula, 
@@ -46,21 +50,27 @@ boton.addEventListener('click', ()=>{
         Celular: valorCelular, 
         Correo: valorCorreo, 
         Departamento: valorDepartamento,
-        Municipio: valorMunicipio,
+        Municipio: idMunicipio,
         Direccion: valorDireccion, 
         Regimen: juri, 
         Estado: "Activo", 
     }
-
+    
     const personaNatural ={
         method: 'POST', 
         headers : {
             'Content-Type' : 'application/json', 
         }, 
-
+        
         body: JSON.stringify(objetoJSON), 
     }; 
-
+    
+    if(natural.checked){
+        console.log(objetoJSON)
+    }
+    else{
+        console.log(objetoJSON2)
+    }
     const personaJuridica ={
         method : 'POST', 
         headers: {
@@ -85,6 +95,7 @@ boton.addEventListener('click', ()=>{
         fetch(url, personaJuridica)
         .then(response => response.json()) 
         .then(data => {
+            datos = data 
             console.log('Respuesta', data)
         })
 
@@ -96,8 +107,6 @@ boton.addEventListener('click', ()=>{
 
 
     //Operador ternario para mandar el JSON correspondiente al regimen 
-    natural.checked?console.log(objetoJSON)
-    :console.log(objetoJSON2)  
 
     //Libreria para mostrar una alerta 
     Swal.fire({
@@ -105,7 +114,9 @@ boton.addEventListener('click', ()=>{
         title: "LISTO",
         text: "Ya estas en nuestra base de datos",
         footer: '<a href="/carrito/HTML/catalogo.html">Regresa al pedido</a>' 
-      });
+    });
+    
+     
 })
 
 

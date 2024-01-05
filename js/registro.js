@@ -7,7 +7,7 @@ const cedula = document.querySelector("[name = Cedula]")
 const celular = document.querySelector(".celular") 
 const correo = document.querySelector("[name = Correo]")
 const departamento = document.querySelector("[name = Departamento]")
-const municipio = document.querySelector("[name = Municipio]")
+const municipio = document.querySelector("#municipio")
 const direccion = document.querySelector("#direccion") 
 const natural = document.querySelector('.natural') 
 const juridica = document.querySelector('.juridica') 
@@ -95,7 +95,7 @@ cedula.addEventListener('input', (e) => validacion('Ingresa tu Cedula',e))
 celular.addEventListener('input', (e) => validacion('Ingresa tu Celular',e))
 correo.addEventListener('input', (e) => validacion('Ingresa tu Correo',e))
 departamento.addEventListener('blur', (e) => validacion('Ingresa tu Departamento',e))
-municipio.addEventListener('blur', (e) => validacion('Ingresa tu Municipio',e))
+municipio.addEventListener('blur', (e) => validacion('Ingresa tu Municipio',e)) 
 direccion.addEventListener('blur', (e) => validacion('Ingresa tu Direccion',e))
 
 
@@ -113,21 +113,52 @@ cedula.addEventListener('input', validacionCedula)
 
 //Llamado de la api municipios 
 
+
+
+//Funcion para traer el id del municipio dependiendo del departamento 
+
+let idMunicipio = []
+
+let idDepartamento =[] 
+
+let addedUser = []
+
 const recorrido = ()=>{
     mun.forEach(e =>{
 
-        const dep = document.querySelector('#departamento').value 
+        console.log(e)
+
+        const dep = document.querySelector('#departamento').value.toLowerCase() 
 
         //console.log(dep)
 
         if(dep == e.Departamento){
-            const id = e.ID 
-            console.log(id) 
+            
+            const objetoMun ={
+                Municipio: e.Municipio, 
+                ID: e.ID, 
+                zc_display_value: e.Municipio, 
+            }
+
+            idMunicipio = objetoMun 
+            // console.log(idMunicipio) 
         }
+
+        const obejetoDep = {
+            Departamento :e.Departamento, 
+            ID : e.ID, 
+            zc_display_value: e.Departamento, 
+        }
+
+        idDepartamento = obejetoDep 
+
+        // const user = e.Added_User 
+
+        // addedUser = user  
 
     }) 
 }
-
+//Funcion para traer los municipios 
 municipio.addEventListener('keyup', (e)=>{
     const municipio = e.target.value 
 
@@ -139,7 +170,7 @@ municipio.addEventListener('keyup', (e)=>{
         .then(response => response.json())
         .then(data => {
             mun = data; 
-            console.log(data) 
+            //console.log(data)
 
             recorrido()
         })

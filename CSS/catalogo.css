@@ -410,6 +410,24 @@
     opacity: .5;
 }
 
+.container-void{
+    display: none;  
+    height: 169px;
+    position: relative;
+    bottom: 337px;
+}
+
+.container-void h4{
+    font-weight: bold; 
+}
+
+.hidden-void{
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+
+
 .hidden-cart{
     display: none; 
     position: absolute;

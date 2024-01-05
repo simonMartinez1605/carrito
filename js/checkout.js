@@ -15,8 +15,9 @@ const Direccion = document.querySelector('.direccion')
 const check = ()=>{
     if(chechkout.length === 1){
         chechkout.forEach(i =>{
-            console.log(i)
+            //console.log(i) 
             
+            //console.log(chechkout)
 
             //Constantes para guardar y mostrar la info de la API
             const nombre = i.Nombre
@@ -52,12 +53,15 @@ const check = ()=>{
 
             //Boton para guardar info 
             btnGuadarCheckout.addEventListener('click', ()=>{
-                Swal.fire({
-                    icon: "error",
-                    title: "Lo sentimos...",
-                    text: "No estas en nuestra base de datos :(",
-                    footer: '<a href="/carrito/HTML/registro.html">REGISTRATE :)</a>' 
+                Swal.fire({ 
+                    icon: "success",
+                    title: "Excelente",
+                    text: "Tu pedido fue recibido", 
                 });
+                console.log('funciona') 
+                
+                console.log(carts)
+                console.log(chechkout) 
             }); 
             
             //console.log(opciones)

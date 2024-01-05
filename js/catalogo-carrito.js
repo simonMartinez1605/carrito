@@ -10,10 +10,8 @@ let listCartHTML = document.querySelector('.container-cart-products')
 const cantidad = document.querySelector('.contador-productos')
 const total = document.querySelector('.precio-total') 
 
-
-
 //Contenedores de listas y las cards del carrito (a su vez son variables universales para modificar)
-let listProducts = []
+let listProducts = [] 
 let carts = []  
 
 
@@ -118,7 +116,11 @@ const addCartToMemory = () =>{
     // localStorage.setItem('items', JSON.stringify(listProducts)); 
 } 
 
+//Alamcenar el precio total 
 
+let precio = []
+
+//Variable para almacenar el total 
 let totalValor = "";
 //Funcion para añadir al carrito 
 const addCartToHTML = () =>{
@@ -189,16 +191,31 @@ const addCartToHTML = () =>{
             `;
 
             listCartHTML.appendChild(newCart) 
-            // console.log(cart.product_id) 
             addCartToMemory(); 
-        }); 
-
+        });  
     }
+
     total.innerText = `$${totalValor}`  
     cantidad.innerText = totalQuantity; 
-    //console.log(totalValor)    
+    
+    precio = totalValor 
 
+    //console.log(totalValor)    
 }
+
+//Funcion para deshabilitar el boton de guardar 
+
+const botonGuardar = (()=>{
+    if(precio.length == 0 || precio == 0){
+        console.log('si')
+    }
+    else{
+        console.log('no')
+    } 
+
+    console.log(carts) 
+})
+
 
 //Captura del id con los botones minus, plus y delete
 listCartHTML.addEventListener('click', (event) =>{
