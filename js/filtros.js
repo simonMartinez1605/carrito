@@ -55,3 +55,47 @@ const renderCard = (cards) =>{
     const itemCard = createCards(cards)
     dad.innerHTML = itemCard
 }
+
+
+
+
+//filtros por categoria 
+
+//Obtener botones
+const btnAll = document.querySelector('#todo')
+const btnAud = document.querySelector('#audifonos')
+const btnPowerb = document.querySelector('#powerbank')
+const btnCargador = document.querySelector('#cargador')
+const btnCables = document.querySelector('#cables')
+const btnBocina = document.querySelector('#bocina') 
+
+
+btnAll.addEventListener('click', ()=>{
+    const value = btnAll.value
+    console.log(value)
+})
+
+btnAud.addEventListener('click', ()=>{
+    const value = btnAud.value 
+    console.log(value)
+})
+
+btnPowerb.addEventListener('click', ()=>{ 
+    const value = btnPowerb.value 
+    console.log(value)
+})
+
+btnCargador.addEventListener('click', ()=>{
+    const value = btnCargador.value 
+    console.log(value)
+})
+
+btnCables.addEventListener('click', ()=>{
+    const value = btnCables.value 
+    console.log(value)
+})
+
+btnBocina.addEventListener('click', ()=>{
+    const value = btnBocina.value 
+    console.log(value)
+})

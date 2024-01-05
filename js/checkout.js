@@ -60,8 +60,12 @@ const check = ()=>{
                 });
                 console.log('funciona') 
                 
-                console.log(carts)
-                console.log(chechkout) 
+                const jsonCliente =  {
+                    Cliente: chechkout, 
+                    Productos: carts, 
+                } 
+
+                console.log(jsonCliente) 
             }); 
             
             //console.log(opciones)

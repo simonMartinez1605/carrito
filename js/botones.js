@@ -52,3 +52,13 @@ btnAbrir.addEventListener('click', ()=>{
 btnCerrar.addEventListener('click', ()=>{
     containerCheckout.classList.toggle('hidden-checkout')  
 }); 
+
+
+//Mostrar y ocultar menu categoria 
+
+const btnFilterCategoria = document.querySelector('.icon-filter')
+const containerItems = document.querySelector('.main-wrapper')
+
+btnFilterCategoria.addEventListener('click', ()=>{
+    containerItems.classList.toggle('hidden-categoria') 
+})
