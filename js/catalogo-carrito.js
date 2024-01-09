@@ -199,7 +199,6 @@ const addCartToHTML = () =>{
     cantidad.innerText = totalQuantity; 
     
     precio = totalValor 
-
     //console.log(totalValor)    
 }
 

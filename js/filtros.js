@@ -73,29 +73,41 @@ const btnBocina = document.querySelector('#bocina')
 btnAll.addEventListener('click', ()=>{
     const value = btnAll.value
     console.log(value)
+    const filtro = cards.filter(btn => btn) 
+    console.log(filtro) 
 })
 
 btnAud.addEventListener('click', ()=>{
     const value = btnAud.value 
     console.log(value)
+    const filtro = cards.filter(btn => btn.Referencia.toLowerCase().includes(btnAud.value.toLocaleLowerCase()))
+    console.log(filtro) 
 })
 
 btnPowerb.addEventListener('click', ()=>{ 
     const value = btnPowerb.value 
     console.log(value)
+    const filtro = cards.filter(btn => btn.Referencia.toLowerCase().includes(btnPowerb.value.toLowerCase()))  
+    console.log(filtro)
 })
 
 btnCargador.addEventListener('click', ()=>{
     const value = btnCargador.value 
     console.log(value)
+    const filtro = cards.filter(btn => btn.Referencia.toLocaleLowerCase().includes(btnCargador.value.toLocaleLowerCase()))
+    console.log(filtro) 
 })
 
 btnCables.addEventListener('click', ()=>{
     const value = btnCables.value 
     console.log(value)
+    const filtro = cards.filter(btn => btn.Referencia.toLocaleLowerCase().includes(btnCables.value.toLocaleLowerCase()))
+    console.log(filtro) 
 })
 
 btnBocina.addEventListener('click', ()=>{
     const value = btnBocina.value 
     console.log(value)
-})
+    const filtro = cards.filter(btn => btn.Referencia.toLocaleLowerCase().includes(btnBocina.value.toLocaleLowerCase()))
+    console.log(filtro)
+}) 

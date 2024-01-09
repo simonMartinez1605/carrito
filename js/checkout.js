@@ -16,36 +16,17 @@ const check = ()=>{
     if(chechkout.length === 1){
         chechkout.forEach(i =>{
             //console.log(i) 
-            
-            //console.log(chechkout)
 
-            //Constantes para guardar y mostrar la info de la API
-            const nombre = i.Nombre
-            const nombre2 = i.Segundo_Nombre
-            const apellido = i.Primer_Apellido
-            const apellido2 = i.Segundo_Apellido
-            const correo = i.Correo
-            const celular = i.Celular
-            const tipo_documento = i.Tipo1
-            const departamento = i.Departamento1.Departamento
-            const municipio = i.Municipio.Municipio
-            const direccion = i.Direccion
-            
-            //constante para solo guardar info 
-            const IdDepartamento = i.Departamento1.ID
-            const estado = i.Estado
-            const regimen = i.Regimen 
+            //Mostrar la info del checkout de forma automatica
 
-            //console.log(idDepartamento,estado,regimen)
-
-            Nombre.innerText = `${nombre} ${nombre2}` 
-            Apellido.innerText = `${apellido} ${apellido2}` 
-            Tipo_documento.innerText = `${tipo_documento}`
-            Celular.innerText = `${celular}`
-            Correo.innerText = `${correo}` 
-            Departamento.innerText = `${departamento}`
-            Municipio.innerText = `${municipio}`
-            Direccion.innerText = `${direccion}` 
+            Nombre.innerText = `${i.Nombre} ${i.Segundo_Nombre}` 
+            Apellido.innerText = `${i.Primer_Apelldio} ${i.Segundo_Apellido}` 
+            Tipo_documento.innerText = `${i.Tipo1}`
+            Celular.innerText = `${i.Celular}`
+            Correo.innerText = `${i.Correo}` 
+            Departamento.innerText = `${i.Departamento1.Departamento}`
+            Municipio.innerText = `${i.Municipio.Municipio}`
+            Direccion.innerText = `${i.Direccion}` 
 
             //Variable para el llamado del evento
             const btnGuadarCheckout = document.querySelector('.form-submit')
@@ -62,7 +43,8 @@ const check = ()=>{
                 
                 const jsonCliente =  {
                     Cliente: chechkout, 
-                    Productos: carts, 
+                    Productos: carts,
+                    Precio_total: precio,
                 } 
 
                 console.log(jsonCliente) 
@@ -74,7 +56,7 @@ const check = ()=>{
     }
     //Condicion cuando no traiga info de la API 
     else{
-        Nombre.innerText = ` `
+        Nombre.innerText = ` `  
         Apellido.innerText = ` `
         Tipo_documento.innerText = ``
         Celular.innerText = ` `
@@ -82,6 +64,19 @@ const check = ()=>{
         Departamento.innerText = ` `
         Municipio.innerText = ` `
         Direccion.innerText = ` `
+
+        const btnGuadarCheckout = document.querySelector('.form-submit')
+
+        btnGuadarCheckout.addEventListener('click', ()=>{
+            Swal.fire({ 
+                icon: "error", 
+                title: "Lo sentimos...",
+                text: "No estas en nuestra base de datos",
+                footer: '<a href="/carrito/HTML/registro.html"> Registrate </a>'
+            });
+            console.log('funciona') 
+        }); 
+
     }
 }; 
 
@@ -93,12 +88,7 @@ const inputCedula = document.querySelector('.cedula')
 
 inputCedula.addEventListener('keyup', (e)=>{
     //variable para obtener el valor 
-    var num = e.target.value 
-    //console.log(num)
-
-    //variable para colocar y buscar en la api 
-    const cedula = num
-    
+    const cedula = e.target.value
     //API con parametro de busqueda en cedula 
     URL_API_Reporte_Clientes = `https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Clientes_Report?max=1000&where=Documento=="${cedula}"`   
 
@@ -114,7 +104,7 @@ inputCedula.addEventListener('keyup', (e)=>{
             check(); 
 
         }) 
-        .catch(error =>console.log(error)) 
+        .catch(error =>console.log(error))
         
     };     
     initCheckout(); 
