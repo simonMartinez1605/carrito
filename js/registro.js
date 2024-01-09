@@ -121,46 +121,21 @@ let idMunicipio = []
 
 let idDepartamento =[] 
 
-let addedUser = []
 
 const recorrido = ()=>{
-    mun.forEach(e =>{
+    mun.forEach(municipio =>{
 
-        console.log(e)
+        idMunicipio = municipio.ID 
 
-        const dep = document.querySelector('#departamento').value.toLowerCase() 
-
-        //console.log(dep)
-
-        if(dep == e.Departamento){
-            
-            const objetoMun ={
-                Municipio: e.Municipio, 
-                ID: e.ID, 
-                zc_display_value: e.Municipio, 
-            }
-
-            idMunicipio = objetoMun 
-            // console.log(idMunicipio) 
-        }
-
-        const obejetoDep = {
-            Departamento :e.Departamento, 
-            ID : e.ID, 
-            zc_display_value: e.Departamento, 
-        }
+        idDepartamento = municipio.ID
 
         idDepartamento = obejetoDep 
-
-        // const user = e.Added_User 
-
-        // addedUser = user  
 
     }) 
 }
 //Funcion para traer los municipios 
 municipio.addEventListener('keyup', (e)=>{
-    const municipio = e.target.value 
+    const municipio = e.target.value
 
 
     URL_REPORT_MUNICIPIOS =     URL_API_Reporte_Clientes = `https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Municipio1?where=Municipio.contains("${municipio}")` 

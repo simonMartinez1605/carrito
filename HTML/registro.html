@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="sweetalert2.min.css">
-    <link rel="stylesheet" href="/carrito/CSS/registro.css"> 
+    <link rel="stylesheet" href="/CSS/registro.css">
 </head>
 <body>
 
@@ -63,22 +63,30 @@
                 </label>
             </form>
 
-            
-            <form action="">
-                <label>
-                    <em>Departamento </em>
-                    <input type="text" name="Departamento" id="departamento">
-                    <span></span>
-                </label>
-            </form>
-            
             <form action="">
                 <label>
                     <em>Municipio </em>
-                    <input type="text" name="Municipio" id="municipio">
+                    <input type="text" name="Municipio" id="municipio"> 
                     <span></span>
                 </label>
             </form>
+            
+            <form action="">
+                <label>
+                    <em class="departamento">Departamento </em>  
+                    <input type="text" name="Departamento" id="departamento"> 
+                    <span></span>
+                </label>
+            </form> 
+
+            <form action="">
+                <label>
+                    <em>Fecha de nacimiento </em>  
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"> 
+                    <span></span>
+                </label>
+            </form> 
+            
 
             <form action="">
                 <label>
@@ -101,14 +109,15 @@
 
             <div class="container-btn">
                 <button class="btn-registro" type="submit">Registrarse</button> 
-            </div>
+            </div> 
 
         </div>
+
     </div> 
     
 
-    <script src="/carrito/JS/registro.js"></script> 
-    <script src="/carrito/JS/boton-registro.js"></script> 
+    <script src="/js/registro.js"></script> 
+    <script src="/js/boton-registro.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

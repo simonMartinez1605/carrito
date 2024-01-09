@@ -119,7 +119,7 @@
     justify-content: center;
 }
 .categoria{
-    display: none; 
+    display: none;  
 }
 
 .dad-precio-total{
@@ -722,10 +722,10 @@ ul{
         height: 42px; 
     }
     .filtro button{
-        right: -302px;
+        right: -352px;
         width: 41px;
         height: 41px;
-        top: -6px;
+        top: -4px; 
     }
     .cards_dad{ 
         display: flex;
@@ -740,7 +740,7 @@ ul{
     } 
     .filtro{
         position: relative;
-        left: 33px; 
+        left: -61px;
     }
     .carrito{
         position: relative;
@@ -758,6 +758,12 @@ ul{
         position: relative;
         overflow-y: auto;
     }
+    .dad-categoria{
+        display: flex; 
+        left: 190px;
+        width: 40px;
+        height: 3px;
+    } 
     
     .container-cart{
         right: 494px;
@@ -827,7 +833,7 @@ ul{
     .buscador{
         position: absolute;
         top: 42px;
-        left: 214px;
+        left: 175px;
     }
     .filtro{
         width: 200px; 
@@ -852,9 +858,9 @@ ul{
         display: flex;
         position: absolute;
         left: 385px; 
-        top: -8px;
-        width: 42px; 
-        height: 42px;
+        top: -4px; 
+        width: 40px; 
+        height: 40px;
         display: flex;
         justify-content: center; 
     }
@@ -940,6 +946,12 @@ ul{
     .dad-menu{
         display: contents; 
     }
+    .dad-categoria{
+        display: flex; 
+        left: 420px;
+        width: 40px;
+        height: 103px; 
+    } 
 
     .banner{
         width: auto;
@@ -986,8 +998,8 @@ ul{
         position: absolute;
         left: 175px; 
         top: -9px;
-        width: 42px; 
-        height: 42px;
+        width: 40px; 
+        height: 40px; 
         display: flex;
         justify-content: center; 
         box-shadow: none;
@@ -1002,8 +1014,8 @@ ul{
     }
     .buscador{
         position: absolute;
-        left: 6px;
-        top: 44px;
+        left: -32px;
+        top: 47px;
     }
     .filtro{
         position: relative;
@@ -1029,6 +1041,12 @@ ul{
     .container-total{
         top: -13px;
     }
+    .dad-categoria{
+        display: flex; 
+        left: 185px; 
+        width: 40px;
+        height: 3px;
+    } 
     .dad-pagar{
         position: relative;
         bottom: 15px;    
@@ -1095,7 +1113,6 @@ ul{
         top: 69px; 
         left: auto;
     }
-
 }
 
 @media screen and (max-width: 320px) {

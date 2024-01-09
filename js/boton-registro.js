@@ -3,7 +3,7 @@ const boton = document.querySelector('.btn-registro')
 
 //Variable de la url de la api 
 
-const url = 'https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Clientes_Report'
+const url = 'https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Clientes'
 
 let datos = []
 
@@ -19,6 +19,7 @@ boton.addEventListener('click', ()=>{
     const valorDepartamento = document.querySelector('#departamento').value
     const valorMunicipio = document.querySelector('#municipio').value
     const valorDireccion = document.querySelector('#direccion').value
+    const fechaNacimiento = document.querySelector('#fecha_nacimiento').value 
     const natu = natural.value 
     const juri = juridica.value  
 
@@ -28,16 +29,29 @@ boton.addEventListener('click', ()=>{
     const objetoJSON = {
         // Added_User: addedUser,
         Nombre: valorNombre, 
-        Primer_Apellido: valorApellido, 
+        Primer_Apellido: valorApellido,  
         Tipo1: valorTipoCedula, 
         Documento: valorCedula, 
-        Celular: valorCelular, 
+        Celular: valorCelular *1, 
         Correo: valorCorreo,  
+        Retenedor: "No", 
+        Fecha_de_Nacimiento: fechaNacimiento, 
+        Acepta_que_la_factura_sea_enviada_por_medios_electr_nicos : "Si",
         Departamento1: idDepartamento, 
         Municipio: idMunicipio, 
-        Direccion: valorDireccion, 
         Regimen: natu, 
         Estado: "Activo",
+        Cupo: 0, 
+        Tipo: "Detal", 
+        Dias: 0, 
+        location : {
+            country2: "Colombia ", 
+            address_line_12: valorDireccion, 
+            state_province2: valorDepartamento, 
+            district_city2: valorMunicipio, 
+            postal_Code2: "05001" 
+        }
+
     } 
 
     //JSON para regimen de persona juridica
@@ -54,7 +68,9 @@ boton.addEventListener('click', ()=>{
         Direccion: valorDireccion, 
         Regimen: juri, 
         Estado: "Activo", 
+        Cupo: "0",
     }
+    console.log(fechaNacimiento) 
     
     const personaNatural ={
         method: 'POST', 
@@ -62,7 +78,7 @@ boton.addEventListener('click', ()=>{
             'Content-Type' : 'application/json', 
         }, 
         
-        body: JSON.stringify(objetoJSON), 
+        body: JSON.stringify(objetoJSON),
     }; 
     
     if(natural.checked){
@@ -77,7 +93,7 @@ boton.addEventListener('click', ()=>{
             'Content-Type': 'application/json' 
         }, 
 
-        dody: JSON.stringify(objetoJSON2) 
+        body: objetoJSON2
     }
 
     if(natural.checked){
@@ -86,7 +102,6 @@ boton.addEventListener('click', ()=>{
         .then(data => {
             console.log('Respuesta', data)
         })
-
         .catch(error => {
             console.error('Fallo en la solicitud', error)
         })
@@ -113,7 +128,7 @@ boton.addEventListener('click', ()=>{
         icon: "success", 
         title: "LISTO",
         text: "Ya estas en nuestra base de datos",
-        footer: '<a href="/carrito/HTML/catalogo.html">Regresa al pedido</a>' 
+        footer: '<a href="/HTML/catalogo.html">Regresar al pedido</a>'
     });
     
      

@@ -1,6 +1,18 @@
 //Variable para almacenar info de la api 
 let chechkout = [] 
 
+
+let fechaHoy = []
+const obtenerFecha = ()=>{
+    const fecha = new Date(); 
+    const dia = String(fecha.getDate()).padStart(2, '0'); 
+    const mes = String(fecha.getMonth() + 1).padStart(2 , '0'); 
+    const anio = fecha.getFullYear(); 
+    return `${dia}/${mes}/${anio}`
+}
+
+fechaHoy = obtenerFecha() 
+
 //Constantes para agregar al checkout cuando ya se tiene un registro del cliente 
 const Nombre = document.querySelector('.nombre')
 const Apellido = document.querySelector('.apellido')
@@ -11,6 +23,7 @@ const Departamento = document.querySelector('.departamento')
 const Municipio = document.querySelector('.municipio')
 const Direccion = document.querySelector('.direccion')
 
+
 //Funcion para mostrar en el checkout 
 const check = ()=>{
     if(chechkout.length === 1){
@@ -19,18 +32,37 @@ const check = ()=>{
 
             //Mostrar la info del checkout de forma automatica
 
-            Nombre.innerText = `${i.Nombre} ${i.Segundo_Nombre}` 
-            Apellido.innerText = `${i.Primer_Apelldio} ${i.Segundo_Apellido}` 
-            Tipo_documento.innerText = `${i.Tipo1}`
-            Celular.innerText = `${i.Celular}`
-            Correo.innerText = `${i.Correo}` 
-            Departamento.innerText = `${i.Departamento1.Departamento}`
-            Municipio.innerText = `${i.Municipio.Municipio}`
+            // Nombre.innerText = `${i.Nombre} ${i.Segundo_Nombre}` 
+            // Apellido.innerText = `${i.Primer_Apellido} ${i.Segundo_Apellido}`
+            // Tipo_documento.innerText = `${i.Tipo1}`
+            // Celular.innerText = `${i.Celular}`
+            // Correo.innerText = `${i.Correo}` 
+            // Departamento.innerText = `${i.Departamento1.Departamento}`
+            // Municipio.innerText = `${i.Municipio.Municipio}` 
             Direccion.innerText = `${i.Direccion}` 
 
             //Variable para el llamado del evento
             const btnGuadarCheckout = document.querySelector('.form-submit')
 
+
+            let ivaTotal = [] 
+            let Detalle = []
+
+            carts.forEach(product =>{
+
+                
+
+                iva = product.price *0.19 
+                
+                const products = {
+                    Productos : product.product,
+                    Precio : product.price ,
+                    Cantidad : product.quantity,
+                    Iva : iva.toFixed(0)
+                }
+
+                Detalle = products 
+            })
 
             //Boton para guardar info 
             btnGuadarCheckout.addEventListener('click', ()=>{
@@ -38,17 +70,19 @@ const check = ()=>{
                     icon: "success",
                     title: "Excelente",
                     text: "Tu pedido fue recibido", 
-                });
-                console.log('funciona') 
-                
+                }); 
+
                 const jsonCliente =  {
+                    Fecha : fechaHoy, 
                     Cliente: chechkout, 
-                    Productos: carts,
-                    Precio_total: precio,
+                    Detalle: Detalle, 
+                    Total: precio, 
+                    Estado: "Pendiente", 
                 } 
 
                 console.log(jsonCliente) 
             }); 
+
             
             //console.log(opciones)
 
@@ -72,7 +106,7 @@ const check = ()=>{
                 icon: "error", 
                 title: "Lo sentimos...",
                 text: "No estas en nuestra base de datos",
-                footer: '<a href="/carrito/HTML/registro.html"> Registrate </a>'
+                footer: '<a href="/HTML/registro.html">Registrate</a> ' 
             });
             console.log('funciona') 
         }); 
