@@ -46,6 +46,7 @@ btnAbrir.addEventListener('click', ()=>{
     else{
         containerCheckout.classList.toggle('hidden-checkout') 
     }
+    containerCart.classList.toggle('hidden-cart') 
 }); 
 
 //Cerrar checkout 
@@ -61,4 +62,10 @@ const containerItems = document.querySelector('.main-wrapper')
 
 btnFilterCategoria.addEventListener('click', ()=>{
     containerItems.classList.toggle('hidden-categoria') 
+})
+
+const body = document.querySelector('body')
+
+body.addEventListener('click', ()=>{
+    containerCheckout.classList.replace('hidden-checkout') 
 })

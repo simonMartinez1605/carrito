@@ -77,30 +77,25 @@ btnAll.addEventListener('click', ()=>{
 
 btnAud.addEventListener('click', ()=>{
     const filtro = cards.filter(btn => btn.Referencia.toLowerCase().includes(btnAud.value.toLocaleLowerCase()))
-    console.log(filtro) 
     renderCard(filtro) 
 })
 
 btnPowerb.addEventListener('click', ()=>{ 
     const filtro = cards.filter(btn => btn.Referencia.toLowerCase().includes(btnPowerb.value.toLowerCase()))  
-    console.log(filtro)
     renderCard(filtro)
 })
 
 btnCargador.addEventListener('click', ()=>{
     const filtro = cards.filter(btn => btn.Referencia.toLocaleLowerCase().includes(btnCargador.value.toLocaleLowerCase()))
-    console.log(filtro)
     renderCard(filtro)
 })
 
 btnCables.addEventListener('click', ()=>{
     const filtro = cards.filter(btn => btn.Referencia.toLocaleLowerCase().includes(btnCables.value.toLocaleLowerCase()))
-    console.log(filtro)
     renderCard(filtro) 
 })
 
 btnBocina.addEventListener('click', ()=>{
     const filtro = cards.filter(btn => btn.Referencia.toLocaleLowerCase().includes(btnBocina.value.toLocaleLowerCase()))
-    console.log(filtro)
     renderCard(filtro) 
 }) 

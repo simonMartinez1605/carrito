@@ -93,10 +93,10 @@ boton.addEventListener('click', ()=>{
             'Content-Type': 'application/json' 
         }, 
 
-        body: objetoJSON2
+        body: JSON.stringify(objetoJSON2) 
     }
 
-    if(natural.checked){
+    if(natural.checked){ 
         fetch(url, personaNatural)
         .then(response => response.json())
         .then(data => {
@@ -125,13 +125,12 @@ boton.addEventListener('click', ()=>{
 
     //Libreria para mostrar una alerta 
     Swal.fire({
-        icon: "success", 
+        icon: "error", 
         title: "LISTO",
         text: "Ya estas en nuestra base de datos",
         footer: '<a href="/HTML/catalogo.html">Regresar al pedido</a>'
     });
     
-     
 })
 
 

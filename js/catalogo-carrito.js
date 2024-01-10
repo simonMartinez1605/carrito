@@ -198,8 +198,8 @@ const addCartToHTML = () =>{
     total.innerText = `$${totalValor}`  
     cantidad.innerText = totalQuantity; 
     
-    precio = totalValor 
-    //console.log(totalValor)    
+    precio = totalPrice
+    //console.log(totalPrice)
 }
 
 //Funcion para deshabilitar el boton de guardar 

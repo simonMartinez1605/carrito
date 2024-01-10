@@ -1,14 +1,14 @@
 //Variable para almacenar info de la api 
 let chechkout = [] 
 
-
+//Para almacenar la fecha actual
 let fechaHoy = []
 const obtenerFecha = ()=>{
     const fecha = new Date(); 
     const dia = String(fecha.getDate()).padStart(2, '0'); 
     const mes = String(fecha.getMonth() + 1).padStart(2 , '0'); 
     const anio = fecha.getFullYear(); 
-    return `${dia}/${mes}/${anio}`
+    return `${anio}-${mes}-${dia}` 
 }
 
 fechaHoy = obtenerFecha() 
@@ -23,80 +23,78 @@ const Departamento = document.querySelector('.departamento')
 const Municipio = document.querySelector('.municipio')
 const Direccion = document.querySelector('.direccion')
 
+let ID = []
+let subTotal = []
+let ivaTotal = [] 
+let Detalle = []
+let Total = []
+
+let cedulaCheckout = []
 
 //Funcion para mostrar en el checkout 
 const check = ()=>{
-    if(chechkout.length === 1){
+    if(chechkout.length == 1){
         chechkout.forEach(i =>{
-            //console.log(i) 
-
-            //Mostrar la info del checkout de forma automatica
-
-            // Nombre.innerText = `${i.Nombre} ${i.Segundo_Nombre}` 
-            // Apellido.innerText = `${i.Primer_Apellido} ${i.Segundo_Apellido}`
-            // Tipo_documento.innerText = `${i.Tipo1}`
-            // Celular.innerText = `${i.Celular}`
-            // Correo.innerText = `${i.Correo}` 
-            // Departamento.innerText = `${i.Departamento1.Departamento}`
-            // Municipio.innerText = `${i.Municipio.Municipio}` 
+            //Direccion del cliente 
             Direccion.innerText = `${i.Direccion}` 
+            
+            ID = i.ID 
 
-            //Variable para el llamado del evento
-            const btnGuadarCheckout = document.querySelector('.form-submit')
+            //Cedula 
+            cedulaCheckout = i.Documento  
 
-
-            let ivaTotal = [] 
-            let Detalle = []
-
+            //Guardar info de cada valor
             carts.forEach(product =>{
+                
+                //Iva de cada producto 
+                const iva = product.price *0.19 
+                
+                const ivatotal = iva * product.quantity
+                
+                ivaTotal  = ivatotal
+                
+                //Subtotal de los productos 
+                const subtotal = precio - ivatotal 
+                
+                subTotal  = subtotal  
+
+                const total =  product.price * product.quantity
+
+                Total = total  
+
+                //id de cada producto
+                const  id = product.product_id
+
+                //cambio  de precio (str) a (int)
+
+                const precioProduct = product.price *1 
+        
+                const products = [{
+                    Productos: id,
+                    Precio: precioProduct,
+                    Total : Total, 
+                    Cantidad : product.quantity, 
+                    Subtotal: subTotal,
+                    IVA_total: ivaTotal,  
+                    Iva: ivaTotal
+                }]
 
                 
-
-                iva = product.price *0.19 
-                
-                const products = {
-                    Productos : product.product,
-                    Precio : product.price ,
-                    Cantidad : product.quantity,
-                    Iva : iva.toFixed(0)
-                }
-
+                //Declaracion a detalle de todo el objeto de productos 
                 Detalle = products 
-            })
+                 
+            }) 
+            
+            url = "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Pedidos_1hora" 
 
             //Boton para guardar info 
-            btnGuadarCheckout.addEventListener('click', ()=>{
-                Swal.fire({ 
-                    icon: "success",
-                    title: "Excelente",
-                    text: "Tu pedido fue recibido", 
-                }); 
-
-                const jsonCliente =  {
-                    Fecha : fechaHoy, 
-                    Cliente: chechkout, 
-                    Detalle: Detalle, 
-                    Total: precio, 
-                    Estado: "Pendiente", 
-                } 
-
-                console.log(jsonCliente) 
-            }); 
-
+            
             
             //console.log(opciones)
-
+            
         });  
     }
-    //Condicion cuando no traiga info de la API 
     else{
-        Nombre.innerText = ` `  
-        Apellido.innerText = ` `
-        Tipo_documento.innerText = ``
-        Celular.innerText = ` `
-        Correo.innerText = ` `
-        Departamento.innerText = ` `
-        Municipio.innerText = ` `
         Direccion.innerText = ` `
 
         const btnGuadarCheckout = document.querySelector('.form-submit')
@@ -107,10 +105,10 @@ const check = ()=>{
                 title: "Lo sentimos...",
                 text: "No estas en nuestra base de datos",
                 footer: '<a href="/HTML/registro.html">Registrate</a> ' 
-            });
-            console.log('funciona') 
+            }); 
         }); 
 
+       //console.log(chechkout.length)
     }
 }; 
 
@@ -118,11 +116,18 @@ const check = ()=>{
 //Constante para almacenar la info del input 
 const inputCedula = document.querySelector('.cedula')
 
+let Doc= []
+
+
 //Se agrego un evento a la constante 
 
 inputCedula.addEventListener('keyup', (e)=>{
     //variable para obtener el valor 
     const cedula = e.target.value
+    
+    Doc = cedula 
+    
+    //console.log(Doc)  
     //API con parametro de busqueda en cedula 
     URL_API_Reporte_Clientes = `https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Clientes_Report?max=1000&where=Documento=="${cedula}"`   
 
@@ -143,3 +148,43 @@ inputCedula.addEventListener('keyup', (e)=>{
     };     
     initCheckout(); 
 }); 
+
+
+
+const btnGuadarCheckout = document.querySelector('.form-submit')
+
+
+btnGuadarCheckout.addEventListener('click', ()=>{
+    
+    const jsonCliente =  {
+        Fecha : fechaHoy, 
+        Clientes: ID,
+        Detalle: Detalle, 
+        Estado: "Pendiente", 
+        Total: price,  
+        IVA_total: ivaTotal,
+        Subtotal :subTotal 
+    } 
+    
+    const envioCkeckout = {
+        method : 'POST', 
+        headers : {
+            'Content-Type' : 'application/json'
+        }, 
+        body: JSON.stringify(jsonCliente) 
+    }
+    
+
+    fetch(url, envioCkeckout)
+    .then(response => response.json())
+    .then(data =>{
+        console.log('Respuesta', data)
+        Swal.fire({ 
+            icon: "success",
+            title: "Excelente",
+            text: "Tu pedido fue recibido", 
+        }); 
+    })  
+})
+
+//Condicion cuando no traiga info de la API 

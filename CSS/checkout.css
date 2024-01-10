@@ -28,14 +28,16 @@ body{
     background: var(--withe);
     font-family: var(--font-family-montserrat);
     margin: auto;
-    height: 974px;
-    max-width: 518px;
+    height: 850px;
+    width: 609px;
     padding: 10px;
     box-shadow: 0 4px 8px rgb(130, 130, 130);
     border-radius: 10px;
     text-align: center;
-    position: relative;
-    bottom: 905px;
+    position: absolute;
+    top: 7px;
+    right: 647px;
+    z-index: 1;
 }
 
 .container-checkout{
