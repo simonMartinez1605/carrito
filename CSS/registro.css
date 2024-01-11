@@ -29,9 +29,9 @@ body{
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 10px var(--black);
-    width: 550px; 
+    width: 620px; 
     position: relative; 
-    left: 40%; 
+    left: 30%;
     background: var(--purple-dark);
 }
 
@@ -107,4 +107,36 @@ form input{
 .error{
     color: var(--red); 
     display: block; 
+}
+
+
+@media screen and(max-width: 1380px){ 
+    .dad-checkout{
+        width: 640px;
+        left: 10px;
+    }
+}
+
+@media  screen and (max-width: 885px) {
+    .dad-checkout{
+        width: auto;
+        left: auto;
+    }
+}
+
+@media screen and (max-width: 460px){
+
+    .dad-checkout {
+        width: auto;
+        left: auto; 
+    } 
+}
+
+@media screen and(min-width: 1280px) {
+
+    .dad-checkout{
+        width: auto;
+        left: auto;
+    }
+    
 }
