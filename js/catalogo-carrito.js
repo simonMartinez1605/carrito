@@ -1,7 +1,7 @@
 //Mostrar las cards en el html y en el carrito 
 
 //Url de la api 
-URL_PRODUCTOS= "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Productos_1_hora"
+URL_PRODUCTOS= "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Productos_1_hora" 
 
 //Variables de contenido 
 let listProductsHTML = document.querySelector('.cards_dad')
@@ -112,12 +112,12 @@ const addToCart = (product_id,price,referencia,imagen) =>{
 //Funcion para el local storage 
 const addCartToMemory = () =>{
     localStorage.setItem('cart', JSON.stringify(carts)); 
-    // localStorage.setItem('items', JSON.stringify(cards));
-    // localStorage.setItem('items', JSON.stringify(listProducts)); 
 } 
 
-//Alamcenar el precio total 
+//Almacenar la cantidad para 
+let Quantity = []
 
+//Alamcenar el precio total 
 let precio = []
 
 //Variable para almacenar el total 
@@ -176,7 +176,7 @@ const addCartToHTML = () =>{
                             <span> ${cart.quantity} </span> 
                             <button class="plus"> + </button>
                         </div>
-                        <div class="container-borrar-carrito">
+                       
 
                             <button class="container-icon-trash">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon-trash" viewBox="0 0 16 16">
@@ -184,7 +184,7 @@ const addCartToHTML = () =>{
                                 <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                             </svg>
                             </button> 
-                        </div>
+                        
                     </div>
                 </div> 
             </div>    
@@ -193,28 +193,18 @@ const addCartToHTML = () =>{
             listCartHTML.appendChild(newCart) 
             addCartToMemory(); 
         });  
+
     }
 
     total.innerText = `$${totalValor}`  
     cantidad.innerText = totalQuantity; 
     
     precio = totalPrice
+
+    Quantity = totalQuantity 
+
     //console.log(totalPrice)
 }
-
-//Funcion para deshabilitar el boton de guardar 
-
-const botonGuardar = (()=>{
-    if(precio.length == 0 || precio == 0){
-        console.log('si')
-    }
-    else{
-        console.log('no')
-    } 
-
-    console.log(carts) 
-})
-
 
 //Captura del id con los botones minus, plus y delete
 listCartHTML.addEventListener('click', (event) =>{
@@ -223,7 +213,14 @@ listCartHTML.addEventListener('click', (event) =>{
 
     if(cardElement){
 
+        
         if (positionClick.classList.contains('minus')|| positionClick.classList.contains('plus')|| positionClick.classList.contains('icon-trash')){
+            
+            console.log(Quantity) 
+            const btnPagar = document.querySelector('.pagar')
+            Quantity == 1?btnPagar.disabled = true: btnPagar.disabled = false 
+
+            
             const product_id = cardElement.dataset.id; 
             let type = 'minus'
             if(positionClick.classList.contains('plus')){
@@ -232,6 +229,7 @@ listCartHTML.addEventListener('click', (event) =>{
             if(positionClick.classList.contains('icon-trash')){
                 type = 'delete'
             }
+            
             //funcion para cambiar cantidad
             changeQuantity(product_id, type)
         }

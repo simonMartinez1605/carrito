@@ -86,12 +86,6 @@ const check = ()=>{
             }) 
             
             url = "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Pedidos_1hora" 
-
-            //Boton para guardar info 
-            
-            
-            //console.log(opciones)
-            
         });  
     }
     else{
@@ -104,7 +98,7 @@ const check = ()=>{
                 icon: "error", 
                 title: "Lo sentimos...",
                 text: "No estas en nuestra base de datos",
-                footer: '<a href="/HTML/registro.html">Registrate</a> ' 
+                footer: '<a href="/HTML/registro.html">Registrate</a>' 
             }); 
         }); 
 
@@ -149,42 +143,49 @@ inputCedula.addEventListener('keyup', (e)=>{
     initCheckout(); 
 }); 
 
+//Condicion cuando no traiga info de la API 
 
 
 const btnGuadarCheckout = document.querySelector('.form-submit')
 
 
 btnGuadarCheckout.addEventListener('click', ()=>{
-    
-    const jsonCliente =  {
-        Fecha : fechaHoy, 
-        Clientes: ID,
-        Detalle: Detalle, 
-        Estado: "Pendiente", 
-        Total: price,  
-        IVA_total: ivaTotal,
-        Subtotal :subTotal 
-    } 
-    
-    const envioCkeckout = {
-        method : 'POST', 
-        headers : {
-            'Content-Type' : 'application/json'
-        }, 
-        body: JSON.stringify(jsonCliente) 
+    if(chechkout.length == 1){
+        const jsonCliente =  {
+            Fecha : fechaHoy, 
+            Clientes: ID,
+            Detalle: Detalle, 
+            Estado: "Pendiente", 
+            Total: price,  
+            IVA_total: ivaTotal,
+            Subtotal :subTotal 
+        } 
+        
+        const envioCkeckout = {
+            method : 'POST', 
+            headers : {
+                'Content-Type' : 'application/json'
+            }, 
+            body: JSON.stringify(jsonCliente) 
+        }
+        
+        fetch(url, envioCkeckout)
+        .then(response => response.json())
+        .then(data =>{
+            console.log('Respuesta', data)
+            Swal.fire({ 
+                icon: "success",
+                title: "Excelente",
+                text: "Tu pedido fue recibido", 
+            }); 
+        })  
+    }else{
+        Swal.fire({ 
+            icon: "error", 
+            title: "Lo sentimos...",
+            text: "No estas en nuestra base de datos",
+            footer: '<a href="/HTML/registro.html">Registrate</a>' 
+        }); 
     }
     
-
-    fetch(url, envioCkeckout)
-    .then(response => response.json())
-    .then(data =>{
-        console.log('Respuesta', data)
-        Swal.fire({ 
-            icon: "success",
-            title: "Excelente",
-            text: "Tu pedido fue recibido", 
-        }); 
-    })  
 })
-
-//Condicion cuando no traiga info de la API 

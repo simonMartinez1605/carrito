@@ -7,7 +7,7 @@ const containerVoid = document.querySelector('.container-void')
 btnCart.addEventListener('click', ()=>{ 
     containerCartProducts.classList.toggle('hidden-cart') 
     precio.length == 0 || precio== 0? containerVoid.classList.add('hidden-void')
-    :containerVoid.classList.remove('hidden-void') 
+    :containerVoid.classList.remove('hidden-void')
 }); 
 
 
@@ -30,30 +30,20 @@ btnBuscar.addEventListener('click', ()=>{
 
 
 //Botones de el checkout 
-const btnAbrir = document.querySelector('.pagar')
+const btnPagar = document.querySelector('.pagar')
 const containerCheckout = document.querySelector('.dad-checkout')
 const btnCerrar = document.querySelector('.boton-cerrar')
 
 //Abrir checkout 
-btnAbrir.addEventListener('click', ()=>{
+btnPagar.addEventListener('click', ()=>{
     if(precio.length ==0 || precio == 0){
         Swal.fire({
             icon: "error",
-            title: "Lo sentimos...",
+            title: "Error",
             text: "En este momento no tienes nada en el carrito", 
         });
     } 
-    else{
-        containerCheckout.classList.toggle('hidden-checkout') 
-    }
-    containerCart.classList.toggle('hidden-cart') 
 }); 
-
-//Cerrar checkout 
-btnCerrar.addEventListener('click', ()=>{
-    containerCheckout.classList.toggle('hidden-checkout')  
-}); 
-
 
 //Mostrar y ocultar menu categoria 
 
@@ -66,6 +56,18 @@ btnFilterCategoria.addEventListener('click', ()=>{
 
 const body = document.querySelector('body')
 
-body.addEventListener('click', ()=>{
-    containerCheckout.classList.replace('hidden-checkout') 
-})
+// body.addEventListener('click', ()=>{
+//     containerCheckout.classList.toggle('hidden-checkout')
+// })
+
+
+const carrito = document.querySelector('.cart') 
+
+carrito.addEventListener('click', ()=>{
+    if(precio.length == 0 ||precio == 0){
+       btnPagar.disabled = true
+    }
+    else{
+        btnPagar.disabled = false 
+    }
+}) 

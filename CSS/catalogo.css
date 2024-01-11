@@ -31,10 +31,14 @@
     background: var(--withe); 
 }
 .dad{
-    height: 100px; 
+    height: 1000px; 
+    position: relative;
+    z-index: 1;
 }
 .contenido{
     height: 1px; 
+     position: relative;
+    z-index: 1; 
 }
 
 .logo { 
@@ -74,8 +78,8 @@
     background-color: var(--purple-light);
     border: none;
     padding: 5px;
-    width: 40px;
-    height: 40px; 
+    width: 42px;
+    height: 42px; 
     color: var(--withe);
     justify-content: center;
 
@@ -141,6 +145,21 @@
     align-items: center;
 }
 
+.offcanvas-title{
+    position: relative;
+    left: 177px;
+}
+
+.offcanvas.show:not(.hiding), .offcanvas.showing {
+    transform: none;
+    width: 540px;
+    font-family: var(--font-family-montserrat); 
+}
+
+.pedido{
+    position: relative;
+}
+
 .carrito{
     display: flex;
     justify-content: center; 
@@ -162,13 +181,18 @@
    align-items: center; 
    border: none;  
 }
+
+.icon-cart{
+    width: 30px;
+    height: 24px; 
+}
 .icon-cart:hover{
     cursor: pointer; 
 }
 .count-products{
-    position: fixed; 
-    top: 50px;
-    right: 190px;
+    position: absolute; 
+    top: 26px; 
+    right: 0px;
 
     background-color: var(--purple-dark); 
     color: var(--withe); 
@@ -224,8 +248,8 @@
     display: flex;
     position: absolute;
     top: -17px;
-    right: -15px;
-    cursor: pointer; 
+    right: -139px;
+    cursor: pointer;
 }
 
 .container-borrar-carrito svg{
@@ -247,6 +271,12 @@
     height: 705px; 
     position: relative;
     overflow-y: auto;
+}
+
+.check{
+    position: relative;
+    width: 500px;
+    height: 400px; 
 }
 
 .container-products{ 
@@ -281,6 +311,7 @@
     background: var(--purple-light);
     color: var(--withe); 
     width: 200px; 
+    border: none;
 }
 .pagar:hover{
     background: var(--purple-dark);
@@ -300,10 +331,15 @@
     height: 141px; 
 }
 #cart-product{
-    border-radius: 20px; 
-    background-color: var(--purple-light); 
-    color: var(--withe); 
-    width: 40px;
+    border-radius: 20px;
+    background-color: var(--purple-light);
+    color: var(--withe);
+    width: 42px;
+    height: 42px;
+    position: relative;
+    top: 34px;
+    left: 792px;
+    border: none;
 }
 
 .info-cart-product{
@@ -403,11 +439,13 @@
     cursor: pointer; 
 }
 .container-icon-trash{ 
-    display: none; 
+    display: flex; 
     position: relative;
-    right: 9px; 
     border-radius: 40px; 
     opacity: .5;
+    left: 435px;
+    bottom: 193px;
+    border: none; 
 }
 
 .container-void{
@@ -600,7 +638,6 @@
     left: 580px; 
     top: 37px;
     height: 355px;
-    width: 200px; 
 }
 
 .container-icon-filter{
@@ -612,7 +649,7 @@
     background: var(--purple-light);
     color: var(--withe);
     position: relative;
-    left: 70px;
+    left: 77px; 
     border-radius:30px;
     cursor: pointer; 
 }
@@ -742,6 +779,14 @@ ul{
         position: relative;
         left: -61px;
     }
+
+    #cart-product{
+        left: 364px; 
+        height: 40px;
+        width: 40px; 
+        top: 38px;  
+    }
+
     .carrito{
         position: relative;
         left: 350px; 
@@ -824,8 +869,6 @@ ul{
     }
 }
 
-
-
 @media screen and (max-width: 885px){  
     .logo{
         left: 20px;   
@@ -900,6 +943,25 @@ ul{
         width: 500px; 
         right: 4px; 
     }
+    #cart-product{
+        left: 530px; 
+        width: 40px;
+        height: 40px; 
+        top: 36px; 
+    }
+    .container-icon-trash{
+        left: 454px;
+        top: -180px; 
+    }
+    .container-products{
+        height: 850px;  
+    }
+
+    #offcanvasTop{
+        position: relative;
+        left: 145px;
+    }
+
     .carrito {
         position: absolute;
         left: 700px; 
@@ -948,7 +1010,7 @@ ul{
     }
     .dad-categoria{
         display: flex; 
-        left: 420px;
+        left: 370px; 
         width: 40px;
         height: 103px; 
     } 
@@ -1011,6 +1073,7 @@ ul{
 
     .info-cart-product{
         width: 285px;
+        left: -28px; 
     }
     .buscador{
         position: absolute;
@@ -1019,8 +1082,32 @@ ul{
     }
     .filtro{
         position: relative;
-        left: 68px;     
+        left: 71px;  
         display: flex; 
+    }
+
+    .container-contenido-checkout {
+        position: relative;
+        bottom: -19px;
+        gap: 60px; 
+    }
+
+    .offcanvas.show:not(.hiding), .offcanvas.showing {
+        transform: none;
+        width: auto; 
+        left: 14px;
+        font-family: var(--font-family-montserrat);
+    }
+
+    #cart-product{
+        width: 40px;
+        height: 40px;
+        top: 38px;
+        left: 312px; 
+    }
+
+    .container-products{
+        height: 565px;
     }
     .carrito {
         position: absolute;
@@ -1043,13 +1130,20 @@ ul{
     }
     .dad-categoria{
         display: flex; 
-        left: 185px; 
+        left: 145px;
         width: 40px;
         height: 3px;
     } 
     .dad-pagar{
         position: relative;
         bottom: 15px;    
+    }
+    .offcanvas-title {
+        position: relative;
+        left: 90px;
+    }
+    .pedido{
+        height: 10px; 
     }
     .total{
         left: 70px;
@@ -1101,13 +1195,17 @@ ul{
         font-size: var(--font-size-s);
         margin-left: 10px;
         position: relative;
-        left: 179px;
-        bottom: 78px;
-    
+        left: 241px;
+        bottom: 98px; 
+    }
+
+    .container-icon-trash{
+        left: 288px;
+        bottom: 100px;
     }
     .quantity{
         left: 100px; 
-        bottom: 122px;
+        bottom: 120px;
     }
     .container-borrar-carrito{
         top: 69px; 
@@ -1154,5 +1252,38 @@ ul{
         cursor: pointer; 
         position: absolute; 
         bottom: 17px; 
+    }
+}
+
+
+@media screen and (max-height: 1025px){
+
+    .container-products{
+        height: 710px;
+    }
+    #offcanvasTop{
+        left: 113px;
+        height: 400px;
+        position: fixed;
+        top: 230px;
+        border-radius: 30px;
+    }
+}
+
+
+@media screen and (max-height: 926px) {
+    
+    .container-products{
+        height: 565px;  
+    }
+    #offcanvasTop{
+        left: 0px;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    
+    #offcanvasTop{
+        left: 370px; 
     }
 }
