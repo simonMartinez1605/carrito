@@ -14,51 +14,6 @@ const total = document.querySelector('.precio-total')
 let listProducts = [] 
 let carts = []  
 
-
-//Constante para agregar la info de la api al html 
-// const addDataToHTMl = () =>{
-//     listProductsHTML.innerHTML =''; 
-
-//     if(listProducts.length > 0 ){
-//         listProducts.forEach(product => {
-//             let newProduct = document.createElement('div')
-//             newProduct.classList.add('card'); 
-
-//             //Colocar la info en el dataset de cada card
-//             newProduct.dataset.id = product.ID;
-//             newProduct.dataset.price = product.Precio_Mayorista; 
-//             newProduct.dataset.referencia = product.Referencia; 
-//             newProduct.dataset.imagen = product.Imagen_publica; 
-
-//             //Convercion de numero a valor de moneda 
-
-//             const number = product.Precio_Mayorista; 
-//             valor = new Intl.NumberFormat('es-CO').format(number)
-
-//             //Mostrar los productos de la api en el html 
-//             newProduct.innerHTML = `
-            
-//             <div id= "product" class="dad-card"> 
-//                 <div class="card" style="width: 18rem; height: 24rem;" data-id="${product.ID}" data-price="${product.Precio_Mayorista}" data-referencia="${product.Referencia}" data-imagen="${product.Imagen_publica.url}"> 
-//                     <div class="card-body"> 
-//                         <img src="${product.Imagen_publica.url}" class="card-img-top" alt="...">  
-//                         <h5 class="card-title" id="title">${product.Referencia}</h5>   
-//                         <p  class="card-text">${product.Caracteristicas} </p>  
-//                         <h6>$${valor}</h6>     
-//                         <div class="container-botones">
-//                             <button class="sumar"> Agregar </button>                                
-//                         </div> 
-//                     </div>                                          
-//                 </div> 
-//             </div>  
-//             `
-//             //creacion del html con appendchild 
-//             listProductsHTML.appendChild(newProduct) 
-
-//         })
-//     }
-// };  
-
 //Funcion para tomar el evento de suma y resta para los productos 
 
 listProductsHTML.addEventListener('click', (event) => { 
@@ -105,13 +60,13 @@ const addToCart = (product_id,price,referencia,imagen) =>{
     //console.log(imagen)
     addCartToHTML(); 
     // Llamad de funcion para el local storage
-    addCartToMemory(); 
+    // addCartToMemory(); 
 }
 
 
 //Funcion para el local storage 
 const addCartToMemory = () =>{
-    localStorage.setItem('cart', JSON.stringify(carts)); 
+    sessionStorage.setItem('cart', JSON.stringify(carts));
 } 
 
 //Almacenar la cantidad para 
@@ -190,8 +145,9 @@ const addCartToHTML = () =>{
             </div>    
             `;
 
+            
             listCartHTML.appendChild(newCart) 
-            addCartToMemory(); 
+            // addCartToMemory(); 
         });  
 
     }
@@ -216,7 +172,7 @@ listCartHTML.addEventListener('click', (event) =>{
         
         if (positionClick.classList.contains('minus')|| positionClick.classList.contains('plus')|| positionClick.classList.contains('icon-trash')){
             
-            console.log(Quantity) 
+            //console.log(Quantity)
             const btnPagar = document.querySelector('.pagar')
             Quantity == 1?btnPagar.disabled = true: btnPagar.disabled = false 
 
@@ -275,7 +231,7 @@ const changeQuantity = (product_id, type) =>{
         }
     }
     //Añadir a la memoria y al carrito para refrescar  
-    addCartToMemory(); 
+    // addCartToMemory(); 
     addCartToHTML(); 
 }
 
@@ -284,14 +240,12 @@ const initApp =() =>{
     fetch(URL_PRODUCTOS) 
     .then(response => response.json())
     .then(data =>{
-        listProducts = data; 
-        addDataToHTMl();   
-
+        listProducts = data;  
 
         //obtener info de la memoria 
 
-        if(localStorage.getItem('cart')){
-            carts = JSON.parse(localStorage.getItem('cart')); 
+        if(sessionStorage.getItem('cart')){
+            carts = JSON.parse(sessionStorage.getItem('cart')); 
             addCartToHTML(); 
         }
     })

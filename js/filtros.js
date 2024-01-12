@@ -63,7 +63,7 @@ const renderCard = (cards) =>{
 
 //Obtener botones
 const btnAll = document.querySelector('#todo')
-const btnAud = document.querySelector('#audifonos')
+const btnAud = document.querySelector('#audifonos') 
 const btnPowerb = document.querySelector('#powerbank')
 const btnCargador = document.querySelector('#cargador')
 const btnCables = document.querySelector('#cables')

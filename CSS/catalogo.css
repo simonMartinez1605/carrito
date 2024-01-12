@@ -319,6 +319,7 @@
     background: var(--purple-light);
     color: var(--withe); 
     width: 200px; 
+    height: 50px; 
     border: none;
 }
 .pagar:hover{
@@ -354,7 +355,7 @@
     display: block;
     position: relative;
     left: -17px;
-    width: 470px; 
+    width: 433px;
     height: 110px; 
 } 
 
@@ -379,8 +380,8 @@
     font-size: var(--font-size-s);
     margin-left: 10px; 
     position: relative;
-    left: 350px;
-    bottom: 72px;
+    left: 285px;
+    bottom: 58px;
 }
 
 .quantity{
@@ -388,15 +389,15 @@
     gap: 10px; 
     position: relative;
     left: 100px;
-    bottom: 96px;
+    bottom: 86px; 
     width: 90px;
 }
 .quantity button{
     display: flex;
     align-items: center;
     justify-content: center; 
-    width: 18px;
-    height: 18px;
+    width: 26px;
+    height: 26px;
     background: var(--purple-light);
     color: var(--withe);
     border: none;
@@ -420,6 +421,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    bottom: 24px;
 }
 
 .total{
@@ -452,7 +455,7 @@
     border-radius: 40px; 
     opacity: .5;
     left: 435px;
-    bottom: 193px;
+    bottom: 185px; 
     border: none; 
 }
 
@@ -701,16 +704,18 @@ ul{
 .list-categoria label:hover{
     background: var(--purple-dark); 
     transition: .4s; 
+    color: var(--withe); 
+    box-shadow: 0px 0px 20px var(--black); 
 }
 
 .list-categoria label{
     display: flex;
     cursor: pointer;
-    background: var(--purple-light);
-    color: var(--withe);
+    background: var(--withe);
+    color: var(--bs-purple);
     box-shadow: 0 0 2px rgb(0,0,0,0.24);
-    padding: 15px 16px;
-    border-radius: 16px;  
+    padding: 15px 17px;
+    border-radius: 10px;  
 } 
 
 .cards{
@@ -834,6 +839,21 @@ ul{
     }
     .container-borrar-carrito{
         right: -25px; 
+    }
+    .cantidad{
+        bottom: 34px;
+        position: absolute; 
+    }
+    .quantity{
+        bottom: 80px; 
+    }
+    .quantity button{
+        width: 25px;
+        height: 25px; 
+    }
+    .precio-product {
+        left: 280px;
+        bottom: 59px;
     }
 }
 @media screen and (max-width: 1120px){
@@ -1034,12 +1054,31 @@ ul{
         border-radius: 17px 17px 0 0;
 
     }
-     
+    .cantidad{
+        bottom: 34px;
+        position: absolute; 
+    }
+    .quantity{
+        bottom: 80px; 
+    }
+    .quantity button{
+        width: 25px;
+        height: 25px; 
+    }
+    .precio-product {
+        left: 245px;
+        bottom: 59px;
+    }
 }
 
 @media screen and (max-width: 460px){  
     .logo{
         display: none; 
+    }
+
+    .cantidad{
+        bottom: 34px;
+        position: absolute; 
     }
     .logo-celular{
         display: flex;
@@ -1204,8 +1243,13 @@ ul{
         font-size: var(--font-size-s);
         margin-left: 10px;
         position: relative;
-        left: 241px;
-        bottom: 98px; 
+        left: 188px;
+        bottom: 93px;
+    }
+
+    .quantity button {
+        width: 26px;
+        height: 26px;
     }
 
     .container-icon-trash{
@@ -1214,7 +1258,7 @@ ul{
     }
     .quantity{
         left: 100px; 
-        bottom: 120px;
+        bottom: 80px;
     }
     .container-borrar-carrito{
         top: 69px; 

@@ -62,34 +62,34 @@ form input{
     box-shadow: 0 0 5px var(--withe);
 }
 
-.container-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    padding: 10px;
-}
 
-.container-btn button{ 
+.btn-registro{ 
     background: var(--withe);
     color: var(--black);
     border: none; 
     width: 130px;
     height: 40px;
     border-radius: 30px; 
-    cursor: pointer;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+    left: 110px;
+    bottom: 10px; 
+    cursor: pointer; 
 }
 
-.container-btn button:hover{
+.btn-registro:hover{
     background: var(--purple-light);
     color: var(--withe);
     transition: .4s; 
     box-shadow: 0 0 10px var(--withe);
 }
 
-.container-btn button:active{
+.btn-registro:active{
     background: var(--purple-dark);
     transition: .1s;
-}
+}  
 
 .tipo-persona input{
     display: flex; 

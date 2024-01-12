@@ -27,7 +27,7 @@ let ID = []
 let subTotal = []
 let ivaTotal = [] 
 let Detalle = []
-let Total = []
+let Total = [] 
 
 let cedulaCheckout = []
 
@@ -44,19 +44,22 @@ const check = ()=>{
             cedulaCheckout = i.Documento  
 
             //Guardar info de cada valor
+
             carts.forEach(product =>{
+
+                //console.log(product)
                 
                 //Iva de cada producto 
                 const iva = product.price *0.19 
                 
                 const ivatotal = iva * product.quantity
                 
-                ivaTotal  = ivatotal
+                ivaTotal = Math.floor(ivatotal) 
                 
                 //Subtotal de los productos 
-                const subtotal = precio - ivatotal 
+                const subtotal = product.price - ivatotal
                 
-                subTotal  = subtotal  
+                subTotal  = Math.ceil(subtotal)
 
                 const total =  product.price * product.quantity
 
@@ -78,13 +81,13 @@ const check = ()=>{
                     IVA_total: ivaTotal,  
                     Iva: ivaTotal
                 }]
-
-                
-                //Declaracion a detalle de todo el objeto de productos 
-                Detalle = products 
-                 
-            }) 
             
+                //Declaracion a detalle de todo el objeto de productos 
+                Detalle = products
+
+            }) 
+            console.log(carts)  
+
             url = "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Pedidos_1hora" 
         });  
     }
@@ -112,7 +115,6 @@ const inputCedula = document.querySelector('.cedula')
 
 let Doc= []
 
-
 //Se agrego un evento a la constante 
 
 inputCedula.addEventListener('keyup', (e)=>{
@@ -131,7 +133,7 @@ inputCedula.addEventListener('keyup', (e)=>{
         .then(response => response.json())
         .then(data =>{
             chechkout = data; 
-            //console.log(data)
+            //console.log(data)  
             
             //Funcion para mostrar en el checkout
             check(); 
@@ -177,7 +179,16 @@ btnGuadarCheckout.addEventListener('click', ()=>{
                 icon: "success",
                 title: "Excelente",
                 text: "Tu pedido fue recibido", 
-            }); 
+            });
+
+            const reiniciar = (()=>{
+                location.reload();
+                console.log('hecho') 
+            })
+
+            btnGuadarCheckout.addEventListener('click', reiniciar())  
+
+
         })  
     }else{
         Swal.fire({ 
