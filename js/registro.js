@@ -11,7 +11,7 @@ const municipio = document.querySelector("#municipio")
 const direccion = document.querySelector("#direccion") 
 const natural = document.querySelector('.natural') 
 const juridica = document.querySelector('.juridica') 
-const fechaNacimiento = document.querySelector('#fecha_nacimiento')
+const FechaNacimiento = document.querySelector('#fecha_nacimiento')
 
 const tipoPersona = document.querySelector('.tipo-persona') 
 
@@ -32,18 +32,17 @@ const errors = (message, field, isError = true) =>{
     }
 }
 
-const btnEnviar = document.querySelector('.btn-registro') 
 //Funcion para validar campo vacio
 const validacion = (message, e) =>{
     const valor = e.target.value; 
     const field = e.target; 
    if(valor.trim().length === 0){ 
     errors(message,field)
-    btnEnviar.disbled = true
+    boton.disbled = true
    }
    else{
     errors("", field, false) 
-    btnEnviar.disabled = false
+    boton.disabled = false
    }
 }
 
@@ -90,10 +89,8 @@ const validacionCedula = (e) =>{
     cedula.addEventListener('input', validacionCedula)
 }
 
-//Validacion de campo vacio
-nombre.addEventListener('blur', (e) => {
-    validacion('Ingresa tu Nombre',e) 
-})
+//Validacion de campos vacios
+nombre.addEventListener('blur', (e) => {validacion('Ingresa tu Nombre',e) })
 apelllido.addEventListener('blur', (e) => validacion('Ingresa tu Apellido',e))
 tipoCedula.addEventListener('blur', (e) => validacion('Ingresa tu Tipo de Cedula',e))
 cedula.addEventListener('input', (e) => validacion('Ingresa tu Cedula',e))
@@ -102,6 +99,8 @@ correo.addEventListener('input', (e) => validacion('Ingresa tu Correo',e))
 departamento.addEventListener('blur', (e) => validacion('Ingresa tu Departamento',e))
 municipio.addEventListener('blur', (e) => validacion('Ingresa tu Municipio',e)) 
 direccion.addEventListener('blur', (e) => validacion('Ingresa tu Direccion',e))
+FechaNacimiento.addEventListener('blur', (e)=> validacion('Ingrese su fecha de nacimiento', e)) 
+
 
 
 //Validacion de correo 
@@ -118,78 +117,3 @@ cedula.addEventListener('input', validacionCedula)
 
 //Llamado de la api municipios 
 
-
-
-//Funcion para traer el id del municipio dependiendo del departamento 
-
-let idMunicipio = []
-
-let idDepartamento =[] 
-
-
-const recorrido = ()=>{
-    mun.forEach(municipio =>{
-
-        idMunicipio = municipio.ID 
-
-        idDepartamento = municipio.ID
-
-    }) 
-}
-//Funcion para traer los municipios 
-municipio.addEventListener('keyup', (e)=>{
-    const municipio = e.target.value
-
-
-    URL_REPORT_MUNICIPIOS = URL_API_Reporte_Clientes = `https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Municipio1?where=Municipio.contains("${municipio}")` 
-
-    const busquedaMunicipios = ()=>{
-        fetch(URL_REPORT_MUNICIPIOS)
-        .then(response => response.json())
-        .then(data => {
-            mun = data; 
-            //console.log(data)
-
-            recorrido()
-        })
-        .catch(error =>{
-            console.error(error) 
-        })
-    }
-    busquedaMunicipios(); 
-
-}) 
-
-
-let Documento = []
-
-const validar = ()=>{
-    if(Documento.length == 1){
-        cedulaRegistrada() 
-    }
-    else{
-        cedulaNoRegistrada() 
-    }
-}
-
-
-cedula.addEventListener('keyup', (e)=>{ 
-    const cedula = e.target.value 
-    
-    URL_API_Reporte_Clientes = `https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Clientes_Report?max=1000&where=Documento=="${cedula}"`
-
-    const validacionCedula = ()=>{
-        fetch(URL_API_Reporte_Clientes)
-        .then(response => response.json())
-        .then(data =>{
-            Documento = data 
-            validar(); 
-        })
-
-        .catch(error =>{
-            console.error('Fallo en la peticion', error) 
-        })
-    }
-
-    validacionCedula() 
-})

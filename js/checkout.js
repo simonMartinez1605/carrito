@@ -30,10 +30,11 @@ let Detalle = []
 let Total = [] 
 
 let cedulaCheckout = []
+let products = []
 
 //Funcion para mostrar en el checkout 
 const check = ()=>{
-    if(chechkout.length == 1){
+    if(chechkout.length === 1){
         chechkout.forEach(i =>{
             //Direccion del cliente 
             Direccion.innerText = `${i.Direccion}` 
@@ -43,50 +44,7 @@ const check = ()=>{
             //Cedula 
             cedulaCheckout = i.Documento  
 
-            //Guardar info de cada valor
-
-            carts.forEach(product =>{
-
-                //console.log(product)
-                
-                //Iva de cada producto 
-                const iva = product.price *0.19 
-                
-                const ivatotal = iva * product.quantity
-                
-                ivaTotal = Math.floor(ivatotal) 
-                
-                //Subtotal de los productos 
-                const subtotal = product.price - ivatotal
-                
-                subTotal  = Math.ceil(subtotal)
-
-                const total =  product.price * product.quantity
-
-                Total = total  
-
-                //id de cada producto
-                const  id = product.product_id
-
-                //cambio  de precio (str) a (int)
-
-                const precioProduct = product.price *1 
-        
-                const products = [{
-                    Productos: id,
-                    Precio: precioProduct,
-                    Total : Total, 
-                    Cantidad : product.quantity, 
-                    Subtotal: subTotal,
-                    IVA_total: ivaTotal,  
-                    Iva: ivaTotal
-                }]
-            
-                //Declaracion a detalle de todo el objeto de productos 
-                Detalle = products
-
-            }) 
-            console.log(carts)  
+            //Guardar info de cada valor  
 
             url = "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/Pedidos_1hora" 
         });  
@@ -152,8 +110,55 @@ const btnGuadarCheckout = document.querySelector('.form-submit')
 
 
 btnGuadarCheckout.addEventListener('click', ()=>{
+    carts.forEach(product =>{
+
+        //console.log(product) 
+        
+        //Iva de cada producto 
+        const iva = product.price *0.19 
+        
+        const ivatotal = iva * product.quantity
+        
+        ivaTotal = Math.floor(ivatotal) 
+        
+        //Subtotal de los productos 
+        const subtotal = product.price - ivatotal
+        
+        subTotal  = Math.ceil(subtotal)
+
+        const total =  product.price * product.quantity
+
+        Total = total  
+
+        //id de cada producto
+        const  id = product.product_id
+
+        //cambio  de precio (str) a (int)
+
+        const precioProduct = product.price *1 
+
+        let new_products = { 
+            Productos: id,
+            Precio: precioProduct,
+            Total : Total, 
+            Cantidad : product.quantity, 
+            Subtotal: subTotal,
+            IVA_total: ivaTotal,  
+            Iva: ivaTotal
+        }
+
+        products.push(new_products); 
+
+
+    
+        //Declaracion a detalle de todo el objeto de productos 
+        Detalle = products 
+
+        console.log(Detalle) 
+
+    }) 
     if(chechkout.length == 1){
-        const jsonCliente =  {
+        const jsonCliente =  { 
             Fecha : fechaHoy, 
             Clientes: ID,
             Detalle: Detalle, 
@@ -181,12 +186,14 @@ btnGuadarCheckout.addEventListener('click', ()=>{
                 text: "Tu pedido fue recibido", 
             });
 
-            const reiniciar = (()=>{
-                location.reload();
-                console.log('hecho') 
-            })
+            console.log(carts)  
 
-            btnGuadarCheckout.addEventListener('click', reiniciar())  
+            // const reiniciar = (()=>{
+            //     location.reload();
+            //     console.log('hecho') 
+            // }) 
+
+            // btnGuadarCheckout.addEventListener('click', reiniciar())  
 
 
         })  
