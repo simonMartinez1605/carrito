@@ -337,7 +337,7 @@
     justify-content: space-between; 
     border-bottom: 1px solid rgb(0, 0, 0, 0.20);
     gap: 30px;  
-    height: 141px; 
+    height: 170px  ; 
 }
 #cart-product{
     border-radius: 20px;
@@ -599,6 +599,8 @@
     bottom: 10px;
     left: 100px;  
     border-radius: 30px;
+    width: 170px;
+    height: 26px; 
 }
 
 .boton_catalogo button:hover{ 
@@ -622,13 +624,17 @@
 
 .container-botones button {  
     background-color: var(--purple-light);
-    width: 80px; 
+    width: 170px;  
+    /* height: 34px;  */
     border-radius: 10px; 
     align-items: center;
     justify-content: center; 
     border: none; 
     color: var(--withe); 
     cursor: pointer; 
+    left: -35px;
+    bottom: 3px;
+    position: absolute; 
 }
 .card:hover button{ 
     background-color: var(--purple-dark);
@@ -659,8 +665,8 @@
     height: 40px; 
     background: var(--purple-light);
     color: var(--withe);
-    position: relative;
-    left: 77px; 
+    position: absolute;
+    left: 290px;    
     border-radius:30px;
     cursor: pointer; 
 }
@@ -986,8 +992,10 @@ ul{
     }
 
     #offcanvasTop{
-        position: relative;
-        left: 145px;
+        position: absolute;
+        left: 26px;
+        height: 380px; 
+        max-height: 500px;
     }
 
     .carrito {
@@ -1188,7 +1196,7 @@ ul{
     }
     .offcanvas-title {
         position: relative;
-        left: 90px;
+        left: 0px; 
     }
     .pedido{
         height: 10px; 

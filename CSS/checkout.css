@@ -205,8 +205,8 @@ body{
         top: 90px;
     }
     .container-contenido-checkout{
-        gap: 80px;  
-        bottom: 1px; 
+        gap: 45px;  
+        bottom: -26px;  
     }
     .titulo-checkout{
         bottom: 90px; 
