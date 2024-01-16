@@ -27,7 +27,9 @@ let ID = []
 let subTotal = []
 let ivaTotal = [] 
 let Detalle = []
-let Total = [] 
+let DetalleTotal = [] 
+
+let Total = 0 
 
 let cedulaCheckout = []
 let products = []
@@ -50,7 +52,7 @@ const check = ()=>{
         });  
     }
     else{
-        Direccion.innerText = ` `
+        Direccion.innerText = ` ` 
 
         const btnGuadarCheckout = document.querySelector('.form-submit')
 
@@ -108,6 +110,9 @@ inputCedula.addEventListener('keyup', (e)=>{
 
 const btnGuadarCheckout = document.querySelector('.form-submit')
 
+//Declaraciones para los valores totales 
+let IvaTotal = 0
+let SubTOTAL = 0 
 
 btnGuadarCheckout.addEventListener('click', ()=>{
     carts.forEach(product =>{
@@ -119,16 +124,29 @@ btnGuadarCheckout.addEventListener('click', ()=>{
         
         const ivatotal = iva * product.quantity
         
-        ivaTotal = Math.floor(ivatotal) 
+        ivaTotal = Math.floor(ivatotal)
         
         //Subtotal de los productos 
         const subtotal = product.price - ivatotal
         
-        subTotal  = Math.ceil(subtotal)
+        subTotal  = Math.ceil(subtotal) 
 
         const total =  product.price * product.quantity
 
-        Total = total  
+        //Declaracion para el total de la factura 
+        let Iva = 0
+
+        DetalleTotal = total 
+
+        Total = Total += total 
+
+        Iva = Total * 0.19 
+
+        IvaTotal = Math.ceil(Iva) 
+
+        SubTOTAL = Total - IvaTotal 
+
+        console.log(IvaTotal)
 
         //id de cada producto
         const  id = product.product_id
@@ -140,7 +158,7 @@ btnGuadarCheckout.addEventListener('click', ()=>{
         let new_products = { 
             Productos: id,
             Precio: precioProduct,
-            Total : Total, 
+            Total : DetalleTotal, 
             Cantidad : product.quantity, 
             Subtotal: subTotal,
             IVA_total: ivaTotal,  
@@ -152,9 +170,7 @@ btnGuadarCheckout.addEventListener('click', ()=>{
 
     
         //Declaracion a detalle de todo el objeto de productos 
-        Detalle = products 
-
-        console.log(Detalle) 
+        Detalle = products  
 
     }) 
     if(chechkout.length == 1){
@@ -163,9 +179,9 @@ btnGuadarCheckout.addEventListener('click', ()=>{
             Clientes: ID,
             Detalle: Detalle, 
             Estado: "Pendiente", 
-            Total: price,  
-            IVA_total: ivaTotal,
-            Subtotal :subTotal 
+            Total: Total,
+            IVA_total: IvaTotal,
+            Subtotal : SubTOTAL 
         } 
         
         const envioCkeckout = {
@@ -175,6 +191,8 @@ btnGuadarCheckout.addEventListener('click', ()=>{
             }, 
             body: JSON.stringify(jsonCliente) 
         }
+
+        console.log(jsonCliente) 
         
         fetch(url, envioCkeckout)
         .then(response => response.json())
@@ -186,15 +204,13 @@ btnGuadarCheckout.addEventListener('click', ()=>{
                 text: "Tu pedido fue recibido", 
             });
 
-            console.log(carts)  
+            const reiniciar = (()=>{
+                location.reload();
+            })  
 
-            // const reiniciar = (()=>{
-            //     location.reload();
-            //     console.log('hecho') 
-            // }) 
-
-            // btnGuadarCheckout.addEventListener('click', reiniciar())  
-
+            setTimeout(()=>{
+                reiniciar() 
+            }, 3000) 
 
         })  
     }else{
