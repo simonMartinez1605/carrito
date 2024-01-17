@@ -1,24 +1,6 @@
 //Mostrar carrito 
-const btnCart = document.querySelector('.container-cart-icon')  
-const containerCartProducts = document.querySelector('.container-cart') 
-
-const containerVoid = document.querySelector('.container-void') 
-
-btnCart.addEventListener('click', ()=>{ 
-    containerCartProducts.classList.toggle('hidden-cart') 
-    precio.length == 0 || precio== 0? containerVoid.classList.add('hidden-void')
-    :containerVoid.classList.remove('hidden-void')
-}); 
-
-
-//Funcion cerrar el carrito 
-const btnCloseCart = document.querySelector('.close')
-const containerCart = document.querySelector('.container-cart')
-
-btnCloseCart.addEventListener('click', ()=>{
-    containerCart.classList.toggle('hidden-cart') 
-}); 
-
+const btnCart = document.querySelector('.cart')  
+const categoria = document.querySelector('.container-cart')  
 
 
 //Funcion para mostrar el la casilla de buscar 
@@ -36,14 +18,14 @@ const btnCerrar = document.querySelector('.boton-cerrar')
 
 //Abrir checkout 
 btnPagar.addEventListener('click', ()=>{
-    if(precio.length ==0 || precio == 0){
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "En este momento no tienes nada en el carrito", 
-        });
-    } 
+    containerCheckout.classList.toggle('hidden-ckeckout')
 }); 
+
+const btnClose = document.querySelector('#close-checkout')
+
+btnClose.addEventListener('click', ()=>{
+    containerCheckout.classList.toggle('hidden-ckeckout')
+})
 
 //Mostrar y ocultar menu categoria 
 

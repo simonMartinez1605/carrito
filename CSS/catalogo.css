@@ -46,7 +46,7 @@
     width: 165px; 
     height: 65px;
     position: relative;
-    left: 12px; 
+    left: 195px;
     top: 20px; 
     border-radius: 8px; 
 }
@@ -69,7 +69,7 @@
 }
 
 .filtro button {
-    display: flex;
+    display: none; 
     align-items: center;
     position: absolute;
     right: -496px; 
@@ -147,7 +147,8 @@
 
 .offcanvas-title{
     position: relative;
-    left: 177px;
+    left: 155px; 
+    font-weight: bold; 
 }
 
 .offcanvas.show:not(.hiding), .offcanvas.showing {
@@ -285,6 +286,10 @@
     position: relative;
     width: 500px;
     height: 400px; 
+}
+
+.hidden-ckeckout{
+    display: none; 
 }
 
 .container-products{ 
@@ -494,8 +499,8 @@
     background-color: var(--purple-light);
     height: 3px;
     width: 100%; 
-    position: absolute;
-    top: 100px;
+    position: fixed;
+    top: 98px; 
 }
 
 .banner{
@@ -504,7 +509,7 @@
     justify-content: center;
     margin: 0;
     width: 1240px;
-    height: 361px;
+    height: 200px; 
     padding: 20px;
     position: relative;
     top: 126px;
@@ -571,7 +576,7 @@
 
 .card h6{
     position: absolute;
-    bottom: 34px; 
+    bottom: 45px;
 }
 
 .card:hover img{ 
@@ -651,10 +656,10 @@
 
 .dad-categoria{
     display: flex;
-    position: relative; 
-    left: 580px; 
-    top: 37px;
+    position: absolute;  
+    top: 30px;
     height: 355px;
+    right: 370px;
 }
 
 .container-icon-filter{
@@ -666,7 +671,7 @@
     background: var(--purple-light);
     color: var(--withe);
     position: absolute;
-    left: 76px;
+    left: 75px;
     border-radius:30px;
     cursor: pointer; 
 }
@@ -674,11 +679,18 @@
 .icon-filter{
     width: 40px;
     height: 30px; 
+    display: inline-block;
+    font-size: 2em;
+    transition: transform 0.3s ease-in-out;
+}
+
+.icon-filter:hover{ 
+    transform: translateY(-10px);
 }
 
 .main-wrapper{
     font-family: var(--font-family-montserrat); 
-    position: relative; 
+    position: absolute;  
     z-index: 1;
 }
 .main-wrapper input [type="radio"]{
@@ -705,6 +717,7 @@ ul{
 
 .list-categoria li{
     display: block;  
+    padding: 2px; 
 }
 
 .list-categoria label:hover{
@@ -743,6 +756,11 @@ ul{
     display: none; 
 }
 
+.index-filtro{
+    position: fixed; 
+    z-index: -1; 
+}
+
 /*Responsive*/
 
 @media screen and (max-width: 1400px) {
@@ -763,7 +781,11 @@ ul{
         overflow-y: auto;
         position: relative;
         left: 0;
-        height: 518px;
+        height: 350px; 
+
+
+
+
     }
 
     .logo{
@@ -771,7 +793,7 @@ ul{
         width: 165px; 
         height: 65px;
         position: relative; 
-        left: 15px; 
+        left: 230px;
         top: 20px; 
     }
 
@@ -780,15 +802,17 @@ ul{
         display: none;
     }
     .filtro_active{
-        left: 100px; 
+        left: 390px;  
         top: -9px;
         height: 42px; 
+        width: 384px; 
     }
     .filtro button{
-        right: -352px;
+        right: -200px; 
         width: 41px;
         height: 41px;
         top: -4px; 
+        display: flex; 
     }
     .cards_dad{ 
         display: flex;
@@ -797,8 +821,8 @@ ul{
         justify-content: center;
         z-index: -1;
         position: relative;
-        left: 40px; 
-        width: 1200px; 
+        left: 173px;
+        width: 1000px;  
         top: 128px;  
     } 
     .filtro{
@@ -807,9 +831,9 @@ ul{
     }
 
     #cart-product{
-        left: 364px; 
+        left: 200px; 
         height: 40px;
-        width: 40px; 
+        width: 40px;
         top: 38px;  
     }
 
@@ -831,9 +855,11 @@ ul{
     }
     .dad-categoria{
         display: flex; 
-        left: 190px;
-        width: 40px;
+        right: 370px;
+        width: 40px; 
         height: 3px;
+        top: 39px;
+        position: absolute;
     } 
     
     .container-cart{
@@ -871,7 +897,10 @@ ul{
 }
 @media screen and (max-width: 1120px){
     .filtro_input{
-        width: 750px; 
+        width: 400px; 
+    }
+    .filtro_active{
+        width: 400px; 
     }
     .logo{
         left: 20px;   
@@ -879,7 +908,8 @@ ul{
     .filtro{
         width: 200px; 
         position: relative;
-        left: 155px; 
+        left: 167px; 
+        top: 1px; 
     }
     .container-menu{
         position: relative;
@@ -1207,7 +1237,7 @@ ul{
     }
     .offcanvas-title {
         position: relative;
-        left: 0px; 
+        left: 30px; 
     }
     .pedido{
         height: 10px; 

@@ -101,8 +101,6 @@ municipio.addEventListener('blur', (e) => validacion('Ingresa tu Municipio',e))
 direccion.addEventListener('blur', (e) => validacion('Ingresa tu Direccion',e))
 FechaNacimiento.addEventListener('blur', (e)=> validacion('Ingrese su fecha de nacimiento', e)) 
 
-
-
 //Validacion de correo 
 
 correo.addEventListener('input', validacionEmail) 
@@ -114,6 +112,3 @@ celular.addEventListener('input', validacionNumero)
 //Validacion de cedula  
 
 cedula.addEventListener('input', validacionCedula) 
-
-//Llamado de la api municipios 
-

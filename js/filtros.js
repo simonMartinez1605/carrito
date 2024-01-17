@@ -69,7 +69,7 @@ const btnCargador = document.querySelector('#cargador')
 const btnCables = document.querySelector('#cables')
 const btnBocina = document.querySelector('#bocina') 
 
-
+//Funciones para los filtros de busqueda por categoria 
 btnAll.addEventListener('click', ()=>{
     const filtro = cards.filter(btn => btn) 
     renderCard(filtro)

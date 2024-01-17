@@ -53,19 +53,6 @@ const check = ()=>{
     }
     else{
         Direccion.innerText = ` ` 
-
-        const btnGuadarCheckout = document.querySelector('.form-submit')
-
-        btnGuadarCheckout.addEventListener('click', ()=>{
-            Swal.fire({ 
-                icon: "error", 
-                title: "Lo sentimos...",
-                text: "No estas en nuestra base de datos",
-                footer: '<a href="/HTML/registro.html">Registrate</a>' 
-            }); 
-        }); 
-
-       //console.log(chechkout.length)
     }
 }; 
 
@@ -210,7 +197,7 @@ btnGuadarCheckout.addEventListener('click', ()=>{
 
             setTimeout(()=>{
                 reiniciar() 
-            }, 3000) 
+            }, 4000)
 
         })  
     }else{

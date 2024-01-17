@@ -159,7 +159,7 @@ body{
 
 @media screen and (max-width:1380px ){
     .dad-checkout{
-        height: 790px;
+        height: 370px; 
         bottom: 760px;
     }
     .container-checkout{
@@ -173,11 +173,15 @@ body{
     }
     .container-contenido-checkout{
         position: relative;
-        bottom: 0px;
-        gap: 83px;
+        top: 35px; 
+        gap: 45px;
     }
     .form-submit{
         top: 23px;
+    }
+    .dad-checkout{
+        right: 456px; 
+        top: 345px; 
     }
 }
 
@@ -198,8 +202,10 @@ body{
 
 @media screen and (max-width: 460px) {
     .dad-checkout{
-        bottom: 760px; 
-        height: 880px;
+        top: 403px;
+        height: 333px;
+        left: 33px;
+        width: 335px; 
     }
     .container-checkout{
         top: 90px;
@@ -215,6 +221,6 @@ body{
         top: -123px; 
     }
     .form-submit{
-        top: 20px; 
+        top: 2px;
     }
 }
